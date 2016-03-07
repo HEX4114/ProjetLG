@@ -1,4 +1,4 @@
-#include "Automate.h"
+#include "include/Automate.h"
 
 Automate::Automate()
 {
