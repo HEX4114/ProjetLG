@@ -8,6 +8,8 @@ class ExpressionMultiplier : public ExpressionBinaire
     public:
         ExpressionMultiplier();
         virtual ~ExpressionMultiplier();
+
+		double evaluer();
     protected:
     private:
 };

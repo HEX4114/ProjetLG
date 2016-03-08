@@ -8,6 +8,8 @@ class ExpressionSoustraire : public ExpressionBinaire
     public:
         ExpressionSoustraire();
         virtual ~ExpressionSoustraire();
+
+		double evaluer();
     protected:
     private:
 };

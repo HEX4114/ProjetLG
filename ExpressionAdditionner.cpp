@@ -9,3 +9,8 @@ ExpressionAdditionner::~ExpressionAdditionner()
 {
     //dtor
 }
+
+double ExpressionAdditionner::evaluer()
+{
+	return 0.0;
+}

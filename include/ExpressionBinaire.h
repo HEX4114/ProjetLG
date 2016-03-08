@@ -8,6 +8,8 @@ class ExpressionBinaire : public Expression
     public:
         ExpressionBinaire();
         virtual ~ExpressionBinaire();
+
+		virtual double evaluer();
     protected:
     private:
 };

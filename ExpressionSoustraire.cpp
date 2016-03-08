@@ -9,3 +9,8 @@ ExpressionSoustraire::~ExpressionSoustraire()
 {
     //dtor
 }
+
+double ExpressionSoustraire::evaluer()
+{
+	return 0.0;
+}
