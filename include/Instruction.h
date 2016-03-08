@@ -1,5 +1,6 @@
 
 #include "Phrase.h"
+
 class Instruction :
 	public Phrase
 {
