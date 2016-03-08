@@ -4,7 +4,6 @@
 #include <stack>
 
 #include "Etat.h"
-#include "Symbole.h"
 
 class Automate
 {
@@ -16,14 +15,14 @@ class Automate
 
 		void lecture();
 		void empilerSymbole(Symbole symbole);
-		void empilerEtat(Etat etat);
+		void empilerEtat(Etat* etat);
 
     protected:
     private:
 		/*Methodes Privees*/
 
 		/*Attributs Privees*/
-		std::stack<Etat> pileEtats;
+		std::stack<Etat*> pileEtats;
 		std::stack<Symbole> pileSymboles;
 
 };
