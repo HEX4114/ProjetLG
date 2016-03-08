@@ -1,3 +1,6 @@
+#ifndef LIRE_H
+#define LIRE_H
+
 
 #include "Instruction.h"
 class Lire :
@@ -8,3 +11,4 @@ public:
 	~Lire();
 };
 
+#endif // LIRE_H
