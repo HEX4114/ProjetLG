@@ -9,6 +9,7 @@ class Symbole
         virtual ~Symbole();
     protected:
     private:
+		int Id;
 };
 
 #endif // SYMBOLE_H

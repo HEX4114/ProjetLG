@@ -30,6 +30,7 @@ int main()
     //     cout<<names[i];
     //}
 
+    //system("pause");
 
      return 0;
 }

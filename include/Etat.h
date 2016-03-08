@@ -2,17 +2,20 @@
 #define ETAT_H
 #include <iostream>
 #include <string>
-#include "Automate.h"
+
 #include "Symbole.h"
-using namespace std;
+
+
+class Automate;
 
 class Etat
 {
     public:
         Etat();
         virtual ~Etat();
+		virtual void transition(Automate automate, Symbole symbole) = 0;
     protected:
-        string name;
+        std::string name;
     private:
 };
 
