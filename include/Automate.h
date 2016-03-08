@@ -10,8 +10,17 @@ class Automate
     public:
         Automate();
         virtual ~Automate();
+
+		/*Methodes Publiques*/
+
+		void empilerSymbole(Symbole symbole);
+		void empilerEtat(Etat etat);
+
     protected:
     private:
+		/*Methodes Privees*/
+
+		/*Attributs Privees*/
 		std::stack<Etat> pileEtats;
 		std::stack<Symbole> pileSymboles;
 

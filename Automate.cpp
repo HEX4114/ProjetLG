@@ -9,3 +9,13 @@ Automate::~Automate()
 {
     //dtor
 }
+
+void Automate::empilerEtat(Etat etat)
+{
+	pileEtats.push(etat);
+}
+
+void Automate::empilerSymbole(Symbole symbole)
+{
+	pileSymboles.push(symbole);
+}
