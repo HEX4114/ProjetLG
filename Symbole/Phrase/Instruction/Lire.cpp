@@ -1,4 +1,4 @@
-#include "include\Lire.h"
+#include "Lire.h"
 
 
 Lire::Lire()

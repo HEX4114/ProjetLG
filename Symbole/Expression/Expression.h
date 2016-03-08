@@ -1,7 +1,7 @@
 #ifndef EXPRESSION_H
 #define EXPRESSION_H
 
-#include "Symbole.h"
+#include "../Symbole.h"
 
 class Expression : public Symbole
 {

@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <fstream>
-#include "include/Lexer.h"
+#include "Lexer.h"
 using std::cout;
 using std::cin;
 using std::endl;

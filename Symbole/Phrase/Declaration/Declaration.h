@@ -1,7 +1,7 @@
 #ifndef DECLARATION_H
 #define DECLARATION_H
 
-#include "Phrase.h"
+#include "../Phrase.h"
 class Declaration :
 	public Phrase
 {

@@ -2,7 +2,8 @@
 #define PHRASE_H
 
 
-#include "Symbole.h"
+#include "../Symbole.h"
+
 class Phrase :
 	public Symbole
 {

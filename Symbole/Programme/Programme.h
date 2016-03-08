@@ -1,7 +1,8 @@
 #ifndef PROGRAMME_H
 #define PROGRAMME_H
 
-#include "Symbole.h"
+#include "../Symbole.h"
+
 class Programme :
 	public Symbole
 {

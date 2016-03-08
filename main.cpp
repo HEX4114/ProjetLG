@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <fstream>
-#include "include/Lexer.h"
+#include "Lexer.h"
 using std::cout;
 using std::cin;
 using std::endl;
@@ -14,11 +14,11 @@ using std::getline;
 
 using namespace std;
 
-#include "include/ExpressionAdditionner.h"
-#include "include/ExpressionSoustraire.h"
-#include "include/ExpressionDiviser.h"
-#include "include/ExpressionMultiplier.h"
-#include "include/Nombre.h"
+#include "Symbole\Expression\ExpressionBinaire\ExpressionAdditionner.h"
+#include "Symbole\Expression\ExpressionBinaire\ExpressionSoustraire.h"
+#include "Symbole\Expression\ExpressionBinaire\ExpressionDiviser.h"
+#include "Symbole\Expression\ExpressionBinaire\ExpressionMultiplier.h"
+#include "Symbole\Expression\Nombre.h"
 
 
 int main()

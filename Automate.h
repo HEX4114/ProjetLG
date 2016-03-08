@@ -3,7 +3,7 @@
 
 #include <stack>
 
-#include "Etat.h"
+#include "Etat/Etat.h"
 
 class Automate
 {
