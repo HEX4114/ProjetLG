@@ -6,7 +6,7 @@
 class Nombre : public Expression
 {
     public:
-        Nombre();
+        Nombre(double v);
         virtual ~Nombre();
         double virtual evaluer();
     protected:

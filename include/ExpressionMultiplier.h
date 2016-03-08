@@ -6,7 +6,7 @@
 class ExpressionMultiplier : public ExpressionBinaire
 {
     public:
-        ExpressionMultiplier();
+        ExpressionMultiplier(Expression* exp1, Expression * exp2);
         virtual ~ExpressionMultiplier();
 
 		double evaluer();

@@ -1,6 +1,6 @@
 #include "include/ExpressionDiviser.h"
 
-ExpressionDiviser::ExpressionDiviser()
+ExpressionDiviser::ExpressionDiviser(Expression* exp1, Expression * exp2) : ExpressionBinaire(exp1, exp2)
 {
     //ctor
 }

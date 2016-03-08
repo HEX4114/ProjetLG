@@ -6,7 +6,7 @@
 class ExpressionAdditionner : public ExpressionBinaire
 {
     public:
-        ExpressionAdditionner();
+        ExpressionAdditionner(Expression * exp1, Expression * exp2);
         virtual ~ExpressionAdditionner();
 
 		double evaluer();
