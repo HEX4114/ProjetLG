@@ -1,5 +1,6 @@
 #include "include/Automate.h"
 
+
 Automate::Automate()
 {
     //ctor
@@ -15,7 +16,7 @@ void Automate::lecture()
 
 }
 
-void Automate::empilerEtat(Etat etat)
+void Automate::empilerEtat(Etat* etat)
 {
 	pileEtats.push(etat);
 }
