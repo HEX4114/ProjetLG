@@ -18,7 +18,7 @@ int main()
 {
     cout << "Hello world!" << endl;
 
-    string fileName = "../test.txt";
+    string fileName = "../sources/test.txt";
     Lexer* lex = new Lexer();
     string names = lex->lecture(fileName);
     string examples = lex->parseToSymbols(names);
@@ -30,7 +30,7 @@ int main()
     //     cout<<names[i];
     //}
 
-    //system("pause");
+    system("pause");
 
      return 0;
 }
