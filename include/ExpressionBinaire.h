@@ -12,6 +12,7 @@ class ExpressionBinaire : public Expression
     protected:
 		Expression* e1;
 		Expression* e2;
+
     private:
 };
 
