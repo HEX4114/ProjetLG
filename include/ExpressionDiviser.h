@@ -6,7 +6,7 @@
 class ExpressionDiviser : public ExpressionBinaire
 {
     public:
-        ExpressionDiviser();
+        ExpressionDiviser(Expression * exp1, Expression * exp2);
         virtual ~ExpressionDiviser();
 
 		double evaluer();

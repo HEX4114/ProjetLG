@@ -6,7 +6,7 @@
 class ExpressionSoustraire : public ExpressionBinaire
 {
     public:
-        ExpressionSoustraire();
+        ExpressionSoustraire(Expression* exp1, Expression * exp2);
         virtual ~ExpressionSoustraire();
 
 		double evaluer();

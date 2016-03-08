@@ -1,8 +1,8 @@
 #include "include/ExpressionAdditionner.h"
 
-ExpressionAdditionner::ExpressionAdditionner()
+ExpressionAdditionner::ExpressionAdditionner(Expression* exp1, Expression * exp2) : ExpressionBinaire(exp1, exp2)
 {
-    //ctor
+
 }
 
 ExpressionAdditionner::~ExpressionAdditionner()
@@ -12,5 +12,5 @@ ExpressionAdditionner::~ExpressionAdditionner()
 
 double ExpressionAdditionner::evaluer()
 {
-	return e1.evaluer() + e2.evaluer();
+	return e1->evaluer() + e2->evaluer();
 }

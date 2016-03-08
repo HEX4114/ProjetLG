@@ -6,12 +6,12 @@
 class ExpressionBinaire : public Expression
 {
     public:
-        ExpressionBinaire();
+        ExpressionBinaire(Expression * exp1, Expression * exp2);
         virtual ~ExpressionBinaire();
         double virtual evaluer()=0;
     protected:
-		Expression e1;
-		Expression e2;
+		Expression* e1;
+		Expression* e2;
     private:
 };
 
