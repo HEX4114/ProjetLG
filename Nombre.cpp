@@ -1,6 +1,6 @@
 #include "include/Nombre.h"
 
-Nombre::Nombre()
+Nombre::Nombre() : Expression()
 {
     //ctor
 }
@@ -9,3 +9,9 @@ Nombre::~Nombre()
 {
     //dtor
 }
+
+double Nombre::evaluer()
+{
+    return 0;
+}
+
