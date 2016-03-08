@@ -12,6 +12,6 @@ Nombre::~Nombre()
 
 double Nombre::evaluer()
 {
-    return 0;
+    return this->valeur;
 }
 

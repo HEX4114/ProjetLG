@@ -12,5 +12,5 @@ Variable::~Variable()
 
 double Variable::evaluer()
 {
-    return 0;
+    return this->valeur;
 }
