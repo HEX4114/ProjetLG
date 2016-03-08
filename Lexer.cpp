@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <fstream>
-#include "include/Lexer.h"
+#include "Lexer.h"
 using std::cout;
 using std::cin;
 using std::endl;
@@ -56,18 +56,23 @@ string Lexer::parseToSymbols(const string& example) {
                 std::cout << word << std::endl;
                 word.clear();
             }
-        } else if(c=='=' || c==',' || c==';' || c=='+' || c==':') {
+        } else if(c=='=' || c==',' || c==';' || c=='+' || c==':' || c=='-' || c=='*' || c=='/') {
             if(!word.empty()) {
                 std::cout << word << std::endl;
                 word.clear();
             }
-                word = c;
-                if(c == ':') {
+            word += c;
+            if(c == ':') {
+                word += example[++i];
+            }
+            std::cout << word << std::endl;
+            word.clear();
+            if(c == '=') {
+                int a = i+1;
+                if(example[a]=='-') {
                     word += example[++i];
                 }
-                std::cout << word << std::endl;
-                word.clear();
-
+            }
         } else {
             // Append the current character to the end of the string
             word += c; // or word.push_back(c)
@@ -77,9 +82,7 @@ string Lexer::parseToSymbols(const string& example) {
     if(!word.empty()) {
         std::cout << word << std::endl;
     }
-
-
-
-
     return symbols;
 }
+
+//Symbole Lexer::getNext();

@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <fstream>
-#include "include/Lexer.h"
+#include "Lexer.h"
 using std::cout;
 using std::cin;
 using std::endl;
@@ -14,16 +14,19 @@ using std::getline;
 
 using namespace std;
 
-#include "ExpressionAdditionner.h"
-#include "ExpressionSoustraire.h"
-#include "ExpressionDiviser.h"
-#include "ExpressionMultiplier.h"
-#include "Nombre.h"
+#include "Symbole\Expression\ExpressionBinaire\ExpressionAdditionner.h"
+#include "Symbole\Expression\ExpressionBinaire\ExpressionSoustraire.h"
+#include "Symbole\Expression\ExpressionBinaire\ExpressionDiviser.h"
+#include "Symbole\Expression\ExpressionBinaire\ExpressionMultiplier.h"
+#include "Symbole\Expression\Nombre.h"
 
 
 int main()
 {
-    string fileName = "../test.txt";
+    cout << "Hello world!" << endl;
+
+    string fileName = "../sources/test.txt";
+
     Lexer* lex = new Lexer();
     string names = lex->lecture(fileName);
     string examples = lex->parseToSymbols(names);
@@ -34,6 +37,7 @@ int main()
     //{
     //     cout<<names[i];
     //}
+
 
 
     /**Tests des Expressions**/
