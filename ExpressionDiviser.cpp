@@ -12,5 +12,5 @@ ExpressionDiviser::~ExpressionDiviser()
 
 double ExpressionDiviser::evaluer()
 {
-	return 0.0;
+	return e1.evaluer() / e2.evaluer();;
 }
