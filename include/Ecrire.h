@@ -1,3 +1,6 @@
+#ifndef ECRIRE_H
+#define ECRIRE_H
+
 #include "Instruction.h"
 
 class Ecrire :
@@ -7,4 +10,6 @@ public:
 	Ecrire();
 	~Ecrire();
 };
+
+#endif // ECRIRE_H
 
