@@ -8,7 +8,13 @@ Automate::Automate()
 
 Automate::~Automate()
 {
-    //dtor
+	// TODO
+	/*
+	for (int i = 0; i < pileEtats.size; i++)
+	{
+		delete(pileEtats.pop);
+	}
+	*/
 }
 
 void Automate::lecture()

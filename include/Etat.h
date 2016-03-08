@@ -13,7 +13,7 @@ class Etat
     public:
         Etat();
         virtual ~Etat();
-		virtual void transition(Automate automate, Symbole symbole) = 0;
+		virtual bool transition(Automate automate, Symbole symbole) = 0;
     protected:
         std::string name;
     private:
