@@ -1,6 +1,6 @@
-#include "include/Etat.h"
+#include "Etat.h"
 
-#include "include\Automate.h"
+#include "../Automate.h"
 
 Etat::Etat()
 {

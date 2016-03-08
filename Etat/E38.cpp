@@ -1,5 +1,5 @@
-#include "include/E38.h"
-#include "include/Automate.h"
+#include "E38.h"
+#include "../Automate.h"
 
 E38::E38()
 {

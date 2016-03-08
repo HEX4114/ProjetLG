@@ -1,5 +1,5 @@
-#include "include/E31.h"
-#include "include/Automate.h"
+#include "E31.h"
+#include "../Automate.h"
 
 E31::E31()
 {

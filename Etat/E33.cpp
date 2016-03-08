@@ -1,5 +1,5 @@
-#include "include/E33.h"
-#include "include/Automate.h"
+#include "E33.h"
+#include "../Automate.h"
 
 E33::E33()
 {

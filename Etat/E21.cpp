@@ -1,5 +1,5 @@
-#include "include/E21.h"
-#include "include/Automate.h"
+#include "E21.h"
+#include "../Automate.h"
 
 E21::E21()
 {

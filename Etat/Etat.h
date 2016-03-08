@@ -3,7 +3,7 @@
 #include <iostream>
 #include <string>
 
-#include "Symbole/Symbole.h"
+#include "../Symbole/Symbole.h"
 
 
 class Automate;

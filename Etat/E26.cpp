@@ -1,5 +1,5 @@
-#include "include/E26.h"
-#include "include/Automate.h"
+#include "E26.h"
+#include "../Automate.h"
 
 E26::E26()
 {

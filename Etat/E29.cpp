@@ -1,5 +1,5 @@
-#include "include/E29.h"
-#include "include/Automate.h"
+#include "E29.h"
+#include "../Automate.h"
 
 //TODO
 

@@ -1,5 +1,5 @@
-#include "include/E34.h"
-#include "include/Automate.h"
+#include "E34.h"
+#include "../Automate.h"
 
 E34::E34()
 {

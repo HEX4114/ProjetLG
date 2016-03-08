@@ -1,5 +1,5 @@
-#include "include/E37.h"
-#include "include/Automate.h"
+#include "E37.h"
+#include "../Automate.h"
 
 E37::E37()
 {

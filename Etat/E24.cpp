@@ -1,5 +1,6 @@
-#include "include/E24.h"
-#include "include/Automate.h"
+
+#include "../Automate.h"
+#include "E24.h"
 
 E24::E24()
 {

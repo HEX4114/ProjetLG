@@ -1,5 +1,5 @@
-#include "include/E39.h"
-#include "include/Automate.h"
+#include "E39.h"
+#include "../Automate.h"
 
 E39::E39()
 {

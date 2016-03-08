@@ -1,5 +1,5 @@
-#include "include/E25.h"
-#include "include/Automate.h"
+#include "E25.h"
+#include "../Automate.h"
 
 E25::E25()
 {

@@ -1,5 +1,5 @@
-#include "include/E28.h"
-#include "include/Automate.h"
+#include "E28.h"
+#include "../Automate.h"
 
 E28::E28()
 {

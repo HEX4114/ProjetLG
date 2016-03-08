@@ -1,5 +1,5 @@
-#include "include/E23.h"
-#include "include/Automate.h"
+#include "E23.h"
+#include "../Automate.h"
 
 E23::E23()
 {

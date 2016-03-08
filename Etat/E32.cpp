@@ -1,5 +1,5 @@
-#include "include/E32.h"
-#include "include/Automate.h"
+#include "E32.h"
+#include "../Automate.h"
 
 E32::E32()
 {

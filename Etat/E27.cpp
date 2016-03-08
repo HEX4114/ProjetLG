@@ -1,5 +1,5 @@
-#include "include/E27.h"
-#include "include/Automate.h"
+#include "E27.h"
+#include "../Automate.h"
 
 E27::E27()
 {

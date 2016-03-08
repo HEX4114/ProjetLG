@@ -1,5 +1,5 @@
-#include "include/E36.h"
-#include "include/Automate.h"
+#include "E36.h"
+#include "../Automate.h"
 
 E36::E36()
 {

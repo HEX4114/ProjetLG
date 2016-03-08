@@ -1,5 +1,5 @@
-#include "include/E22.h"
-#include "include/Automate.h"
+#include "E22.h"
+#include "../Automate.h"
 
 E22::E22()
 {

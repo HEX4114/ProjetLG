@@ -1,5 +1,5 @@
-#include "include/E30.h"
-#include "include/Automate.h"
+#include "E30.h"
+#include "../Automate.h"
 
 E30::E30()
 {

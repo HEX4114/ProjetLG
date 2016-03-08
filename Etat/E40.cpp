@@ -1,5 +1,5 @@
-#include "include/E40.h"
-#include "include/Automate.h"
+#include "E40.h"
+#include "../Automate.h"
 
 E40::E40()
 {

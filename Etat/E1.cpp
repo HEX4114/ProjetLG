@@ -1,5 +1,5 @@
-#include "include/E1.h"
-#include "include/Automate.h"
+#include "E1.h"
+#include "../Automate.h"
 
 E1::E1()
 {

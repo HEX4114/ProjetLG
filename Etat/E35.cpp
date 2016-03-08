@@ -1,5 +1,5 @@
-#include "include/E35.h"
-#include "include/Automate.h"
+#include "E35.h"
+#include "../Automate.h"
 
 E35::E35()
 {
