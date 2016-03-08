@@ -1,0 +1,5 @@
+var x,y;const b;
+const a=15;
+var c=a+16;
+ecrire a;
+y:=b;
