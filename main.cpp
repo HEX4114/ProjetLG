@@ -18,7 +18,7 @@ int main()
 {
     cout << "Hello world!" << endl;
 
-    string fileName = "C:/Users/Sylwia/Documents/ProjetLG/test.txt";
+    string fileName = "../test.txt";
     Lexer* lex = new Lexer();
     string names = lex->lecture(fileName);
     string examples = lex->parseToSymbols(names);
