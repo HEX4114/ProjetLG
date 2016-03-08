@@ -14,16 +14,19 @@ using std::getline;
 
 using namespace std;
 
-#include "ExpressionAdditionner.h"
-#include "ExpressionSoustraire.h"
-#include "ExpressionDiviser.h"
-#include "ExpressionMultiplier.h"
-#include "Nombre.h"
+#include "include/ExpressionAdditionner.h"
+#include "include/ExpressionSoustraire.h"
+#include "include/ExpressionDiviser.h"
+#include "include/ExpressionMultiplier.h"
+#include "include/Nombre.h"
 
 
 int main()
 {
-    string fileName = "../test.txt";
+    cout << "Hello world!" << endl;
+
+    string fileName = "../sources/test.txt";
+
     Lexer* lex = new Lexer();
     string names = lex->lecture(fileName);
     string examples = lex->parseToSymbols(names);
@@ -34,6 +37,7 @@ int main()
     //{
     //     cout<<names[i];
     //}
+
 
 
     /**Tests des Expressions**/

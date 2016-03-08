@@ -11,6 +11,7 @@ class Lexer
         virtual ~Lexer();
         string lecture(const std::string& fileName);
         string parseToSymbols(const std::string& examples);
+        //Symbole getNext();
     protected:
 
     private:
