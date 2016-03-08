@@ -1,0 +1,24 @@
+#include "include/E10.h"
+#include "include/Automate.h"
+
+E10::E10()
+{
+	//ctor
+}
+
+E10::~E10()
+{
+	//dtor
+}
+
+bool E10::transition(Automate automate, Symbole symbole) {
+	switch (symbole.getId())
+	{
+		case(PVG) :
+			//automate.decalage(symbole, new E11);
+			return true;
+			break;
+	}
+
+	return false;
+}

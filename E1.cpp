@@ -14,28 +14,35 @@ E1::~E1()
 bool E1::transition(Automate automate, Symbole symbole) {
 	switch (symbole.getId())
 	{
-		case(VAR) :
+	case(VAR) :
 			//automate.decalage(symbole, new E2);
+			return true;
 			break;
 		case(I) :
 			//automate.decalage(symbole, new E8);
+			return true;
 			break;
 		case(CONST) :
 			//automate.decalage(symbole, new E31);
+			return true;
 			break;
 		case(ECRIRE) :
-			//automate.reduction(...);
+			//automate.reduction(...); R12
+			return true;
 			break;
-		case(LIRE) :
-			//automate.reduction(...);
+		case(LIRE) : 
+			//automate.reduction(...); R12
+			return true;
 			break;
 		case(DOL) :
-			//automate.reduction(...);
+			//automate.reduction(...); R12
+			return true;
 			break;
 		case(ID) :
-			//automate.reduction(...);
+			//automate.reduction(...); R12
+			return true;
 			break;
-		
 	}
+
 	return false;
 }

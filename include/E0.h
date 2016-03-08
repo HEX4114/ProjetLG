@@ -1,19 +1,19 @@
-#ifndef E1_H
-#define E1_H
+#ifndef E0_H
+#define E0_H
 #include <iostream>
 #include <string>
 
 #include "Etat.h"
 
-class E1 : public Etat
+class E0 : public Etat
 {
 public:
-	E1();
-	virtual ~E1();
+	E0();
+	virtual ~E0();
 	virtual bool transition(Automate automate, Symbole symbole);
 protected:
 	std::string name;
 private:
 };
 
-#endif // E1_H
+#endif // E0_H
