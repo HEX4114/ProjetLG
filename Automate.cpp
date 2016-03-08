@@ -10,6 +10,11 @@ Automate::~Automate()
     //dtor
 }
 
+void Automate::lecture()
+{
+
+}
+
 void Automate::empilerEtat(Etat etat)
 {
 	pileEtats.push(etat);

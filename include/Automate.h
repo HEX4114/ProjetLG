@@ -3,7 +3,8 @@
 
 #include <stack>
 
-#include "include/Etat.h"
+#include "Etat.h"
+#include "Symbole.h"
 
 class Automate
 {
@@ -13,6 +14,7 @@ class Automate
 
 		/*Methodes Publiques*/
 
+		void lecture();
 		void empilerSymbole(Symbole symbole);
 		void empilerEtat(Etat etat);
 
