@@ -1,13 +1,52 @@
 #include <iostream>
+#include <string>
+#include <stdio.h>
+#include <stdlib.h>
+#include <fstream>
+#include "include/Lexer.h"
+using std::cout;
+using std::cin;
+using std::endl;
+
+using std::string;
+using std::getline;
+
 
 using namespace std;
 
+#include "ExpressionAdditionner.h"
+#include "ExpressionSoustraire.h"
+#include "ExpressionDiviser.h"
+#include "ExpressionMultiplier.h"
+#include "Nombre.h"
+
+
 int main()
 {
-    
+    string fileName = "../test.txt";
+    Lexer* lex = new Lexer();
+    string names = lex->lecture(fileName);
+    string examples = lex->parseToSymbols(names);
+
+    //print array
+    //int len = names.length();
+    //for(int i = 0; i < len; i++)
+    //{
+    //     cout<<names[i];
+    //}
 
 
-	system("pause");
+    /**Tests des Expressions**/
+    /*Nombre * n1 = new Nombre(1);
+    Nombre * n2 = new Nombre(5);
+    ExpressionAdditionner * Exp1 = new ExpressionAdditionner(n1, n2);
+    ExpressionSoustraire * Exp2 = new ExpressionSoustraire(n1, n2);
+    ExpressionDiviser * Exp3 = new ExpressionDiviser(n1, n2);
+    ExpressionMultiplier * Exp4 = new ExpressionMultiplier(n1, n2);
+    cout<< Exp1->evaluer()<<endl<< Exp2->evaluer() <<endl<< Exp3->evaluer() <<endl<< Exp4->evaluer() <<endl;*/
+    /**-------------------**/
 
-    return 0;
+    //system("pause");
+
+     return 0;
 }

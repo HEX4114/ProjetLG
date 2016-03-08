@@ -1,8 +1,8 @@
 #include "include/Nombre.h"
 
-Nombre::Nombre() : Expression()
+Nombre::Nombre(double v) : Expression()
 {
-    //ctor
+    this->valeur = v;
 }
 
 Nombre::~Nombre()
@@ -12,6 +12,6 @@ Nombre::~Nombre()
 
 double Nombre::evaluer()
 {
-    return 0;
+    return this->valeur;
 }
 

@@ -1,6 +1,6 @@
 #include "include/ExpressionDiviser.h"
 
-ExpressionDiviser::ExpressionDiviser()
+ExpressionDiviser::ExpressionDiviser(Expression* exp1, Expression * exp2) : ExpressionBinaire(exp1, exp2)
 {
     //ctor
 }
@@ -12,5 +12,5 @@ ExpressionDiviser::~ExpressionDiviser()
 
 double ExpressionDiviser::evaluer()
 {
-	return 0.0;
+	return e1->evaluer() / e2->evaluer();;
 }
