@@ -1,6 +1,6 @@
-#include "ExpressionBinaire.h"
+#include "include/ExpressionBinaire.h"
 
-ExpressionBinaire::ExpressionBinaire()
+ExpressionBinaire::ExpressionBinaire() : Expression()
 {
     //ctor
 }
@@ -8,4 +8,9 @@ ExpressionBinaire::ExpressionBinaire()
 ExpressionBinaire::~ExpressionBinaire()
 {
     //dtor
+}
+
+double ExpressionBinaire::evaluer()
+{
+    return 0;
 }

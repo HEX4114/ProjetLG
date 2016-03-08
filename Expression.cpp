@@ -1,4 +1,4 @@
-#include "Expression.h"
+#include "include/Expression.h"
 
 Expression::Expression()
 {
@@ -8,4 +8,9 @@ Expression::Expression()
 Expression::~Expression()
 {
     //dtor
+}
+
+double Expression::evaluer()
+{
+    return 0;
 }

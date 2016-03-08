@@ -1,6 +1,6 @@
-#include "Variable.h"
+#include "include/Variable.h"
 
-Variable::Variable()
+Variable::Variable() : Expression()
 {
     //ctor
 }
@@ -8,4 +8,9 @@ Variable::Variable()
 Variable::~Variable()
 {
     //dtor
+}
+
+double Variable::evaluer()
+{
+    return 0;
 }
