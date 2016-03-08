@@ -1,5 +1,5 @@
-#ifndef E1_H
-#define E1_H
+#ifndef E24_H
+#define E24_H
 #include <iostream>
 #include <string>
 
@@ -16,4 +16,4 @@ protected:
 private:
 };
 
-#endif // E1_H
+#endif // E24_H
