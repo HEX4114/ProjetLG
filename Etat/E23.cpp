@@ -2,6 +2,9 @@
 #include "Etat.h"
 #include "../Automate.h"
 
+#include "E14.h"
+#include "E24.h"
+
 E23::E23()
 {
 	//ctor

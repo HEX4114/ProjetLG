@@ -2,6 +2,8 @@
 #include "Etat.h"
 #include "../Automate.h"
 
+#include "E10.h"
+
 E9::E9()
 {
 	//ctor

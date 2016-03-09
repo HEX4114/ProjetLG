@@ -2,6 +2,8 @@
 #include "Etat.h"
 #include "../Automate.h"
 
+#include "E16.h"
+
 E15::E15()
 {
 	//ctor

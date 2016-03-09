@@ -2,6 +2,8 @@
 #include "Etat.h"
 #include "../Automate.h"
 
+#include "E38.h"
+
 E37::E37()
 {
 	//ctor

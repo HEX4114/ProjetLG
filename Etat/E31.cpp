@@ -2,6 +2,8 @@
 #include "Etat.h"
 #include "../Automate.h"
 
+#include "E32.h"
+
 E31::E31()
 {
 	//ctor

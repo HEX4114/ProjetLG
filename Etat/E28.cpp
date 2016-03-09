@@ -2,6 +2,9 @@
 #include "Etat.h"
 #include "../Automate.h"
 
+#include "E14.h"
+#include "E29.h"
+
 E28::E28()
 {
 	//ctor

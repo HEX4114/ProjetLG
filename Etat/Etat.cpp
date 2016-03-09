@@ -12,9 +12,4 @@ Etat::~Etat()
     //dtor
 }
 
-/*
-void Etat::transition(Automate automate, Symbole symbole)
-{
 
-}
-*/

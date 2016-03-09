@@ -5,8 +5,6 @@
 
 #include "Etat.h"
 
-class E1;
-
 class E0 : public Etat
 {
 public:

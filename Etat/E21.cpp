@@ -2,6 +2,12 @@
 #include "Etat.h"
 #include "../Automate.h"
 
+#include "E19.h"
+#include "E20.h"
+#include "E22.h"
+#include "E18.h"
+#include "E23.h"
+
 E21::E21()
 {
 	//ctor
