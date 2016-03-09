@@ -32,12 +32,12 @@ void Automate::empilerSymbole(Symbole symbole)
 	pileSymboles.push(symbole);
 }
 
-void reduction(Regle regle, Symbole symbole)
+void Automate::reduction(Regle regle, Symbole symbole)
 {
 
 }
 
-void decalage(Symbole symbole, Etat* etat)
+void Automate::decalage(Symbole symbole, Etat* etat)
 {
 
 }
