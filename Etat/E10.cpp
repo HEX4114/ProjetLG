@@ -1,5 +1,6 @@
-#include "include/E10.h"
-#include "include/Automate.h"
+#include "E10.h"
+#include "Etat.h"
+#include "../Automate.h"
 
 E10::E10()
 {
@@ -15,7 +16,7 @@ bool E10::transition(Automate automate, Symbole symbole) {
 	switch (symbole.getId())
 	{
 		case(PVG) :
-			//automate.decalage(symbole, new E11);
+			automate.decalage(symbole, new E11);
 			return true;
 			break;
 	}

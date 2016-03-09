@@ -1,39 +1,41 @@
-#include "E21.h"
+#include "E14.h"
 #include "Etat.h"
 #include "../Automate.h"
 
-E21::E21()
+E14::E14()
 {
 	//ctor
 }
 
-E21::~E21()
+E14::~E14()
 {
 	//dtor
 }
 
-bool E21::transition(Automate automate, Symbole symbole) {
+bool E14::transition(Automate automate, Symbole symbole) {
 	switch (symbole.getId())
 	{
 		case(ID) :
 			automate.decalage(symbole, new E19);
+			return true;
 			break;
 		case(NB) :
 			automate.decalage(symbole, new E20);
+			return true;
 			break;
 		case(PARG) :
-			automate.decalage(symbole, new E21);
-			break;
-		case(E) :
-			automate.decalage(symbole, new E23);
+			automate.decalage(symbole, new E20);
+			return true;
 			break;
 		case(T) :
-			automate.decalage(symbole, new E22);
+			automate.decalage(symbole, new E15);
+			return true;
 			break;
 		case(F) :
 			automate.decalage(symbole, new E18);
+			return true;
 			break;
-		
 	}
+
 	return false;
 }

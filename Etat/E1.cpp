@@ -1,4 +1,5 @@
 #include "E1.h"
+#include "Etat.h"
 #include "../Automate.h"
 
 E1::E1()
@@ -14,32 +15,32 @@ E1::~E1()
 bool E1::transition(Automate automate, Symbole symbole) {
 	switch (symbole.getId())
 	{
-	case(VAR) :
-			//automate.decalage(symbole, new E2);
+		case(VAR) :
+			automate.decalage(symbole, new E2);
 			return true;
 			break;
 		case(I) :
-			//automate.decalage(symbole, new E8);
+			automate.decalage(symbole, new E8);
 			return true;
 			break;
 		case(CONST) :
-			//automate.decalage(symbole, new E31);
+			automate.decalage(symbole, new E30);
 			return true;
 			break;
 		case(ECRIRE) :
-			//automate.reduction(...); R12
+			automate.reduction(R12, symbole);
 			return true;
 			break;
 		case(LIRE) : 
-			//automate.reduction(...); R12
+			automate.reduction(R12, symbole);
 			return true;
 			break;
 		case(DOL) :
-			//automate.reduction(...); R12
+			automate.reduction(R12, symbole);
 			return true;
 			break;
 		case(ID) :
-			//automate.reduction(...); R12
+			automate.reduction(R12, symbole);
 			return true;
 			break;
 	}

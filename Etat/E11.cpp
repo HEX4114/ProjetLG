@@ -1,5 +1,6 @@
-#include "include/E11.h"
-#include "include/Automate.h"
+#include "E11.h"
+#include "Etat.h"
+#include "../Automate.h"
 
 E11::E11()
 {
@@ -15,7 +16,7 @@ bool E11::transition(Automate automate, Symbole symbole) {
 	switch (symbole.getId())
 	{
 		case(DOL) :
-			//automate.reduction(...); R10
+			automate.reduction(R10, symbole);
 			return true;
 			break;
 	}

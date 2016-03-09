@@ -1,5 +1,6 @@
-#include "include/E19.h"
-#include "include/Automate.h"
+#include "E19.h"
+#include "Etat.h"
+#include "../Automate.h"
 
 E19::E19()
 {
@@ -15,7 +16,7 @@ bool E19::transition(Automate automate, Symbole symbole) {
 	switch (symbole.getId())
 	{
 		case(DOL) :
-			//automate.reduction(...); R18
+			automate.reduction(R18, symbole);
 			return true;
 			break;
 	}

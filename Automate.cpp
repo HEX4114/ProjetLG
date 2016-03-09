@@ -31,3 +31,13 @@ void Automate::empilerSymbole(Symbole symbole)
 {
 	pileSymboles.push(symbole);
 }
+
+void reduction(Regle regle, Symbole symbole)
+{
+
+}
+
+void decalage(Symbole symbole, Etat* etat)
+{
+
+}

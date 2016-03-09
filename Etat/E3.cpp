@@ -1,5 +1,6 @@
-#include "include/E3.h"
-#include "include/Automate.h"
+#include "E3.h"
+#include "Etat.h"
+#include "../Automate.h"
 
 E3::E3()
 {
@@ -15,15 +16,15 @@ bool E3::transition(Automate automate, Symbole symbole) {
 	switch (symbole.getId())
 	{
 		case(V) :
-			//automate.decalage(symbole, new E4);
+			automate.decalage(symbole, new E4);
 			return true;
 			break;
 		case(VG) :
-			//automate.reduction(...); R3
+			automate.reduction(R3, symbole);
 			return true;
 			break;
 		case(PVG) :
-			//automate.reduction(...); R3
+			automate.reduction(R3, symbole);
 			return true;
 			break;
 	}

@@ -1,5 +1,6 @@
-#include "include/E17.h"
-#include "include/Automate.h"
+#include "E17.h"
+#include "Etat.h"
+#include "../Automate.h"
 
 E17::E17()
 {
@@ -15,7 +16,7 @@ bool E17::transition(Automate automate, Symbole symbole) {
 	switch (symbole.getId())
 	{
 		case(DOL) :
-			//automate.reduction(...); R15
+			automate.reduction(R15, symbole);
 			return true;
 			break;
 	}

@@ -1,5 +1,6 @@
-#include "include/E2.h"
-#include "include/Automate.h"
+#include "E2.h"
+#include "Etat.h"
+#include "../Automate.h"
 
 E2::E2()
 {
@@ -15,7 +16,7 @@ bool E2::transition(Automate automate, Symbole symbole) {
 	switch (symbole.getId())
 	{
 		case(ID) :
-			//automate.decalage(symbole, new E3);
+			automate.decalage(symbole, new E3);
 			return true;
 			break;
 	}

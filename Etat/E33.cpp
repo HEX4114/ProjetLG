@@ -1,4 +1,5 @@
 #include "E33.h"
+#include "Etat.h"
 #include "../Automate.h"
 
 E33::E33()
@@ -14,28 +15,15 @@ E33::~E33()
 bool E33::transition(Automate automate, Symbole symbole) {
 	switch (symbole.getId())
 	{
-		case(VAR) :
-			//automate.decalage(symbole, new E2);
+		case(VG) :
+			automate.reduction(R5, symbole);
 			break;
-		case(I) :
-			//automate.decalage(symbole, new E8);
+		case(PVG) :
+			automate.reduction(R5, symbole);
 			break;
-		case(CONST) :
-			//automate.decalage(symbole, new E31);
-			break;
-		case(ECRIRE) :
-			//automate.reduction(...);
-			break;
-		case(LIRE) :
-			//automate.reduction(...);
-			break;
-		case(DOL) :
-			//automate.reduction(...);
-			break;
-		case(ID) :
-			//automate.reduction(...);
-			break;
-		
+		case(C) :
+			automate.decalage(symbole, new E34);
+			break;		
 	}
 	return false;
 }

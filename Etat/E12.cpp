@@ -1,5 +1,6 @@
-#include "include/E12.h"
-#include "include/Automate.h"
+#include "E12.h"
+#include "Etat.h"
+#include "../Automate.h"
 
 E12::E12()
 {
@@ -15,27 +16,27 @@ bool E12::transition(Automate automate, Symbole symbole) {
 	switch (symbole.getId())
 	{
 	case(ID) :
-			//automate.decalage(symbole, new E19);
+			automate.decalage(symbole, new E19);
 			return true;
 			break;
 		case(NB) :
-			//automate.decalage(symbole, new E20);
+			automate.decalage(symbole, new E20);
 			return true;
 			break;
 		case(PARG) :
-			//automate.decalage(symbole, new E21);
+			automate.decalage(symbole, new E21);
 			return true;
 			break;
 		case(E) :
-			//automate.decalage(symbole, new E13);
+			automate.decalage(symbole, new E13);
 			return true;
 			break;
 		case(T) :
-			//automate.decalage(symbole, new E22);
+			automate.decalage(symbole, new E22);
 			return true;
 			break;
 		case(F) :
-			//automate.decalage(symbole, new E18);
+			automate.decalage(symbole, new E18);
 			return true;
 			break;
 	}
