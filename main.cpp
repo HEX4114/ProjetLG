@@ -18,6 +18,7 @@ using namespace std;
 #include "Symbole\Expression\ExpressionBinaire\ExpressionSoustraire.h"
 #include "Symbole\Expression\ExpressionBinaire\ExpressionDiviser.h"
 #include "Symbole\Expression\ExpressionBinaire\ExpressionMultiplier.h"
+#include "Symbole\Symbole.h"
 #include "Symbole\Expression\Nombre.h"
 
 
@@ -29,14 +30,11 @@ int main()
 
     Lexer* lex = new Lexer();
     string names = lex->lecture(fileName);
-    string examples = lex->parseToSymbols(names);
+    lex->parseToSymbols(names);
 
-    //print array
-    //int len = names.length();
-    //for(int i = 0; i < len; i++)
-    //{
-    //     cout<<names[i];
-    //}
+    for(int i=0; i<14; i++) {
+        Symbole sym = lex->getNext();
+    }
 
 
 

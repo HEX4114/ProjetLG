@@ -13,6 +13,9 @@ using std::getline;
 
 
 using namespace std;
+
+int Lexer::next = -1;
+
 Lexer::Lexer()
 {
     //ctor
@@ -23,66 +26,133 @@ Lexer::~Lexer()
     //dtor
 }
 
-string Lexer::lecture(const string& fileName) {
+string Lexer::lecture(string& fileName)
+{
 
     std::ifstream t(fileName.c_str());
     if (t.is_open())
     {
-    t.seekg(0, std::ios::end);
-    size_t size = t.tellg();
-    std::string lines(size, ' ');
-    t.seekg(0);
-    t.read(&lines[0], size);
+        t.seekg(0, std::ios::end);
+        size_t size = t.tellg();
+        std::string lines(size, ' ');
+        t.seekg(0);
+        t.read(&lines[0], size);
         return lines;
     }
     else cout << "Unable to open file";
-        exit(-1);
-        return NULL;
+    exit(-1);
+    return NULL;
 }
 
-string Lexer::parseToSymbols(const string& example) {
-    //std::string example = lines;
-    std::string symbols;
+void Lexer::parseToSymbols(string& example)
+{
     std::string word;
 
     // Notice how you can loop through a string just like a vector<char>
-    for(size_t i = 0; i < example.size(); ++i) {
+    for(size_t i = 0; i < example.size(); ++i)
+    {
         char c = example[i];
 
-        // When we see whitespace, print the current word and clear it
-        if(c == ' ' || c == '\t' || c == '\n') {
-            // Don't print anything if we don't have a word
-            if(!word.empty()) {
+        switch(c)
+        {
+        case ' ':
+        case '\t':
+        case '\n':
+            //std::cout << "WHITESPACE " << std::endl;
+            if(!word.empty())
+            {
                 std::cout << word << std::endl;
+                addSymbole(word);
                 word.clear();
             }
-        } else if(c=='=' || c==',' || c==';' || c=='+' || c==':' || c=='-' || c=='*' || c=='/') {
-            if(!word.empty()) {
+            break;
+        case '+':
+        case '*':
+        case '/':
+        case ';':
+        case ',':
+        case '(':
+        case ')':
+            if(!word.empty())
+            {
                 std::cout << word << std::endl;
+                addSymbole(word);
                 word.clear();
             }
             word += c;
-            if(c == ':') {
-                word += example[++i];
-            }
             std::cout << word << std::endl;
+            addSymbole(word);
             word.clear();
-            if(c == '=') {
-                int a = i+1;
-                if(example[a]=='-') {
-                    word += example[++i];
+            break;
+        case '-':
+            if(!word.empty())
+            {
+                std::cout << word << std::endl;
+                addSymbole(word);
+                word.clear();
+                word += c;
+                std::cout << word << std::endl;
+                addSymbole(word);
+                word.clear();
+            }
+            else
+            {
+                word += c;
+            }
+            break;
+        case ':':
+            if(!word.empty())
+            {
+                std::cout << word << std::endl;
+                addSymbole(word);
+                word.clear();
+            }
+            word += c;
+            break;
+        case '=':
+            if(!word.empty())
+            {
+                if(word.compare(":")==0)
+                {
+                    word += c;
+                    std::cout << word << std::endl;
+                    addSymbole(word);
+                    word.clear();
+                }
+                else
+                {
+                    std::cout << word << std::endl;
+                    addSymbole(word);
+                    word.clear();
+                    word += c;
+                    std::cout << word << std::endl;
+                    addSymbole(word);
+                    word.clear();
                 }
             }
-        } else {
-            // Append the current character to the end of the string
-            word += c; // or word.push_back(c)
+            break;
+        default:
+            word += c;
         }
     }
-    // In case the line doesn't end with whitespace
-    if(!word.empty()) {
-        std::cout << word << std::endl;
-    }
-    return symbols;
 }
 
-//Symbole Lexer::getNext();
+Symbole Lexer::getNext()
+{
+    next++;
+    if(getSymbole(next).compare("const")==0)
+    {
+        std::cout << "CONST" << std::endl;
+        return *new DeclarationConstante();
+    }
+    else if(getSymbole(next).compare("var")==0)
+    {
+        std::cout << "VAR" << std::endl;
+        return *new DeclarationVariable();
+    }
+    else
+    {
+        std::cout << "AUTRE" << std::endl;
+        return *new Symbole();
+    }
+};
