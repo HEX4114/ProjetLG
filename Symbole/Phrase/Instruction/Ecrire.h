@@ -2,7 +2,8 @@
 #define ECRIRE_H
 
 #include "Instruction.h"
-#include "../../Expression/Variable.h"
+#include "../../Expression/Expression.h"
+
 
 class Ecrire :
 	public Instruction
@@ -11,13 +12,13 @@ public:
 	Ecrire();
 	~Ecrire();
 
-	void setVariableAChanger(Variable variable) { variableAChanger = variable; };
+	void setVariableAAfficher(Expression* expression) { expressionAAfficher = expression; };
 
 	void afficher();
 	void executer();
 
 private:
-	Variable variableAChanger;
+	Expression* expressionAAfficher;
 
 };
 
