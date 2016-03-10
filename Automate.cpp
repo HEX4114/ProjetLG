@@ -34,10 +34,15 @@ void Automate::empilerSymbole(Symbole symbole)
 
 void Automate::reduction(Regle regle, Symbole symbole)
 {
+	int nbPop = reglesReduction[regle];
 
+	for (int i=0; i<nbPop; i++) pileEtats.pop();
+	
+	pileEtats.top()->transition(*this, symbole);
 }
 
 void Automate::decalage(Symbole symbole, Etat* etat)
 {
-
+	empilerSymbole(symbole);
+	empilerEtat(etat);
 }

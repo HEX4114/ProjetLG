@@ -27,6 +27,7 @@ class Automate
 		/*Attributs Privees*/
 		std::stack<Etat*> pileEtats;
 		std::stack<Symbole> pileSymboles;
+		int reglesReduction[19] = { 2, 3, 0, 5, 0, 5, 7, 0, 4, 4, 5, 0, 3, 1, 3, 1, 3, 1, 1 }; // contient le nombre d'états à dépiler pour chaque règle appliquée en réduction.
 
 };
 
