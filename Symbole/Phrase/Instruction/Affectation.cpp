@@ -3,6 +3,7 @@
 
 Affectation::Affectation()
 {
+	
 }
 
 

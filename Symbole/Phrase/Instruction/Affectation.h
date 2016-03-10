@@ -3,6 +3,8 @@
 
 
 #include "Instruction.h"
+#include "../../Expression/Expression.h"
+#include "../../Expression/Variable.h"
 
 class Affectation :
 	public Instruction
@@ -11,8 +13,15 @@ public:
 	Affectation();
 	~Affectation();
 
+	void setPartieGauche(Variable partieG) { partieGauche = partieG; };
+	void setPartieDroite(Expression* partieD) { partieDroite = partieD; };
+
 	void afficher();
 	void executer();
+
+private:
+	Variable partieGauche;
+	Expression* partieDroite;
 
 };
 
