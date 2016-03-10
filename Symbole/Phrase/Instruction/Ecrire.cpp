@@ -10,6 +10,7 @@ Ecrire::~Ecrire()
 {
 }
 
+
 void Ecrire::afficher()
 {
 
