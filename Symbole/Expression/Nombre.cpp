@@ -1,5 +1,11 @@
 #include "Nombre.h"
 
+Nombre::Nombre() : Expression()
+{
+
+}
+
+
 Nombre::Nombre(double v) : Expression()
 {
     this->valeur = v;
