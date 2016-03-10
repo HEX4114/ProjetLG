@@ -6,9 +6,10 @@ Nombre::Nombre() : Expression()
 }
 
 
-Nombre::Nombre(double v) : Expression()
+Nombre::Nombre(double v, std::string id) : Expression()
 {
     this->valeur = v;
+	this->identifiant = id;
 }
 
 Nombre::~Nombre()

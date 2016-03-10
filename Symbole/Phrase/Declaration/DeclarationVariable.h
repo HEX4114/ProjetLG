@@ -2,6 +2,8 @@
 #define DECLARATION_VARIABLE_H
 
 #include "Declaration.h"
+#include "../../Expression/Variable.h"
+
 class DeclarationVariable :
 	public Declaration
 {
@@ -11,6 +13,9 @@ public:
 
 	void afficher();
 	void executer();
+
+private:
+	Variable variableADeclarer;
 
 };
 

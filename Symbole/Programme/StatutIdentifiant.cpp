@@ -9,3 +9,8 @@ StatutIdentifiant::StatutIdentifiant()
 StatutIdentifiant::~StatutIdentifiant()
 {
 }
+
+void StatutIdentifiant::afficher()
+{
+
+}

@@ -17,6 +17,9 @@ public:
 	Programme();
 	virtual ~Programme();
 
+	void afficherProgramme();
+	void afficherTableauStatut();
+
 private:
 	std::vector<Phrase> listePhrase;
 	std::vector<StatutIdentifiant> tableauStatut;
