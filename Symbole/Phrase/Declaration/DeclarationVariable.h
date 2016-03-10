@@ -8,6 +8,10 @@ class DeclarationVariable :
 public:
 	DeclarationVariable();
 	virtual ~DeclarationVariable();
+
+	void afficher();
+	void executer();
+
 };
 
 #endif // DECLARATION_VARIABLE_H

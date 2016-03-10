@@ -48,7 +48,7 @@ int main()
     cout<< Exp1->evaluer()<<endl<< Exp2->evaluer() <<endl<< Exp3->evaluer() <<endl<< Exp4->evaluer() <<endl;*/
     /**-------------------**/
 
-    //system("pause");
+    system("pause");
 
      return 0;
 }

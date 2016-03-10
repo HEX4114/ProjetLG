@@ -9,6 +9,10 @@ class Phrase :
 {
 public:
 	Phrase();
+
+	virtual void afficher() = 0;
+	virtual void executer() = 0;
+
 	virtual ~Phrase();
 };
 

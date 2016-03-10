@@ -8,6 +8,9 @@ class Instruction :
 {
 public:
 	Instruction();
+
+	virtual void afficher() = 0;
+	virtual void executer() = 0;
 	virtual ~Instruction();
 };
 

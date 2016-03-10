@@ -10,6 +10,10 @@ class Affectation :
 public:
 	Affectation();
 	~Affectation();
+
+	void afficher();
+	void executer();
+
 };
 
 #endif //AFFECTION_H

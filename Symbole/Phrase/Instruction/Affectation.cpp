@@ -9,3 +9,14 @@ Affectation::Affectation()
 Affectation::~Affectation()
 {
 }
+
+
+void Affectation::afficher()
+{
+
+}
+
+void Affectation::executer()
+{
+
+}

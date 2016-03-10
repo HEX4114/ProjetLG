@@ -8,6 +8,9 @@ class Declaration :
 public:
 	Declaration();
 	virtual ~Declaration();
+
+	virtual void afficher() = 0;
+	virtual void executer() = 0;
 };
 
 #endif // DECLARATION_H

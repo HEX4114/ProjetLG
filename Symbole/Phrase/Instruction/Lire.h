@@ -9,6 +9,9 @@ class Lire :
 public:
 	Lire();
 	~Lire();
+
+	void afficher();
+	void executer();
 };
 
 #endif // LIRE_H

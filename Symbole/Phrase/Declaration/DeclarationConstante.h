@@ -8,6 +8,9 @@ class DeclarationConstante :
 public:
 	DeclarationConstante();
 	virtual ~DeclarationConstante();
+
+	void afficher();
+	void executer();
 };
 
 #endif // DECLARATION_CONSTANTE_H

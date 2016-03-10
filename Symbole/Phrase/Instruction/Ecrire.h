@@ -9,6 +9,9 @@ class Ecrire :
 public:
 	Ecrire();
 	~Ecrire();
+
+	void afficher();
+	void executer();
 };
 
 #endif // ECRIRE_H
