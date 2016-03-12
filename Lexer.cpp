@@ -221,20 +221,16 @@ Symbole Lexer::getNext()
 	}
 	else if (getSymbole(next).at(0) == '-')
 	{
-		if (getSymbole(next).size() == 1)
+		std::cout << "MOINS" << std::endl;
+		toReturn = new Symbole();
+		toReturn->setType(TypeSymbole::MOINS);
+		if (getSymbole(next).size() != 1)
 		{
-			std::cout << "MOINS" << std::endl;
-			toReturn = new Symbole();
-			toReturn->setType(TypeSymbole::MOINS);
-			return *toReturn;
+			string idOrNumber = getSymbole(next).erase(0,1);
+			std::vector<string>::iterator it = symboles.begin();
+			symboles.insert(it+next+1, idOrNumber);
 		}
-		else
-		{
-			std::cout << "NB" << std::endl;
-			toReturn = new Symbole();
-			toReturn->setType(TypeSymbole::NB);
-			return *toReturn;
-		}
+		return *toReturn;
 	}
 	else if (getSymbole(next).compare("*") == 0)
 	{
