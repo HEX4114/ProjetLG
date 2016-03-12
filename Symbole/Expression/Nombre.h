@@ -9,19 +9,17 @@ class Nombre : public Expression
 {
     public:
 		Nombre();
-        Nombre(double v, std::string id);
+        Nombre(double v);
         virtual ~Nombre();
 
         double virtual evaluer();
 
 		double getValeur() { return valeur; };
-		std::string getIdentifiant() { return identifiant; };
 
 
     protected:
     private:
         double valeur;
-		std::string identifiant;
 };
 
 #endif // NOMBRE_H

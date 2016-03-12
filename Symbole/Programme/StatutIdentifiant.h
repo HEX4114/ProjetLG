@@ -15,7 +15,6 @@ private:
 	std::string id;
 	bool modifiable;
 	double valeur;
-	bool declare;
 	bool utilise;
 	bool valeurConnue;
 

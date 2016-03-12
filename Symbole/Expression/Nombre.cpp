@@ -2,14 +2,13 @@
 
 Nombre::Nombre() : Expression()
 {
-
+	this->valeur = 0;
 }
 
 
-Nombre::Nombre(double v, std::string id) : Expression()
+Nombre::Nombre(double v) : Expression()
 {
     this->valeur = v;
-	this->identifiant = id;
 }
 
 Nombre::~Nombre()

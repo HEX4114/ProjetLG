@@ -3,7 +3,7 @@
 
 #include <string.h>
 
-enum TypeSymbole {ID, NB, VAR, CONST, ECRIRE, LIRE, AF, VG, EG, PVG, OPA, OPM, PARG, PARD, DOL, P, D, I, V, C, E, T, F};
+enum TypeSymbole {ID, NB, VAR, CONST, ECRIRE, LIRE, AF, VG, EG, PVG, OPA, OPM, PLUS, MOINS, MULT, DIV,PARG, PARD, DOL, P, D, I, V, C, E, T, F};
 
 class Symbole
 {
@@ -11,8 +11,13 @@ class Symbole
 		Symbole() {}
         virtual ~Symbole();
 		int getId() { return Id; }
+
+		enum TypeSymbole getType(){ return type; };
+		void setType(enum TypeSymbole t){ type = t; };
+
     protected:
 		int Id;
+		enum TypeSymbole type;
     private:
 };
 
