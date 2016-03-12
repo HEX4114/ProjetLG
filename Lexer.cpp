@@ -221,14 +221,41 @@ Symbole Lexer::getNext()
 	}
 	else if (getSymbole(next).at(0) == '-')
 	{
-		std::cout << "MOINS" << std::endl;
 		toReturn = new Symbole();
-		toReturn->setType(TypeSymbole::MOINS);
-		if (getSymbole(next).size() != 1)
+		if (getSymbole(next - 1).compare(":=") == 0)
 		{
-			string idOrNumber = getSymbole(next).erase(0,1);
-			std::vector<string>::iterator it = symboles.begin();
-			symboles.insert(it+next+1, idOrNumber);
+			toReturn->setType(TypeSymbole::MOINS);
+			std::cout << "MOINS" << std::endl;
+			if (getSymbole(next).size() != 1)
+			{
+				string idOrNumber = getSymbole(next).erase(0, 1);
+				std::vector<string>::iterator it = symboles.begin();
+				symboles.insert(it + next + 1, idOrNumber);
+			}
+		}
+		else
+		{
+			if (getSymbole(next).size() != 1)
+			{
+				if (isdigit(getSymbole(next).at(1)))
+				{
+					std::cout << "NB" << std::endl;
+					toReturn->setType(TypeSymbole::NB);
+				}
+				else
+				{
+					std::cout << "MOINS" << std::endl;
+					toReturn->setType(TypeSymbole::MOINS);
+					string id = getSymbole(next).erase(0, 1);
+					std::vector<string>::iterator it = symboles.begin();
+					symboles.insert(it + next + 1, id);
+				}
+			}
+			else
+			{
+				std::cout << "MOINS" << std::endl;
+				toReturn->setType(TypeSymbole::MOINS);
+			}
 		}
 		return *toReturn;
 	}
