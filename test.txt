@@ -1,6 +1,9 @@
-var x,y;const b;
-const a=-15;
+-dsfdf
+var x,y;const b=5;
+const a = -b;
 var c;
-c:=-a+16;
-ecrire a;
+c :=      -a+16kkkk;
+ecrire Bababab;
 y:=b;
+
+%%%%%

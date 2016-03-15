@@ -2,7 +2,6 @@
 #define LEXER_H
 #include <string>
 #include <vector>
-//#include <regex>
 #include "Symbole/Symbole.h"
 using std::string;
 
@@ -19,7 +18,7 @@ class Lexer
         void parseToSymbols(string& examples);
         Symbole getNext();
         bool hasNext() {
-            if(symboles.size()>next+1) {
+            if((int) symboles.size()>next) {
                 return true;
             } else {
                 return false;

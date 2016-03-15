@@ -18,7 +18,9 @@ public:
 	virtual ~Programme();
 
 	void afficherProgramme();
+	void executerProgramme();
 	void afficherTableauStatut();
+	
 
 	//Ajout d'un Statut Identifiant dans le tableau. Renvoie true et ajout l'élément au tableau si son ID n'est pas déjà présente. Fait
 	//le contraire sinon
