@@ -33,7 +33,7 @@ int main()
     string names = lex->lecture(fileName);
     lex->parseToSymbols(names);
 
-    for(int i=0; i<14; i++) {
+    while(lex->hasNext()) {
         Symbole sym = lex->getNext();
     }*/
 
