@@ -8,6 +8,8 @@ using std::cout;
 using std::cin;
 using std::endl;
 
+using std::vector;
+#include <unordered_set>
 using std::string;
 using std::getline;
 
@@ -22,11 +24,40 @@ using namespace std;
 #include "Symbole\Expression\Nombre.h"
 
 
-int main()
-{
-    cout << "Hello world!" << endl;
 
-    string fileName = "../sources/test.txt";
+int main(int argc, char* argv[])
+{
+	if (argc < 2)
+	{
+		cerr << "Usage: ProjetGL sourceFile [options]" << endl;
+		system("pause");
+		return 0;
+	}
+
+	unordered_set<string> options;
+	string opt[] = { "-a","-e","-o","-p" };
+	unordered_set<string> authorisedOptions (opt, opt + 4);
+	for (int i = 2; i < argc; i++)
+	{
+		string s(argv[i], 2);
+		if (authorisedOptions.find(s) != authorisedOptions.end())
+		{
+			options.insert(s);
+		}
+		else {
+			cerr << "Valid options are : -a, -e, -o and -p" << endl;
+			system("pause");
+			return 0;
+		}
+	}
+	cout << "Options : ";
+	for (auto it = options.begin(); it != options.end(); ++it)
+		cout << " " << *it;
+	cout << endl;
+	
+
+	char* sourceFile = argv[1];
+	string fileName = string(sourceFile);
 
     Lexer* lex = new Lexer();
     string names = lex->lecture(fileName);
@@ -35,7 +66,7 @@ int main()
     for(int i=0; i<14; i++) {
         Symbole sym = lex->getNext();
     }
-
+	
 
 
     /**Tests des Expressions**/
