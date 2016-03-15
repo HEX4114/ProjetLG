@@ -10,8 +10,3 @@ ExpressionBinaire::~ExpressionBinaire()
 {
     //dtor
 }
-
-double ExpressionBinaire::evaluer()
-{
-    return 0;
-}

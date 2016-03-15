@@ -1,6 +1,7 @@
 #ifndef EXPRESSIONMULTIPLIER_H
 #define EXPRESSIONMULTIPLIER_H
 
+#include <string>
 #include "ExpressionBinaire.h"
 
 class ExpressionMultiplier : public ExpressionBinaire
@@ -10,6 +11,7 @@ class ExpressionMultiplier : public ExpressionBinaire
         virtual ~ExpressionMultiplier();
 
 		double evaluer();
+		std::string getName();
     protected:
     private:
 };

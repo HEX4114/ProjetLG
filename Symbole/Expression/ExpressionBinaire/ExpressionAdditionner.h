@@ -1,6 +1,7 @@
 #ifndef EXPRESSIONADDITIONNER_H
 #define EXPRESSIONADDITIONNER_H
 
+#include <string>
 #include "ExpressionBinaire.h"
 
 class ExpressionAdditionner : public ExpressionBinaire
@@ -10,6 +11,7 @@ class ExpressionAdditionner : public ExpressionBinaire
         virtual ~ExpressionAdditionner();
 
 		double evaluer();
+		std::string getName();
     protected:
     private:
 };

@@ -10,15 +10,16 @@ class Lire :
 {
 public:
 	Lire();
+	Lire(Variable* v);
 	~Lire();
 
-	void setVariableAChanger(Variable variable) { variableAChanger = variable; };
+	void setVariableAChanger(Variable* variable) { variableAChanger = variable; };
 
 	void afficher();
 	void executer();
 
 private:
-	Variable variableAChanger;
+	Variable* variableAChanger;
 
 };
 

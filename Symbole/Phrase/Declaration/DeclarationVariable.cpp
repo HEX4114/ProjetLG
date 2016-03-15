@@ -7,17 +7,15 @@ DeclarationVariable::DeclarationVariable() : Declaration()
 {
 }
 
-
 DeclarationVariable::~DeclarationVariable()
 {
 }
 
 void DeclarationVariable::afficher()
 {
-	std::cout << "VAR " << this->variableADeclarer.getIdentifiant() << ";" << std::endl;
+	std::cout << "VAR " << this->variableADeclarer.getName() << ";" << std::endl;
 }
 
 void DeclarationVariable::executer()
 {
-
 }
