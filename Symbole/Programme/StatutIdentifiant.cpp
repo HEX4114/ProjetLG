@@ -21,7 +21,7 @@ StatutIdentifiant::~StatutIdentifiant()
 
 void StatutIdentifiant::afficher()
 {
-	std::cout << id << " : modifiable (" << modifiable << ") valeur (";
+	std::cout << id << " : modifiable(" << modifiable << ") valeur(";
 	if (valeurConnue)
 	{
 		std::cout << valeur << ") ";
@@ -30,5 +30,5 @@ void StatutIdentifiant::afficher()
 	{
 		std::cout << "valeur non connue) ";
 	}
-	std::cout << "utilise (" << utilise << ")" << std::endl;
+	std::cout << "utilise(" << utilise << ")" << std::endl;
 }
