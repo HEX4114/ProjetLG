@@ -5,6 +5,8 @@
 #include <fstream>
 #include <ctype.h>
 #include "Lexer.h"
+#include "Symbole/Symbole.h"
+
 using std::cout;
 using std::cin;
 using std::endl;
@@ -146,77 +148,77 @@ Symbole Lexer::getNext()
     {
         std::cout << "CONST" << std::endl;
 		toReturn = new Symbole();
-		toReturn->setType(TypeSymbole::CONST);
+		toReturn->setType(CONST);
         return *toReturn;
     }
     else if(getSymbole(next).compare("var")==0)
     {
         std::cout << "VAR" << std::endl;
 		toReturn = new Symbole();
-		toReturn->setType(TypeSymbole::VAR);
+		toReturn->setType(VAR);
         return *toReturn;
     }
 	else if(getSymbole(next).compare("ecrire") == 0)
     {
         std::cout << "ECRIRE" << std::endl;
 		toReturn = new Symbole();
-		toReturn->setType(TypeSymbole::ECRIRE);
+		toReturn->setType(ECRIRE);
         return *toReturn;
     }
 	else if (getSymbole(next).compare("lire") == 0)
 	{
 		std::cout << "LIRE" << std::endl;
 		toReturn = new Symbole();
-		toReturn->setType(TypeSymbole::LIRE);
+		toReturn->setType(LIRE);
 		return *toReturn;
 	}
 	else if (getSymbole(next).compare(";") == 0)
 	{
 		std::cout << "PVG" << std::endl;
 		toReturn = new Symbole();
-		toReturn->setType(TypeSymbole::PVG);
+		toReturn->setType(PVG);
 		return *toReturn;
 	}
 	else if (getSymbole(next).compare(",") == 0)
 	{
 		std::cout << "VG" << std::endl;
 		toReturn = new Symbole();
-		toReturn->setType(TypeSymbole::VG);
+		toReturn->setType(VG);
 		return *toReturn;
 	}
 	else if (getSymbole(next).compare("=") == 0)
 	{
 		std::cout << "EG" << std::endl;
 		toReturn = new Symbole();
-		toReturn->setType(TypeSymbole::EG);
+		toReturn->setType(EG);
 		return *toReturn;
 	}
 	else if (getSymbole(next).compare("(") == 0)
 	{
 		std::cout << "PARG" << std::endl;
 		toReturn = new Symbole();
-		toReturn->setType(TypeSymbole::PARG);
+		toReturn->setType(PARG);
 		return *toReturn;
 	}
 	else if (getSymbole(next).compare(")") == 0)
 	{
 		std::cout << "PARD" << std::endl;
 		toReturn = new Symbole();
-		toReturn->setType(TypeSymbole::PARD);
+		toReturn->setType(PARD);
 		return *toReturn;
 	}
 	else if (getSymbole(next).compare(":=") == 0)
 	{
 		std::cout << "AF" << std::endl;
 		toReturn = new Symbole();
-		toReturn->setType(TypeSymbole::AF);
+		toReturn->setType(AF);
 		return *toReturn;
 	}
 	else if (getSymbole(next).compare("+") == 0)
 	{
 		std::cout << "PLUS" << std::endl;
 		toReturn = new Symbole();
-		toReturn->setType(TypeSymbole::PLUS);
+		toReturn->setType(PLUS);
 		return *toReturn;
 	}
 	else if (getSymbole(next).at(0) == '-')
@@ -240,12 +242,12 @@ Symbole Lexer::getNext()
 				if (isdigit(getSymbole(next).at(1)))
 				{
 					std::cout << "NB" << std::endl;
-					toReturn->setType(TypeSymbole::NB);
+					toReturn->setType(NB);
 				}
 				else
 				{
 					std::cout << "MOINS" << std::endl;
-					toReturn->setType(TypeSymbole::MOINS);
+					toReturn->setType(MOINS);
 					string id = getSymbole(next).erase(0, 1);
 					std::vector<string>::iterator it = symboles.begin();
 					symboles.insert(it + next + 1, id);
@@ -254,7 +256,7 @@ Symbole Lexer::getNext()
 			else
 			{
 				std::cout << "MOINS" << std::endl;
-				toReturn->setType(TypeSymbole::MOINS);
+				toReturn->setType(MOINS);
 			}
 		}
 		return *toReturn;
@@ -263,28 +265,28 @@ Symbole Lexer::getNext()
 	{
 		std::cout << "MULT" << std::endl;
 		toReturn = new Symbole();
-		toReturn->setType(TypeSymbole::MULT);
+		toReturn->setType(MULT);
 		return *toReturn;
 	}
 	else if (getSymbole(next).compare("/") == 0)
 	{
 		std::cout << "DIV" << std::endl;
 		toReturn = new Symbole();
-		toReturn->setType(TypeSymbole::DIV);
+		toReturn->setType(DIV);
 		return *toReturn;
 	}
 	else if (isdigit(getSymbole(next).at(0)))
 	{
 		std::cout << "NB" << std::endl;
 		toReturn = new Symbole();
-		toReturn->setType(TypeSymbole::NB);
+		toReturn->setType(NB);
 		return *toReturn;
 	}
 	else
 	{
 		std::cout << "ID" << std::endl;
 		toReturn = new Symbole();
-		toReturn->setType(TypeSymbole::ID);
+		toReturn->setType(ID);
 		return *toReturn;
 	}
 };
