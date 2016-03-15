@@ -18,6 +18,14 @@ void Programme::afficherProgramme()
 	}
 }
 
+void Programme::executerProgramme()
+{
+	for (std::vector<Phrase*>::iterator it = listePhrase.begin(); it != listePhrase.end(); ++it)
+	{
+		(*it)->executer();
+	}
+}
+
 void Programme::afficherTableauStatut()
 {
 	for (std::vector<StatutIdentifiant>::iterator it = tableauStatut.begin(); it != tableauStatut.end(); ++it)
