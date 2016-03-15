@@ -51,12 +51,15 @@ int main()
 
 
 	/*Test du tableau statique*/
-	StatutIdentifiant v1("v1", true, false, false);
-	StatutIdentifiant v2("v2", true, false, false);
-	StatutIdentifiant v3("v3", true, false, false);
-	StatutIdentifiant c1("c1", true, false, false);
-	StatutIdentifiant c2("c2", true, false, false);
-	StatutIdentifiant c3("c3", true, false, false);
+	StatutIdentifiant v1("v1", true, false);
+	StatutIdentifiant v2("v2", true, false);
+	StatutIdentifiant v3("v3", true, false);
+	StatutIdentifiant c1("c1", true, false);
+	c1.setValeur(1);
+	StatutIdentifiant c2("c2", true, false);
+	c2.setValeur(2);
+	StatutIdentifiant c3("c3", true, false);
+	c3.setValeur(3);
 
 	Programme programme;
 	programme.addStatutIdentifiant(v1);
@@ -66,6 +69,9 @@ int main()
 	programme.addStatutIdentifiant(c2);
 	programme.addStatutIdentifiant(c3);
 
+	programme.afficherTableauStatut();
+	c1.setModifiable(false);
+	programme.majStatutIdentifiant(c1);
 	programme.afficherTableauStatut();
 
 

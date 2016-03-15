@@ -6,12 +6,12 @@ StatutIdentifiant::StatutIdentifiant()
 {
 }
 
-StatutIdentifiant::StatutIdentifiant(std::string ID, bool Modifiable, bool Utilise, bool ValeurConnue)
+StatutIdentifiant::StatutIdentifiant(std::string ID, bool Modifiable, bool Utilise)
 {
 	id = ID;
 	modifiable = Modifiable;
 	utilise = Utilise;
-	valeurConnue = ValeurConnue;
+	valeurConnue = false;
 }
 
 
@@ -21,5 +21,14 @@ StatutIdentifiant::~StatutIdentifiant()
 
 void StatutIdentifiant::afficher()
 {
-	std::cout << id << " : modifiable ("<<modifiable << ") valeur (" << valeur << ")" << std::endl;
+	std::cout << id << " : modifiable (" << modifiable << ") valeur (";
+	if (valeurConnue)
+	{
+		std::cout << valeur << ") ";
+	}
+	else
+	{
+		std::cout << "valeur non connue) ";
+	}
+	std::cout << "utilise (" << utilise << ")" << std::endl;
 }

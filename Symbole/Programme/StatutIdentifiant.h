@@ -7,7 +7,7 @@ class StatutIdentifiant
 {
 public:
 	StatutIdentifiant();
-	StatutIdentifiant(std::string ID, bool Modifiable, bool Utilise, bool ValeurConnue);
+	StatutIdentifiant(std::string ID, bool Modifiable, bool Utilise);
 	virtual ~StatutIdentifiant();
 
 	void afficher();
@@ -19,13 +19,12 @@ public:
 	void setModifiable(bool m){ modifiable = m; };
 
 	double getValeur(){ return valeur; };
-	void setValeur(double v){ valeur = v; };
+	void setValeur(double v){ valeur = v; valeurConnue = true; };
 
 	bool isUtilise(){ return utilise; };
 	void setUtilise(bool u){ utilise = u; };
 
 	bool isValeurConnue(){ return valeurConnue; };
-	void setValeurConnue(bool v){ valeur = v; };
 
 private:
 	std::string id;

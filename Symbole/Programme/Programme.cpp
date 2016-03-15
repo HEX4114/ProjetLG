@@ -25,3 +25,16 @@ void Programme::afficherTableauStatut()
 		it->afficher();
 	}
 }
+
+bool Programme::majStatutIdentifiant(StatutIdentifiant s)
+{
+	for (std::vector<StatutIdentifiant>::iterator it = tableauStatut.begin(); it != tableauStatut.end(); ++it)
+	{
+		if (it->getId().compare(s.getId()) == 0)
+		{
+			(*it) = s;
+			return true;
+		}
+	}
+	return false;
+}
