@@ -1,5 +1,18 @@
 #include "Automate.h"
+#include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
+#include <fstream>
+#include "Lexer.h"
+using std::cout;
+using std::cin;
+using std::endl;
 
+using std::string;
+using std::getline;
+
+
+using namespace std;
 
 Automate::Automate()
 {
@@ -36,9 +49,21 @@ Automate::~Automate()
 	*/
 }
 
-void Automate::lecture()
+void Automate::lecture(std::string fileName)
 {
+	//2. Creer Lexer
+	Lexer* lex = new Lexer();
+	string names = lex->lecture(fileName);
+	lex->parseToSymbols(names);
 
+	
+	//3. pour chaque symbole passer dans l'automate : transition etat
+	for (int i = 0; i<14; i++) {
+		Symbole symbole = lex->getNext();
+		pileEtats.top()->transition(*this, symbole);
+	}
+
+	//4. appeler les options
 }
 
 void Automate::empilerEtat(Etat* etat)

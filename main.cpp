@@ -21,12 +21,14 @@ using namespace std;
 #include "Symbole\Symbole.h"
 #include "Symbole\Expression\Nombre.h"
 
+#include "Automate.h"
+
 
 int main()
 {
     cout << "Hello world!" << endl;
 
-    string fileName = "../sources/test.txt";
+    /*string fileName = "../sources/test.txt";
 
     Lexer* lex = new Lexer();
     string names = lex->lecture(fileName);
@@ -34,7 +36,7 @@ int main()
 
     for(int i=0; i<14; i++) {
         Symbole sym = lex->getNext();
-    }
+    }*/
 
 
 
@@ -48,6 +50,14 @@ int main()
     cout<< Exp1->evaluer()<<endl<< Exp2->evaluer() <<endl<< Exp3->evaluer() <<endl<< Exp4->evaluer() <<endl;*/
     /**-------------------**/
 
+	/*Test Automate*/
+		//1.Recup fichier a l'aide de l'outil en ligne de commande
+	string fileName = "src/test.txt";
+		//2. lancement de l'automate
+	Automate* automate = new Automate();
+	automate->lecture(fileName);
+	
+	
     system("pause");
 
      return 0;
