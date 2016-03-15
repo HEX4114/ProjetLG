@@ -222,9 +222,9 @@ Symbole Lexer::getNext()
 	else if (getSymbole(next).at(0) == '-')
 	{
 		toReturn = new Symbole();
-		if (getSymbole(next - 1).compare(":=") == 0)
+		if (getSymbole(next - 1).compare("=") != 0)
 		{
-			toReturn->setType(TypeSymbole::MOINS);
+			toReturn->setType(MOINS);
 			std::cout << "MOINS" << std::endl;
 			if (getSymbole(next).size() != 1)
 			{

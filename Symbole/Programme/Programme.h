@@ -21,7 +21,7 @@ public:
 	void afficherTableauStatut();
 
 private:
-	std::vector<Phrase> listePhrase;
+	std::vector<Phrase*> listePhrase;
 	std::vector<StatutIdentifiant> tableauStatut;
 
 };
