@@ -17,6 +17,13 @@ class Lexer
         string lecture(string& fileName);
         void parseToSymbols(string& examples);
         Symbole getNext();
+        bool hasNext() {
+            if((int) symboles.size()>next) {
+                return true;
+            } else {
+                return false;
+            }
+        }
         void addSymbole(string& word)
 		{
 			symboles.push_back(word);
@@ -29,7 +36,7 @@ class Lexer
     protected:
 
     private:
-        //void addNonEmptyWord(string& word);
+        //bool test_regex_search(const std::string& input);
         std::vector<string> symboles;
         static int next;
 };
