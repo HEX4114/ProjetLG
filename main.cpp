@@ -54,23 +54,22 @@ int main()
 	StatutIdentifiant v1("v1", true, false);
 	StatutIdentifiant v2("v2", true, false);
 	StatutIdentifiant v3("v3", true, false);
-	StatutIdentifiant c1("c1", true, false);
+	StatutIdentifiant c1("c1", false, false);
 	c1.setValeur(1);
-	StatutIdentifiant c2("c2", true, false);
+	StatutIdentifiant c2("c2", false, false);
 	c2.setValeur(2);
-	StatutIdentifiant c3("c3", true, false);
+	StatutIdentifiant c3("c3", false, false);
 	c3.setValeur(3);
 
 	Programme programme;
 	programme.addStatutIdentifiant(v1);
+	bool a = programme.addStatutIdentifiant(v1);
 	programme.addStatutIdentifiant(v2);
 	programme.addStatutIdentifiant(v3);
 	programme.addStatutIdentifiant(c1);
 	programme.addStatutIdentifiant(c2);
 	programme.addStatutIdentifiant(c3);
-
 	programme.afficherTableauStatut();
-	c1.setModifiable(false);
 	programme.majStatutIdentifiant(c1);
 	programme.afficherTableauStatut();
 
