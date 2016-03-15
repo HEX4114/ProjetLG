@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <fstream>
 #include "Lexer.h"
+#include "Etat/E0.h"
 using std::cout;
 using std::cin;
 using std::endl;
@@ -51,11 +52,13 @@ Automate::~Automate()
 
 void Automate::lecture(std::string fileName)
 {
-	//2. Creer Lexer
+	//1. Creer Lexer
 	Lexer* lex = new Lexer();
 	string names = lex->lecture(fileName);
 	lex->parseToSymbols(names);
 
+	//2.Empiler E0
+	pileEtats.push(new E0);
 	
 	//3. pour chaque symbole passer dans l'automate : transition etat
 	for (int i = 0; i<14; i++) {
