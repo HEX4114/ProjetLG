@@ -5,6 +5,7 @@
 #include <fstream>
 #include "Lexer.h"
 #include "Etat/E0.h"
+#include "Symbole\Symbole.h"
 using std::cout;
 using std::cin;
 using std::endl;
@@ -37,6 +38,28 @@ Automate::Automate()
 	reglesReduction.push_back(3);
 	reglesReduction.push_back(1);
 	reglesReduction.push_back(1);
+
+	partieGaucheRegle.push_back(Symbole(D));
+	partieGaucheRegle.push_back(Symbole(V));
+	partieGaucheRegle.push_back(Symbole(V));
+	partieGaucheRegle.push_back(Symbole(C));
+	partieGaucheRegle.push_back(Symbole(C));
+	partieGaucheRegle.push_back(Symbole(D));
+	partieGaucheRegle.push_back(Symbole(D));
+	partieGaucheRegle.push_back(Symbole(D));
+	partieGaucheRegle.push_back(Symbole(I));
+	partieGaucheRegle.push_back(Symbole(I));
+	partieGaucheRegle.push_back(Symbole(I));
+	partieGaucheRegle.push_back(Symbole(I));
+	partieGaucheRegle.push_back(Symbole(E));
+	partieGaucheRegle.push_back(Symbole(E));
+	partieGaucheRegle.push_back(Symbole(T));
+	partieGaucheRegle.push_back(Symbole(T));
+	partieGaucheRegle.push_back(Symbole(F));
+	partieGaucheRegle.push_back(Symbole(F));
+	partieGaucheRegle.push_back(Symbole(F));
+
+
 }
 
 Automate::~Automate()
@@ -85,7 +108,8 @@ void Automate::reduction(Regle regle, Symbole symbole)
 
 	for (int i=0; i<nbPop; i++) pileEtats.pop();
 	
-	pileEtats.top()->transition(*this, symbole);
+	Symbole nextSymb = partieGaucheRegle[regle];
+	pileEtats.top()->transition(*this, nextSymb);
 }
 
 void Automate::decalage(Symbole symbole, Etat* etat)

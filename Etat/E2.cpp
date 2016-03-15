@@ -15,7 +15,7 @@ E2::~E2()
 }
 
 bool E2::transition(Automate automate, Symbole symbole) {
-	switch (symbole.getId())
+	switch (symbole.getType())
 	{
 		case(ID) :
 			automate.decalage(symbole, new E3);

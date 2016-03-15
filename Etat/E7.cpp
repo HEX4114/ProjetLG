@@ -13,7 +13,7 @@ E7::~E7()
 }
 
 bool E7::transition(Automate automate, Symbole symbole) {
-	switch (symbole.getId())
+	switch (symbole.getType())
 	{
 		case(ECRIRE) :
 			automate.reduction(R2, symbole);

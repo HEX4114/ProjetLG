@@ -15,7 +15,7 @@ E33::~E33()
 }
 
 bool E33::transition(Automate automate, Symbole symbole) {
-	switch (symbole.getId())
+	switch (symbole.getType())
 	{
 		case(VG) :
 			automate.reduction(R5, symbole);

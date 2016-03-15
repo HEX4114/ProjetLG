@@ -16,7 +16,7 @@ E23::~E23()
 }
 
 bool E23::transition(Automate automate, Symbole symbole) {
-	switch (symbole.getId())
+	switch (symbole.getType())
 	{
 		case(OPA) :
 			automate.decalage(symbole, new E14);

@@ -29,6 +29,7 @@ class Automate
 		std::stack<Etat*> pileEtats;
 		std::stack<Symbole> pileSymboles;
 		std::vector<int> reglesReduction;
+		std::vector<Symbole> partieGaucheRegle;
 		//int reglesReduction[19] = { 2, 3, 0, 5, 0, 5, 7, 0, 4, 4, 5, 0, 3, 1, 3, 1, 3, 1, 1 }; // contient le nombre d'états à dépiler pour chaque règle appliquée en réduction.
 
 };

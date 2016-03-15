@@ -15,7 +15,7 @@ E29::~E29()
 }
 
 bool E29::transition(Automate automate, Symbole symbole) {
-	switch (symbole.getId())
+	switch (symbole.getType())
 	{
 		case(DOL) :
 			automate.reduction(R11, symbole);

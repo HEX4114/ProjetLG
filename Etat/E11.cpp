@@ -13,7 +13,7 @@ E11::~E11()
 }
 
 bool E11::transition(Automate automate, Symbole symbole) {
-	switch (symbole.getId())
+	switch (symbole.getType())
 	{
 		case(DOL) :
 			automate.reduction(R10, symbole);
