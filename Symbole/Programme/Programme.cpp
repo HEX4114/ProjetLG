@@ -12,9 +12,9 @@ Programme::~Programme()
 
 void Programme::afficherProgramme()
 {
-	for (std::vector<Phrase>::iterator it = listePhrase.begin(); it != listePhrase.end(); ++it)
+	for (std::vector<Phrase*>::iterator it = listePhrase.begin(); it != listePhrase.end(); ++it)
 	{
-		it->afficher();
+		(*it)->afficher();
 	}
 }
 
