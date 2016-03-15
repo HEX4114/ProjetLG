@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <fstream>
+//#include <regex>
 #include <ctype.h>
 #include "Lexer.h"
 #include "Symbole/Symbole.h"
@@ -127,11 +128,12 @@ void Lexer::parseToSymbols(string& example)
                     std::cout << word << std::endl;
                     addSymbole(word);
                     word.clear();
-                    word += c;
+                }
+            } else {
+            word += c;
                     std::cout << word << std::endl;
                     addSymbole(word);
                     word.clear();
-                }
             }
             break;
         default:
@@ -139,6 +141,19 @@ void Lexer::parseToSymbols(string& example)
         }
     }
 }
+
+/*bool test_regex_search(const std::string& input)
+{
+    std::regex rgx("[a-z][a-zA-Z0-9]*");
+    std::smatch match;
+
+    if (std::regex_search(input.begin(), input.end(), match, rgx))
+    {
+        return true;
+    }
+    else
+        return false;
+}*/
 
 Symbole Lexer::getNext()
 {
@@ -224,7 +239,7 @@ Symbole Lexer::getNext()
 	else if (getSymbole(next).at(0) == '-')
 	{
 		toReturn = new Symbole();
-		if (getSymbole(next - 1).compare(":=") == 0)
+		if (getSymbole(next - 1).compare("=") != 0)
 		{
 			toReturn->setType(MOINS);
 			std::cout << "MOINS" << std::endl;
@@ -282,7 +297,7 @@ Symbole Lexer::getNext()
 		toReturn->setType(NB);
 		return *toReturn;
 	}
-	else
+	else /*if(test_regex_search(getSymbole(next)))*/
 	{
 		std::cout << "ID" << std::endl;
 		toReturn = new Symbole();
