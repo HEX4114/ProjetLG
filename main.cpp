@@ -20,11 +20,12 @@ using namespace std;
 #include "Symbole\Expression\ExpressionBinaire\ExpressionMultiplier.h"
 #include "Symbole\Symbole.h"
 #include "Symbole\Expression\Nombre.h"
+#include "Symbole\Programme\Programme.h"
 
 
 int main()
 {
-    cout << "Hello world!" << endl;
+    /*cout << "Hello world!" << endl;
 
     string fileName = "../sources/test.txt";
 
@@ -34,7 +35,7 @@ int main()
 
     while(lex->hasNext()) {
         Symbole sym = lex->getNext();
-    }
+    }*/
 
 
 
@@ -47,6 +48,31 @@ int main()
     ExpressionMultiplier * Exp4 = new ExpressionMultiplier(n1, n2);
     cout<< Exp1->evaluer()<<endl<< Exp2->evaluer() <<endl<< Exp3->evaluer() <<endl<< Exp4->evaluer() <<endl;*/
     /**-------------------**/
+
+
+	/*Test du tableau statique*/
+	StatutIdentifiant v1("v1", true, false);
+	StatutIdentifiant v2("v2", true, false);
+	StatutIdentifiant v3("v3", true, false);
+	StatutIdentifiant c1("c1", false, false);
+	c1.setValeur(1);
+	StatutIdentifiant c2("c2", false, false);
+	c2.setValeur(2);
+	StatutIdentifiant c3("c3", false, false);
+	c3.setValeur(3);
+
+	Programme programme;
+	programme.addStatutIdentifiant(v1);
+	bool a = programme.addStatutIdentifiant(v1);
+	programme.addStatutIdentifiant(v2);
+	programme.addStatutIdentifiant(v3);
+	programme.addStatutIdentifiant(c1);
+	programme.addStatutIdentifiant(c2);
+	programme.addStatutIdentifiant(c3);
+	programme.afficherTableauStatut();
+	programme.majStatutIdentifiant(c1);
+	programme.afficherTableauStatut();
+
 
     system("pause");
 
