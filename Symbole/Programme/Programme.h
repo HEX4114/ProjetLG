@@ -20,6 +20,9 @@ public:
 	void afficherProgramme();
 	void afficherTableauStatut();
 
+	void addStatutIdentifiant(StatutIdentifiant s){ tableauStatut.push_back(s); };
+
+
 private:
 	std::vector<Phrase*> listePhrase;
 	std::vector<StatutIdentifiant> tableauStatut;
