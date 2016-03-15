@@ -14,7 +14,7 @@ E10::~E10()
 	//dtor
 }
 
-bool E10::transition(Automate automate, Symbole symbole) {
+bool E10::transition(Automate& automate, Symbole symbole) {
 	switch (symbole.getType())
 	{
 		case(PVG) :

@@ -15,7 +15,7 @@ E13::~E13()
 	//dtor
 }
 
-bool E13::transition(Automate automate, Symbole symbole) {
+bool E13::transition(Automate& automate, Symbole symbole) {
 	switch (symbole.getType())
 	{
 		case(PVG) :

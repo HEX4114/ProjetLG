@@ -16,7 +16,7 @@ E8::~E8()
 	//dtor
 }
 
-bool E8::transition(Automate automate, Symbole symbole) {
+bool E8::transition(Automate& automate, Symbole symbole) {
 	switch (symbole.getType())
 	{
 		case(LIRE) :

@@ -14,7 +14,7 @@ E33::~E33()
 	//dtor
 }
 
-bool E33::transition(Automate automate, Symbole symbole) {
+bool E33::transition(Automate& automate, Symbole symbole) {
 	switch (symbole.getType())
 	{
 		case(VG) :

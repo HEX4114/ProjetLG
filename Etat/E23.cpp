@@ -15,7 +15,7 @@ E23::~E23()
 	//dtor
 }
 
-bool E23::transition(Automate automate, Symbole symbole) {
+bool E23::transition(Automate& automate, Symbole symbole) {
 	switch (symbole.getType())
 	{
 		case(OPA) :

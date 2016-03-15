@@ -12,7 +12,7 @@ E24::~E24()
 	//dtor
 }
 
-bool E24::transition(Automate automate, Symbole symbole) {
+bool E24::transition(Automate& automate, Symbole symbole) {
 	switch (symbole.getType())
 	{
 		case(DOL) :

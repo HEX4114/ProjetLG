@@ -16,7 +16,7 @@ E1::~E1()
 	//dtor
 }
 
-bool E1::transition(Automate automate, Symbole symbole) {
+bool E1::transition(Automate& automate, Symbole symbole) {
 	switch (symbole.getType())
 	{
 		case(VAR) :

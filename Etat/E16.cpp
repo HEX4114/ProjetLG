@@ -17,7 +17,7 @@ E16::~E16()
 	//dtor
 }
 
-bool E16::transition(Automate automate, Symbole symbole) {
+bool E16::transition(Automate& automate, Symbole symbole) {
 	switch (symbole.getType())
 	{
 		case(ID) :

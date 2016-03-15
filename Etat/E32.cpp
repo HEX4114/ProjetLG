@@ -14,7 +14,7 @@ E32::~E32()
 	//dtor
 }
 
-bool E32::transition(Automate automate, Symbole symbole) {
+bool E32::transition(Automate& automate, Symbole symbole) {
 	switch (symbole.getType())
 	{
 		case(NB) :

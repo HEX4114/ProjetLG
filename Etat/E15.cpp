@@ -14,7 +14,7 @@ E15::~E15()
 	//dtor
 }
 
-bool E15::transition(Automate automate, Symbole symbole) {
+bool E15::transition(Automate& automate, Symbole symbole) {
 	switch (symbole.getType())
 	{
 		case(OPM) :

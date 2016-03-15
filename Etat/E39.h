@@ -10,7 +10,7 @@ class E39 : public Etat
 public:
 	E39();
 	virtual ~E39();
-	virtual bool transition(Automate automate, Symbole symbole);
+	virtual bool transition(Automate& automate, Symbole symbole);
 protected:
 	std::string name;
 private:

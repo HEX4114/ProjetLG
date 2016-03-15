@@ -15,7 +15,7 @@ E28::~E28()
 	//dtor
 }
 
-bool E28::transition(Automate automate, Symbole symbole) {
+bool E28::transition(Automate& automate, Symbole symbole) {
 	switch (symbole.getType())
 	{
 		case(PVG) :

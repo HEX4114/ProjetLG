@@ -19,7 +19,7 @@ E27::~E27()
 	//dtor
 }
 
-bool E27::transition(Automate automate, Symbole symbole) {
+bool E27::transition(Automate& automate, Symbole symbole) {
 	switch (symbole.getType())
 	{
 		case(ID) :

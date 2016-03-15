@@ -84,9 +84,10 @@ void Automate::lecture(std::string fileName)
 	pileEtats.push(new E0);
 	
 	//3. pour chaque symbole passer dans l'automate : transition etat
-	for (int i = 0; i<14; i++) {
+	while(lex->hasNext()) {
 		Symbole symbole = lex->getNext();
 		pileEtats.top()->transition(*this, symbole);
+		cout << typeid(*pileEtats.top()).name() << endl;
 	}
 
 	//4. appeler les options

@@ -14,7 +14,7 @@ E3::~E3()
 	//dtor
 }
 
-bool E3::transition(Automate automate, Symbole symbole) {
+bool E3::transition(Automate& automate, Symbole symbole) {
 	switch (symbole.getType())
 	{
 		case(V) :

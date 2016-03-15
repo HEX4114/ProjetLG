@@ -14,7 +14,7 @@ E26::~E26()
 	//dtor
 }
 
-bool E26::transition(Automate automate, Symbole symbole) {
+bool E26::transition(Automate& automate, Symbole symbole) {
 	switch (symbole.getType())
 	{
 		case(AF) :

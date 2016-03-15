@@ -14,7 +14,7 @@ E36::~E36()
 	//dtor
 }
 
-bool E36::transition(Automate automate, Symbole symbole) {
+bool E36::transition(Automate& automate, Symbole symbole) {
 	switch (symbole.getType())
 	{
 		case(EG) :
