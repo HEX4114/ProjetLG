@@ -32,7 +32,7 @@ bool E8::transition(Automate& automate, Symbole symbole) {
 			return true;
 			break;
 		case(P) :
-			//automate.accept(...);
+			automate.accepter();
 			return true;
 			break;
 	}

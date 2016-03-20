@@ -84,10 +84,11 @@ void Automate::lecture(std::string fileName)
 	pileEtats.push(new E0);
 	
 	//3. pour chaque symbole passer dans l'automate : transition etat
+	lectureFinie = false;
 	int taillePileSymbP = pileSymboles.size();
 	int taillePileSymbC = pileSymboles.size();
 	Symbole symbole = lex->getNext(); //premier symbole
-	while(lex->hasNext()) {
+	while(!lectureFinie) {
 		taillePileSymbC = pileSymboles.size();
 		if (taillePileSymbC > taillePileSymbP)
 		{
@@ -134,7 +135,7 @@ void Automate::decalage(Symbole symbole, Etat* etat)
 
 void Automate::accepter()
 {
-	//TODO
+	lectureFinie = true;
 	cout << "c'est fini !!" << endl;
 }
 
