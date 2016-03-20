@@ -13,11 +13,6 @@ E39::~E39()
 }
 
 bool E39::transition(Automate& automate, Symbole symbole) {
-	switch (symbole.getType())
-	{
-		case(DOL) :
-			automate.reduction(R7, symbole);
-			break;
-	}
-	return false;
+	automate.reduction(R7);
+	return true;
 }

@@ -32,19 +32,19 @@ bool E1::transition(Automate& automate, Symbole symbole) {
 			return true;
 			break;
 		case(ECRIRE) :
-			automate.reduction(R12, symbole);
+			automate.reduction(R12);
 			return true;
 			break;
 		case(LIRE) : 
-			automate.reduction(R12, symbole);
+			automate.reduction(R12);
 			return true;
 			break;
 		case(DOL) :
-			automate.reduction(R12, symbole);
+			automate.reduction(R12);
 			return true;
 			break;
 		case(ID) :
-			automate.reduction(R12, symbole);
+			automate.reduction(R12);
 			return true;
 			break;
 	}

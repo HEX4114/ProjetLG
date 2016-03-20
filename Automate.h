@@ -19,8 +19,10 @@ class Automate
 		void lecture(std::string filename);
 		void empilerSymbole(Symbole symbole);
 		void empilerEtat(Etat* etat);
-		void reduction(Regle regle, Symbole symbole);
+		void reduction(Regle regle);
 		void decalage(Symbole symbole, Etat* etat);
+		void accepter();
+		bool estUnTerminal(Symbole symbole);
     protected:
     private:
 		/*Methodes Privees*/

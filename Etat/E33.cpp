@@ -18,13 +18,16 @@ bool E33::transition(Automate& automate, Symbole symbole) {
 	switch (symbole.getType())
 	{
 		case(VG) :
-			automate.reduction(R5, symbole);
+			automate.reduction(R5);
+			return true;
 			break;
 		case(PVG) :
-			automate.reduction(R5, symbole);
+			automate.reduction(R5);
+			return true;
 			break;
 		case(C) :
 			automate.decalage(symbole, new E34);
+			return true;
 			break;		
 	}
 	return false;

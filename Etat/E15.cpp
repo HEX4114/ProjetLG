@@ -17,20 +17,28 @@ E15::~E15()
 bool E15::transition(Automate& automate, Symbole symbole) {
 	switch (symbole.getType())
 	{
-		case(OPM) :
+		case(MULT) :
+			automate.decalage(symbole, new E16);
+			return true;
+			break;
+		case(DIV) :
 			automate.decalage(symbole, new E16);
 			return true;
 			break;
 		case(PVG) :
-			automate.reduction(R13, symbole);
+			automate.reduction(R13);
 			return true;
 			break;
-		case(OPA) :
-			automate.reduction(R13, symbole);
+		case(PLUS) :
+			automate.reduction(R13);
+			return true;
+			break;
+		case(MOINS) :
+			automate.reduction(R13);
 			return true;
 			break;
 		case(PARD) :
-			automate.reduction(R13, symbole);
+			automate.reduction(R13);
 			return true;
 			break;
 	}

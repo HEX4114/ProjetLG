@@ -84,8 +84,16 @@ void Automate::lecture(std::string fileName)
 	pileEtats.push(new E0);
 	
 	//3. pour chaque symbole passer dans l'automate : transition etat
+	int taillePileSymbP = pileSymboles.size();
+	int taillePileSymbC = pileSymboles.size();
+	Symbole symbole = lex->getNext(); //premier symbole
 	while(lex->hasNext()) {
-		Symbole symbole = lex->getNext();
+		taillePileSymbC = pileSymboles.size();
+		if (taillePileSymbC > taillePileSymbP)
+		{
+			symbole = lex->getNext();
+		}
+		taillePileSymbP = pileSymboles.size();
 		pileEtats.top()->transition(*this, symbole);
 		cout << typeid(*pileEtats.top()).name() << endl;
 	}
@@ -103,18 +111,41 @@ void Automate::empilerSymbole(Symbole symbole)
 	pileSymboles.push(symbole);
 }
 
-void Automate::reduction(Regle regle, Symbole symbole)
+void Automate::reduction(Regle regle)
 {
 	int nbPop = reglesReduction.at(regle);
 
 	for (int i=0; i<nbPop; i++) pileEtats.pop();
 	
-	Symbole nextSymb = partieGaucheRegle[regle];
-	pileEtats.top()->transition(*this, nextSymb);
+	Symbole partG = partieGaucheRegle[regle];
+
+	pileEtats.top()->transition(*this, partG);
 }
 
 void Automate::decalage(Symbole symbole, Etat* etat)
 {
-	empilerSymbole(symbole);
+	//Empiler symbole seulement si c'est un symbole terminal
+	if (estUnTerminal(symbole))
+	{
+		empilerSymbole(symbole);
+	}
 	empilerEtat(etat);
+}
+
+void Automate::accepter()
+{
+	//TODO
+	cout << "c'est fini !!" << endl;
+}
+
+bool Automate::estUnTerminal(Symbole symbole)
+{
+	for (int i = 0; i < partieGaucheRegle.size(); i++) 
+	{
+		if (partieGaucheRegle[i].getType() == symbole.getType()) 
+		{
+			return false;
+		}
+	}
+	return true;
 }

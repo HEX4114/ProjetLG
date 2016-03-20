@@ -2,8 +2,6 @@
 #include "Etat.h"
 #include "../Automate.h"
 
-//TODO
-
 E29::E29()
 {
 	//ctor
@@ -15,12 +13,7 @@ E29::~E29()
 }
 
 bool E29::transition(Automate& automate, Symbole symbole) {
-	switch (symbole.getType())
-	{
-		case(DOL) :
-			automate.reduction(R11, symbole);
-			break;
-		
-	}
-	return false;
+
+	automate.reduction(R11);
+	return true;
 }

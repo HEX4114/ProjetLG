@@ -19,6 +19,7 @@ bool E31::transition(Automate& automate, Symbole symbole) {
 	{
 		case(EG) :
 			automate.decalage(symbole, new E32);
+			return true;
 			break;
 	}
 	return false;

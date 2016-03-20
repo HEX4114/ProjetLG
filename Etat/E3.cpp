@@ -22,11 +22,11 @@ bool E3::transition(Automate& automate, Symbole symbole) {
 			return true;
 			break;
 		case(VG) :
-			automate.reduction(R3, symbole);
+			automate.reduction(R3);
 			return true;
 			break;
 		case(PVG) :
-			automate.reduction(R3, symbole);
+			automate.reduction(R3);
 			return true;
 			break;
 	}

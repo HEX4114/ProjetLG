@@ -20,9 +20,15 @@ bool E28::transition(Automate& automate, Symbole symbole) {
 	{
 		case(PVG) :
 			automate.decalage(symbole, new E29);
+			return true;
 			break;
-		case(OPA) :
+		case(PLUS) :
 			automate.decalage(symbole, new E14);
+			return true;
+			break;
+		case(MOINS) :
+			automate.decalage(symbole, new E14);
+			return true;
 			break;
 	}
 	return false;

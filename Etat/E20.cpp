@@ -13,13 +13,8 @@ E20::~E20()
 }
 
 bool E20::transition(Automate& automate, Symbole symbole) {
-	switch (symbole.getType())
-	{
-		case(DOL) :
-			automate.reduction(R19, symbole);
-			return true;
-			break;
-	}
+	
+	automate.reduction(R19);
+	return true;
 
-	return false;
 }

@@ -22,7 +22,11 @@ bool E13::transition(Automate& automate, Symbole symbole) {
 			automate.decalage(symbole, new E25);
 			return true;
 			break;
-		case(OPA) :
+		case(PLUS) :
+			automate.decalage(symbole, new E14);
+			return true;
+			break;
+		case(MOINS) :
 			automate.decalage(symbole, new E14);
 			return true;
 			break;

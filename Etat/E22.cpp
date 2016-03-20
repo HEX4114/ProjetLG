@@ -17,17 +17,29 @@ E22::~E22()
 bool E22::transition(Automate& automate, Symbole symbole) {
 	switch (symbole.getType())
 	{
-		case(OPM) :
+		case(MULT) :
 			automate.decalage(symbole, new E16);
+			return true;
+			break;
+		case(DIV) :
+			automate.decalage(symbole, new E16);
+			return true;
 			break;
 		case(PVG) :
-			automate.reduction(R14, symbole);
+			automate.reduction(R14);
+			return true;
 			break;
-		case(OPA) :
-			automate.reduction(R14, symbole);
+		case(PLUS) :
+			automate.reduction(R14);
+			return true;
+			break;
+		case(MOINS) :
+			automate.reduction(R14);
+			return true;
 			break;
 		case(PARD) :
-			automate.reduction(R14, symbole);
+			automate.reduction(R14);
+			return true;
 			break;
 	}
 	return false;
