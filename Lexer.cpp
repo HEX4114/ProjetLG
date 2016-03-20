@@ -6,6 +6,7 @@
 #include <regex>
 #include <ctype.h>
 #include "Lexer.h"
+#include "Symbole\Expression\Nombre.h"
 #include "Symbole/Symbole.h"
 
 using std::cout;
@@ -172,120 +173,120 @@ bool testRegex(const std::string& input, const TypeSymbole& reg)
         return false;
 }
 
-Symbole Lexer::getNext()
+Symbole* Lexer::getNext()
 {
-    Symbole* toReturn;
     if(getSymbole(next).compare("const")==0)
     {
         std::cout << "CONST" << std::endl;
-        toReturn = new Symbole();
+        Symbole* toReturn = new Symbole();
         toReturn->setType(CONST);
-        //return *toReturn;
+        return toReturn;
     }
     else if(getSymbole(next).compare("var")==0)
     {
         std::cout << "VAR" << std::endl;
-        toReturn = new Symbole();
+		Symbole* toReturn = new Symbole();
         toReturn->setType(VAR);
-        //return *toReturn;
+        return toReturn;
     }
     else if(getSymbole(next).compare("ecrire") == 0)
     {
         std::cout << "ECRIRE" << std::endl;
-        toReturn = new Symbole();
+        Symbole* toReturn = new Symbole();
         toReturn->setType(ECRIRE);
-        //return *toReturn;
+        return toReturn;
     }
     else if (getSymbole(next).compare("lire") == 0)
     {
         std::cout << "LIRE" << std::endl;
-        toReturn = new Symbole();
+        Symbole* toReturn = new Symbole();
         toReturn->setType(LIRE);
-        //return *toReturn;
+        return toReturn;
     }
     else if (getSymbole(next).compare(";") == 0)
     {
         std::cout << "PVG" << std::endl;
-        toReturn = new Symbole();
+        Symbole* toReturn = new Symbole();
         toReturn->setType(PVG);
-        //return *toReturn;
+        return toReturn;
     }
     else if (getSymbole(next).compare(",") == 0)
     {
         std::cout << "VG" << std::endl;
-        toReturn = new Symbole();
+        Symbole* toReturn = new Symbole();
         toReturn->setType(VG);
-        //return *toReturn;
+        return toReturn;
     }
     else if (getSymbole(next).compare("=") == 0)
     {
         std::cout << "EG" << std::endl;
-        toReturn = new Symbole();
+        Symbole* toReturn = new Symbole();
         toReturn->setType(EG);
-        //return *toReturn;
+        return toReturn;
     }
     else if (getSymbole(next).compare("(") == 0)
     {
         std::cout << "PARG" << std::endl;
-        toReturn = new Symbole();
+        Symbole* toReturn = new Symbole();
         toReturn->setType(PARG);
-        //return *toReturn;
+        return toReturn;
     }
     else if (getSymbole(next).compare(")") == 0)
     {
         std::cout << "PARD" << std::endl;
-        toReturn = new Symbole();
+        Symbole* toReturn = new Symbole();
         toReturn->setType(PARD);
-        //return *toReturn;
+        return toReturn;
     }
     else if (getSymbole(next).compare(":=") == 0)
     {
         std::cout << "AF" << std::endl;
-        toReturn = new Symbole();
+        Symbole* toReturn = new Symbole();
         toReturn->setType(AF);
-        //return *toReturn;
+        return toReturn;
     }
     else if (getSymbole(next).compare("+") == 0)
     {
         std::cout << "PLUS" << std::endl;
-        toReturn = new Symbole();
+        Symbole* toReturn = new Symbole();
         toReturn->setType(PLUS);
-        //return *toReturn;
+        return toReturn;
     }
     else if (getSymbole(next).compare("-") == 0)
     {
         std::cout << "MOINS" << std::endl;
-        toReturn = new Symbole();
+        Symbole* toReturn = new Symbole();
         toReturn->setType(MOINS);
-        //return *toReturn;
+        return toReturn;
     }
     else if (getSymbole(next).compare("*") == 0)
     {
         std::cout << "MULT" << std::endl;
-        toReturn = new Symbole();
+        Symbole* toReturn = new Symbole();
         toReturn->setType(MULT);
-        //return *toReturn;
+        return toReturn;
     }
     else if (getSymbole(next).compare("/") == 0)
     {
         std::cout << "DIV" << std::endl;
-        toReturn = new Symbole();
+        Symbole* toReturn = new Symbole();
         toReturn->setType(DIV);
-        //return *toReturn;
+        return toReturn;
     }
     else if (testRegex(getSymbole(next), NB))
     {
         std::cout << "NB" << std::endl;
-        toReturn = new Symbole();
+		Nombre* toReturn = new Nombre(std::stoi(getSymbole(next)));
         toReturn->setType(NB);
-        //return *toReturn;
+        return toReturn;
     }
     else if(testRegex(getSymbole(next), ID))
     {
         std::cout << "ID" << std::endl;
-        toReturn = new Symbole();
+        Variable* toReturn = new Variable();
+		toReturn->setID(getSymbole(next));
         toReturn->setType(ID);
-        //return *toReturn;
+        return toReturn;
     }
     else if(getSymbole(next).at(0) == '-')
     {
@@ -294,33 +295,33 @@ Symbole Lexer::getNext()
             if((getSymbole(next-1).compare("=") == 0 || getSymbole(next-1).compare(":=") == 0) && testRegex(getSymbole(next).substr(1), ID))
             {
                 std::cout << "ID" << std::endl;
-                toReturn = new Symbole();
+				Variable* toReturn = new Variable();
                 toReturn->setType(ID);
-                //return *toReturn;
+                return toReturn;
             }
             else
             {
                 std::cout << "ERROR " << getSymbole(next) << std::endl;
-                toReturn = new Symbole();
+                Symbole* toReturn = new Symbole();
                 toReturn->setType(ERR);
-                //return *toReturn;
+                return toReturn;
             }
         }
         else
         {
             std::cout << "ID" << std::endl;
-            toReturn = new Symbole();
+            Symbole* toReturn = new Symbole();
             toReturn->setType(ID);
-            //return *toReturn;
+            return toReturn;
         }
     }
     else
     {
         std::cout << "ERROR " << getSymbole(next) << std::endl;
-        toReturn = new Symbole();
+        Symbole* toReturn = new Symbole();
         toReturn->setType(ERR);
-        //return *toReturn;
+        return toReturn;
     }
     next++;
-    return *toReturn;
+    return NULL;
 };

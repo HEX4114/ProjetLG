@@ -13,6 +13,7 @@ class Variable : public Expression
         virtual ~Variable();
         double virtual evaluer();
         std::string virtual getName(){ return identifiant; };
+		void setID(std::string id){ identifiant = id; };
 		double getValeur(){ return valeur; };
 		void setValeur(double v){ valeur = v; };
 
