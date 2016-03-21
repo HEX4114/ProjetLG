@@ -65,3 +65,50 @@ void Automate::decalage(Symbole symbole, Etat* etat)
 	empilerSymbole(symbole);
 	empilerEtat(etat);
 }
+
+void Automate::afficherTableauStatut()
+{
+	for (std::vector<StatutIdentifiant>::iterator it = tableauStatut.begin(); it != tableauStatut.end(); ++it)
+	{
+		it->afficher();
+	}
+}
+
+bool Automate::addStatutIdentifiant(StatutIdentifiant s)
+{
+	for (std::vector<StatutIdentifiant>::iterator it = tableauStatut.begin(); it != tableauStatut.end(); ++it)
+	{
+		if (it->getId().compare(s.getId()) == 0)
+		{
+			return false;
+		}
+	}
+	tableauStatut.push_back(s);
+	return true;
+}
+
+bool Automate::majStatutIdentifiant(StatutIdentifiant s)
+{
+	for (std::vector<StatutIdentifiant>::iterator it = tableauStatut.begin(); it != tableauStatut.end(); ++it)
+	{
+		if (it->getId().compare(s.getId()) == 0)
+		{
+			(*it) = s;
+			return true;
+		}
+	}
+	return false;
+}
+
+StatutIdentifiant* Automate::getStatutIdParIdentifiant(std::string identifiant)
+{
+	for (std::vector<StatutIdentifiant>::iterator it = tableauStatut.begin(); it != tableauStatut.end(); ++it)
+	{
+		if (it->getId().compare(identifiant) == 0)
+		{
+			return &(*it);
+		}
+	}
+
+	return NULL;
+}

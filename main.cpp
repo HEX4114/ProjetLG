@@ -24,7 +24,7 @@ using namespace std;
 #include "Symbole\Expression\Nombre.h"
 #include "Symbole\Phrase\Instruction\Ecrire.h"
 #include "Symbole\Phrase\Instruction\Lire.h"
-#include "Symbole\Programme\Programme.h"
+#include "Automate.h"
 
 int main(int argc, char* argv[])
 {
@@ -135,17 +135,17 @@ int main(int argc, char* argv[])
 	StatutIdentifiant c3("c3", false, false);
 	c3.setValeur(3);
 
-	Programme programme;
-	programme.addStatutIdentifiant(v1);
-	bool a = programme.addStatutIdentifiant(v1);
-	programme.addStatutIdentifiant(v2);
-	programme.addStatutIdentifiant(v3);
-	programme.addStatutIdentifiant(c1);
-	programme.addStatutIdentifiant(c2);
-	programme.addStatutIdentifiant(c3);
-	programme.afficherTableauStatut();
-	programme.majStatutIdentifiant(c1);
-	programme.afficherTableauStatut();
+	Automate automate;
+	automate.addStatutIdentifiant(v1);
+	bool a = automate.addStatutIdentifiant(v1);
+	automate.addStatutIdentifiant(v2);
+	automate.addStatutIdentifiant(v3);
+	automate.addStatutIdentifiant(c1);
+	automate.addStatutIdentifiant(c2);
+	automate.addStatutIdentifiant(c3);
+	automate.afficherTableauStatut();
+	automate.majStatutIdentifiant(c1);
+	automate.afficherTableauStatut();
     /**-------------------**/
 
 
