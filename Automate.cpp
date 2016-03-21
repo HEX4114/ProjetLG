@@ -90,7 +90,7 @@ void Automate::lecture(std::string fileName)
 	Symbole symbole = lex->getNext(); //premier symbole
 	while(!lectureFinie) {
 		taillePileSymbC = pileSymboles.size();
-		if (taillePileSymbC > taillePileSymbP)
+		if ((taillePileSymbC > taillePileSymbP) && lex->hasNext())
 		{
 			symbole = lex->getNext();
 		}
@@ -119,7 +119,7 @@ void Automate::reduction(Regle regle)
 	for (int i=0; i<nbPop; i++) pileEtats.pop();
 	
 	Symbole partG = partieGaucheRegle[regle];
-
+	cout << "reduction de " << regle << endl;
 	pileEtats.top()->transition(*this, partG);
 }
 
@@ -129,6 +129,7 @@ void Automate::decalage(Symbole symbole, Etat* etat)
 	if (estUnTerminal(symbole))
 	{
 		empilerSymbole(symbole);
+		cout << "decalage de " << symbole.getType() << endl;
 	}
 	empilerEtat(etat);
 }

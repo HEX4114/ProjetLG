@@ -31,7 +31,7 @@ bool E8::transition(Automate& automate, Symbole symbole) {
 			automate.decalage(symbole, new E26);
 			return true;
 			break;
-		case(P) :
+		case(DOL) :
 			automate.accepter();
 			return true;
 			break;
