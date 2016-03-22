@@ -29,7 +29,15 @@ using namespace std;
 int main(int argc, char* argv[])
 
 {
-	if (argc < 2)
+	/*Test Automate*/
+	//1.Recup fichier a l'aide de l'outil en ligne de commande
+	string fileName = "src/test.txt";
+	//2. lancement de l'automate
+	Automate* automate = new Automate();
+	automate->lecture(fileName);
+	
+	
+	/*if (argc < 2)
 	{
 		cerr << "Usage: ProjetGL sourceFile [options]" << endl;
 		system("pause");
@@ -55,7 +63,7 @@ int main(int argc, char* argv[])
 	cout << "Options : ";
 	for (auto it = options.begin(); it != options.end(); ++it)
 		cout << " " << *it;
-	cout << endl;
+	cout << endl;*/
 
     /*cout << "Hello world!" << endl;
 
@@ -129,7 +137,7 @@ int main(int argc, char* argv[])
     /**-------------------**/
 
 	/**Test du tableau statique**/
-	StatutIdentifiant v1("v1", true, false);
+	/*StatutIdentifiant v1("v1", true, false);
 
 	StatutIdentifiant v2("v2", true, false);
 	StatutIdentifiant v3("v3", true, false);
@@ -150,7 +158,7 @@ int main(int argc, char* argv[])
 	automate.addStatutIdentifiant(c3);
 	automate.afficherTableauStatut();
 	automate.majStatutIdentifiant(c1);
-	automate.afficherTableauStatut();
+	automate.afficherTableauStatut();*/
     /**-------------------**/
 
 
