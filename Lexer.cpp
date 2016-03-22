@@ -19,7 +19,7 @@ using std::getline;
 
 using namespace std;
 
-int Lexer::next = -1;
+int Lexer::next = 0;
 
 Lexer::Lexer()
 {
@@ -176,9 +176,12 @@ bool testRegex(const std::string& input, const TypeSymbole& reg)
         return false;
 }
 
-Symbole* Lexer::getNext()
-{
+void Lexer::goNext() {
     next++;
+}
+
+Symbole* Lexer::getSymbole()
+{
     if(getSymbole(next).compare("const")==0)
     {
         std::cout << "CONST" << std::endl;
