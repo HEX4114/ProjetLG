@@ -13,8 +13,6 @@ E20::~E20()
 }
 
 bool E20::transition(Automate& automate, Symbole symbole) {
-	
 	automate.reduction(R19);
 	return true;
-
 }

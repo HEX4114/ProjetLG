@@ -14,14 +14,14 @@ E2::~E2()
 	//dtor
 }
 
-bool E2::transition(Automate& automate, Symbole symbole) {
+bool E2::transition(Automate& automate, Symbole symbole) throw(std::pair<int, string>) {
 	switch (symbole.getType())
 	{
 		case(ID) :
 			automate.decalageTerminal(symbole, new E3);
 			return true;
-			break;
 	}
-
+	std::pair<int, string> p = std::make_pair(1, "Erreur de synthaxe (id manquant).");
+	throw(p);
 	return false;
 }

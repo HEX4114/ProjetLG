@@ -1,4 +1,4 @@
-var x,y;
+var x y
 const b=5;
 const a = -2;
 var c;

@@ -20,16 +20,13 @@ bool E3::transition(Automate& automate, Symbole symbole) {
 		case(V) :
 			automate.decalageNonTerminal(symbole, new E4);
 			return true;
-			break;
 		case(VG) :
 			automate.reduction(R3);
 			return true;
-			break;
 		case(PVG) :
 			automate.reduction(R3);
 			return true;
-			break;
 	}
-
-	return false;
+	automate.reduction(R3);
+	return true;
 }

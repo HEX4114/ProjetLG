@@ -16,26 +16,23 @@ E8::~E8()
 	//dtor
 }
 
-bool E8::transition(Automate& automate, Symbole symbole) {
+bool E8::transition(Automate& automate, Symbole symbole) throw(std::pair<int, string>) {
 	switch (symbole.getType())
 	{
 		case(LIRE) :
 			automate.decalageTerminal(symbole, new E9);
 			return true;
-			break;
 		case(ECRIRE) :
 			automate.decalageTerminal(symbole, new E12);
 			return true;
-			break;
 		case(ID) :
 			automate.decalageTerminal(symbole, new E26);
 			return true;
-			break;
 		case(DOL) :
 			automate.accepter();
 			return true;
-			break;
 	}
-
+	std::pair<int, string> p = std::make_pair(1, "Erreur de synthaxe (attendu : \"ecrire\", \"lire\", ou id).");
+	throw(p);
 	return false;
 }
