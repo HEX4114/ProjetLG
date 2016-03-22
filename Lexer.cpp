@@ -296,6 +296,7 @@ Symbole* Lexer::getNext()
             {
                 std::cout << "ID" << std::endl;
 				Variable* toReturn = new Variable();
+				toReturn->setID(getSymbole(next));
                 toReturn->setType(ID);
                 return toReturn;
             }
