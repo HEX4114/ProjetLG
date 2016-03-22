@@ -2,10 +2,15 @@
 #define LEXER_H
 #include <string>
 #include <vector>
-#include "Symbole\Symbole.h"
+#include "Symbole/Symbole.h"
+
+#include "Symbole/Phrase/Declaration/DeclarationConstante.h"
+#include "Symbole/Phrase/Declaration/DeclarationVariable.h"
+#include "Symbole/Phrase/Instruction/Affectation.h"
 
 using std::string;
 using std::vector;
+
 
 class Lexer
 {

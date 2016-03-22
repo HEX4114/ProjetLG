@@ -2,7 +2,7 @@
 #define DECLARATION_CONSTANTE_H
 
 #include "Declaration.h"
-#include "../../Expression/Constante.h"
+#include "../../Expression/Variable.h"
 
 class DeclarationConstante :
 	public Declaration

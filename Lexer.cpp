@@ -2,8 +2,16 @@
 #include <fstream>
 #include <regex>
 #include "Lexer.h"
-#include "Symbole\Expression\Nombre.h"
-#include "Symbole\Expression\Variable.h"
+#include "Symbole/Expression/Nombre.h"
+#include "Symbole/Symbole.h"
+#include "Symbole/Expression/Variable.h"
+
+using std::cout;
+using std::cin;
+using std::endl;
+
+using std::string;
+using std::getline;
 
 using namespace std;
 

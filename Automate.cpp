@@ -3,15 +3,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <fstream>
+#include <typeinfo> 
 #include "Lexer.h"
 #include "Etat/E0.h"
 #include "Symbole/Symbole.h"
+
 #include "Symbole/Phrase/Declaration/DeclarationConstante.h"
 #include "Symbole/Phrase/Declaration/DeclarationVariable.h"
 #include "Symbole/Phrase/Instruction/Affectation.h"
 #include "Symbole/Phrase/Instruction/Lire.h"
 #include "Symbole/Phrase/Instruction/Ecrire.h"
 #include "Symbole/Expression/Nombre.h"
+
 using std::cout;
 using std::cin;
 using std::endl;
@@ -238,6 +241,7 @@ std::list<Symbole> Automate::viderPileSymbole()
 		listeSymbole.push_front(pileSymboles.top());
 		pileSymboles.pop();
 	}
+	return listeSymbole;
 }
 
 void Automate::remplirPileSymbole(std::list<Symbole> liste)
@@ -248,14 +252,14 @@ void Automate::remplirPileSymbole(std::list<Symbole> liste)
 	}
 }
 
-std::string getIDValue(Symbole symbole)
+std::string Automate::getIDValue(Symbole symbole)
 {
 	Variable* var = dynamic_cast<Variable*>( &symbole);
-	return var->getName();
+	return "";
 }
 
-double getNumberValue(Symbole symbole)
+double Automate::getNumberValue(Symbole symbole)
 {
 	Nombre* nb = dynamic_cast<Nombre*>(&symbole);
-	return nb->getValeur();
+	return 1;
 }
