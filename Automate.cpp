@@ -59,7 +59,7 @@ Automate::Automate()
 	partieGaucheRegle.push_back(Symbole(F));
 	partieGaucheRegle.push_back(Symbole(F));
 
-
+	lex = new Lexer();
 }
 
 Automate::~Automate()
@@ -75,28 +75,20 @@ Automate::~Automate()
 
 void Automate::lecture(std::string fileName)
 {
-	//1. Creer Lexer
-	Lexer* lex = new Lexer();
+	//1. Initialiser Lexer
 	string names = lex->lecture(fileName);
 	lex->parseToSymbols(names);
 
 	//2.Empiler E0
 	pileEtats.push(new E0);
 	
-	//3. pour chaque symbole passer dans l'automate : transition etat
+	//3. boucle transitions
 	lectureFinie = false;
-	int taillePileSymbP = pileSymboles.size();
-	int taillePileSymbC = pileSymboles.size();
-	Symbole *symbole = lex->getNext(); //premier symbole
+	Symbole *symbole = lex->getSymbole(); //premier symbole
 	while(!lectureFinie) {
-		taillePileSymbC = pileSymboles.size();
-		if ((taillePileSymbC > taillePileSymbP) && lex->hasNext())
-		{
-			symbole = lex->getNext();
-		}
-		taillePileSymbP = pileSymboles.size();
 		pileEtats.top()->transition(*this, *symbole);
 		cout << typeid(*pileEtats.top()).name() << endl;
+		symbole = lex->getSymbole();
 	}
 
 	//4. appeler les options
@@ -127,6 +119,7 @@ void Automate::decalageTerminal(Symbole symbole, Etat* etat)
 {
 	//Empiler symbole seulement si c'est un symbole terminal
 	empilerSymbole(symbole);
+	lex->goNext();
 	cout << "decalage de " << symbole.getType() << endl;
 	empilerEtat(etat);
 }
