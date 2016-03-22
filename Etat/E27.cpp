@@ -19,34 +19,29 @@ E27::~E27()
 	//dtor
 }
 
-bool E27::transition(Automate& automate, Symbole symbole) {
+bool E27::transition(Automate& automate, Symbole symbole) throw(std::pair<int, string>) {
 	switch (symbole.getType())
 	{
 		case(ID) :
 			automate.decalageTerminal(symbole, new E19);
 			return true;
-			break;
 		case(NB) :
 			automate.decalageTerminal(symbole, new E20);
 			return true;
-			break;
 		case(PARG) :
 			automate.decalageTerminal(symbole, new E21);
 			return true;
-			break;
 		case(E) :
 			automate.decalageNonTerminal(symbole, new E28);
 			return true;
-			break;
 		case(T) :
 			automate.decalageNonTerminal(symbole, new E22);
 			return true;
-			break;
 		case(F) :
 			automate.decalageNonTerminal(symbole, new E18);
 			return true;
-			break;
-
 	}
+	std::pair<int, string> p = std::make_pair(1, "Erreur de synthaxe (attendu : identifiant, nombre ou expression).");
+	throw(p);
 	return false;
 }

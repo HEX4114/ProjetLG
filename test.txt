@@ -1,7 +1,8 @@
-var x y
-const b=5;
+var x y z
+const b 5;
 const a = -2;
 var c;
 c := -a+16;
 ecrire c;
+z = b + 45;
 y:=b;

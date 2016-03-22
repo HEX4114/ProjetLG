@@ -18,7 +18,7 @@ E21::~E21()
 	//dtor
 }
 
-bool E21::transition(Automate& automate, Symbole symbole) throw(string) {
+bool E21::transition(Automate& automate, Symbole symbole) throw(std::pair<int, string>) {
 	switch (symbole.getType())
 	{
 		case(ID) :
@@ -40,6 +40,7 @@ bool E21::transition(Automate& automate, Symbole symbole) throw(string) {
 			automate.decalageNonTerminal(symbole, new E18);
 			return true;
 	}
-	throw("Erreur de synthaxe (attendu : id, nombre, \"(\" or expression).");
+	std::pair<int, string> p = std::make_pair(1, "Erreur de synthaxe (attendu : \"(\", nombre, id, ou expression).");
+	throw(p);
 	return false;
 }
