@@ -2,12 +2,10 @@
 #define LEXER_H
 #include <string>
 #include <vector>
-#include "Symbole/Symbole.h"
-using std::string;
+#include "Symbole\Symbole.h"
 
-#include "Symbole\Phrase\Declaration\DeclarationConstante.h"
-#include "Symbole\Phrase\Declaration\DeclarationVariable.h"
-#include "Symbole\Phrase\Instruction\Affectation.h"
+using std::string;
+using std::vector;
 
 class Lexer
 {
@@ -16,30 +14,17 @@ class Lexer
         virtual ~Lexer();
         string lecture(string& fileName);
         void parseToSymbols(string& examples);
-        void goNext();
+        bool hasNext();
         Symbole* getSymbole();
-        bool hasNext() {
-            if((int) symboles.size()>next) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-        void addSymbole(string& word)
-		{
-			symboles.push_back(word);
-		}
-		string getSymbole(int next)
-		{
-			return symboles.at(next);
-		}
+        void goNext();
 
     protected:
 
     private:
-        //bool test_regex_search(const std::string& input);
-        std::vector<string> symboles;
+        static vector<string> symboles;
         static int next;
+        void addSymbole(string& word);
+		string getSymbole(int next);
 };
 
 #endif // LEXER_H
