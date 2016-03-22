@@ -19,7 +19,7 @@ using std::getline;
 
 using namespace std;
 
-int Lexer::next = 0;
+int Lexer::next = -1;
 
 Lexer::Lexer()
 {
@@ -145,6 +145,9 @@ void Lexer::parseToSymbols(string& example)
             word += c;
         }
     }
+    word += '$';
+    std::cout << word << std::endl;
+    addSymbole(word);
 }
 
 bool testRegex(const std::string& input, const TypeSymbole& reg)
@@ -175,6 +178,7 @@ bool testRegex(const std::string& input, const TypeSymbole& reg)
 
 Symbole* Lexer::getNext()
 {
+    next++;
     if(getSymbole(next).compare("const")==0)
     {
         std::cout << "CONST" << std::endl;
@@ -311,10 +315,18 @@ Symbole* Lexer::getNext()
         else
         {
             std::cout << "ID" << std::endl;
-            Symbole* toReturn = new Symbole();
+            Variable* toReturn = new Variable();
+            toReturn->setID(getSymbole(next));
             toReturn->setType(ID);
             return toReturn;
         }
+    }
+    else if (getSymbole(next).compare("$") == 0)
+    {
+        std::cout << "DOL" << std::endl;
+        Symbole* toReturn = new Symbole();
+        toReturn->setType(DOL);
+        return toReturn;
     }
     else
     {
@@ -323,6 +335,6 @@ Symbole* Lexer::getNext()
         toReturn->setType(ERR);
         return toReturn;
     }
-    next++;
+    //next++;
     return NULL;
 };
