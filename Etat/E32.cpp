@@ -14,11 +14,12 @@ E32::~E32()
 	//dtor
 }
 
-bool E32::transition(Automate automate, Symbole symbole) {
-	switch (symbole.getId())
+bool E32::transition(Automate& automate, Symbole symbole) {
+	switch (symbole.getType())
 	{
 		case(NB) :
-			automate.decalage(symbole, new E33);
+			automate.decalageTerminal(symbole, new E33);
+			return true;
 			break;
 	}
 	return false;

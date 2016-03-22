@@ -12,14 +12,9 @@ E17::~E17()
 	//dtor
 }
 
-bool E17::transition(Automate automate, Symbole symbole) {
-	switch (symbole.getId())
-	{
-		case(DOL) :
-			automate.reduction(R15, symbole);
-			return true;
-			break;
-	}
+bool E17::transition(Automate& automate, Symbole symbole) {
 
-	return false;
+	automate.reduction(R15);
+	return true;
+
 }

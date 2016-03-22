@@ -16,35 +16,35 @@ E1::~E1()
 	//dtor
 }
 
-bool E1::transition(Automate automate, Symbole symbole) {
-	switch (symbole.getId())
+bool E1::transition(Automate& automate, Symbole symbole) {
+	switch (symbole.getType())
 	{
 		case(VAR) :
-			automate.decalage(symbole, new E2);
+			automate.decalageTerminal(symbole, new E2);
 			return true;
 			break;
 		case(I) :
-			automate.decalage(symbole, new E8);
+			automate.decalageNonTerminal(symbole, new E8);
 			return true;
 			break;
 		case(CONST) :
-			automate.decalage(symbole, new E30);
+			automate.decalageTerminal(symbole, new E30);
 			return true;
 			break;
 		case(ECRIRE) :
-			automate.reduction(R12, symbole);
+			automate.reduction(R12);
 			return true;
 			break;
 		case(LIRE) : 
-			automate.reduction(R12, symbole);
+			automate.reduction(R12);
 			return true;
 			break;
 		case(DOL) :
-			automate.reduction(R12, symbole);
+			automate.reduction(R12);
 			return true;
 			break;
 		case(ID) :
-			automate.reduction(R12, symbole);
+			automate.reduction(R12);
 			return true;
 			break;
 	}

@@ -14,11 +14,11 @@ E6::~E6()
 	//dtor
 }
 
-bool E6::transition(Automate automate, Symbole symbole) {
-	switch (symbole.getId())
+bool E6::transition(Automate& automate, Symbole symbole) {
+	switch (symbole.getType())
 	{
 		case(ID) :
-			automate.decalage(symbole, new E7);
+			automate.decalageTerminal(symbole, new E7);
 			return true;
 			break;
 

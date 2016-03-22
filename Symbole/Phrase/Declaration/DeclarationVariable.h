@@ -14,6 +14,8 @@ public:
 	void afficher();
 	void executer();
 
+    void setVariableADeclarer(Variable variable) { variableADeclarer = variable; };
+
 private:
 	Variable variableADeclarer;
 };

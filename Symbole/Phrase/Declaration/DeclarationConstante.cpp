@@ -1,7 +1,8 @@
 #include <iostream>
 
 #include "DeclarationConstante.h"
-
+#include "../../Programme/StatutIdentifiant.h"
+#include "../../../Automate.h"
 
 DeclarationConstante::DeclarationConstante() : Declaration()
 {
@@ -18,4 +19,11 @@ void DeclarationConstante::afficher()
 
 void DeclarationConstante::executer()
 {
+    StatutIdentifiant * s = new StatutIdentifiant();
+    s->setId(constanteADeclarer.getName());
+    s->setValeur(constanteADeclarer.getValeur());
+    s->setModifiable(false);
+    s->setValeurConnue(true);
+
+    automate->addStatutIdentifiant(*s);
 }

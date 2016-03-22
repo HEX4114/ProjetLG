@@ -1,13 +1,10 @@
 #include <iostream>
-#include <string>
-#include <stdio.h>
-#include <stdlib.h>
 #include <fstream>
 #include <regex>
-#include <ctype.h>
 #include "Lexer.h"
 #include "Symbole/Expression/Nombre.h"
 #include "Symbole/Symbole.h"
+#include "Symbole/Expression/Variable.h"
 
 using std::cout;
 using std::cin;
@@ -16,10 +13,10 @@ using std::endl;
 using std::string;
 using std::getline;
 
-
 using namespace std;
 
 int Lexer::next = 0;
+vector<string> Lexer::symboles;
 
 Lexer::Lexer()
 {
@@ -34,12 +31,12 @@ Lexer::~Lexer()
 string Lexer::lecture(string& fileName)
 {
 
-    std::ifstream t(fileName.c_str());
+    ifstream t(fileName.c_str());
     if (t.is_open())
     {
-        t.seekg(0, std::ios::end);
+        t.seekg(0, ios::end);
         size_t size = t.tellg();
-        std::string lines(size, ' ');
+        string lines(size, ' ');
         t.seekg(0);
         t.read(&lines[0], size);
         return lines;
@@ -51,7 +48,7 @@ string Lexer::lecture(string& fileName)
 
 void Lexer::parseToSymbols(string& example)
 {
-    std::string word;
+    string word;
 
     for(size_t i = 0; i < example.size(); ++i)
     {
@@ -64,7 +61,7 @@ void Lexer::parseToSymbols(string& example)
         case '\n':
             if(!word.empty())
             {
-                std::cout << word << std::endl;
+                cout << word << endl;
                 addSymbole(word);
                 word.clear();
             }
@@ -78,23 +75,23 @@ void Lexer::parseToSymbols(string& example)
         case ')':
             if(!word.empty())
             {
-                std::cout << word << std::endl;
+                cout << word << endl;
                 addSymbole(word);
                 word.clear();
             }
             word += c;
-            std::cout << word << std::endl;
+            cout << word << endl;
             addSymbole(word);
             word.clear();
             break;
         case '-':
             if(!word.empty())
             {
-                std::cout << word << std::endl;
+                cout << word << endl;
                 addSymbole(word);
                 word.clear();
                 word += c;
-                std::cout << word << std::endl;
+                cout << word << endl;
                 addSymbole(word);
                 word.clear();
             }
@@ -106,7 +103,7 @@ void Lexer::parseToSymbols(string& example)
         case ':':
             if(!word.empty())
             {
-                std::cout << word << std::endl;
+                cout << word << endl;
                 addSymbole(word);
                 word.clear();
             }
@@ -118,17 +115,17 @@ void Lexer::parseToSymbols(string& example)
                 if(word.compare(":")==0)
                 {
                     word += c;
-                    std::cout << word << std::endl;
+                    cout << word << endl;
                     addSymbole(word);
                     word.clear();
                 }
                 else
                 {
-                    std::cout << word << std::endl;
+                    cout << word << endl;
                     addSymbole(word);
                     word.clear();
                     word += c;
-                    std::cout << word << std::endl;
+                    cout << word << endl;
                     addSymbole(word);
                     word.clear();
                 }
@@ -136,7 +133,7 @@ void Lexer::parseToSymbols(string& example)
             else
             {
                 word += c;
-                std::cout << word << std::endl;
+                cout << word << endl;
                 addSymbole(word);
                 word.clear();
             }
@@ -145,11 +142,14 @@ void Lexer::parseToSymbols(string& example)
             word += c;
         }
     }
+    word += '$';
+    cout << word << endl;
+    addSymbole(word);
 }
 
-bool testRegex(const std::string& input, const TypeSymbole& reg)
+bool testRegex(const string& input, const TypeSymbole& reg)
 {
-    std::regex rgx;
+    regex rgx;
     if(reg == NB)
     {
         rgx = "[-]*[0-9]+";
@@ -163,9 +163,9 @@ bool testRegex(const std::string& input, const TypeSymbole& reg)
         rgx = "";
     }
 
-    std::smatch match;
+    smatch match;
 
-    if (std::regex_match(input.begin(), input.end(), match, rgx))
+    if (regex_match(input.begin(), input.end(), match, rgx))
     {
         return true;
     }
@@ -173,118 +173,145 @@ bool testRegex(const std::string& input, const TypeSymbole& reg)
         return false;
 }
 
-Symbole* Lexer::getNext()
+bool Lexer::hasNext()
+{
+    if((int) symboles.size()>next)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+void Lexer::addSymbole(string& word)
+{
+    symboles.push_back(word);
+}
+
+string Lexer::getSymbole(int next)
+{
+    return symboles.at(next);
+}
+
+void Lexer::goNext()
+{
+    next++;
+}
+
+Symbole* Lexer::getSymbole()
 {
     if(getSymbole(next).compare("const")==0)
     {
-        std::cout << "CONST" << std::endl;
+        cout << "CONST" << endl;
         Symbole* toReturn = new Symbole();
         toReturn->setType(CONST);
         return toReturn;
     }
     else if(getSymbole(next).compare("var")==0)
     {
-        std::cout << "VAR" << std::endl;
-		Symbole* toReturn = new Symbole();
+        cout << "VAR" << endl;
+        Symbole* toReturn = new Symbole();
         toReturn->setType(VAR);
         return toReturn;
     }
     else if(getSymbole(next).compare("ecrire") == 0)
     {
-        std::cout << "ECRIRE" << std::endl;
+        cout << "ECRIRE" << endl;
         Symbole* toReturn = new Symbole();
         toReturn->setType(ECRIRE);
         return toReturn;
     }
     else if (getSymbole(next).compare("lire") == 0)
     {
-        std::cout << "LIRE" << std::endl;
+        cout << "LIRE" << endl;
         Symbole* toReturn = new Symbole();
         toReturn->setType(LIRE);
         return toReturn;
     }
     else if (getSymbole(next).compare(";") == 0)
     {
-        std::cout << "PVG" << std::endl;
+        cout << "PVG" << endl;
         Symbole* toReturn = new Symbole();
         toReturn->setType(PVG);
         return toReturn;
     }
     else if (getSymbole(next).compare(",") == 0)
     {
-        std::cout << "VG" << std::endl;
+        cout << "VG" << endl;
         Symbole* toReturn = new Symbole();
         toReturn->setType(VG);
         return toReturn;
     }
     else if (getSymbole(next).compare("=") == 0)
     {
-        std::cout << "EG" << std::endl;
+        cout << "EG" << endl;
         Symbole* toReturn = new Symbole();
         toReturn->setType(EG);
         return toReturn;
     }
     else if (getSymbole(next).compare("(") == 0)
     {
-        std::cout << "PARG" << std::endl;
+        cout << "PARG" << endl;
         Symbole* toReturn = new Symbole();
         toReturn->setType(PARG);
         return toReturn;
     }
     else if (getSymbole(next).compare(")") == 0)
     {
-        std::cout << "PARD" << std::endl;
+        cout << "PARD" << endl;
         Symbole* toReturn = new Symbole();
         toReturn->setType(PARD);
         return toReturn;
     }
     else if (getSymbole(next).compare(":=") == 0)
     {
-        std::cout << "AF" << std::endl;
+        cout << "AF" << endl;
         Symbole* toReturn = new Symbole();
         toReturn->setType(AF);
         return toReturn;
     }
     else if (getSymbole(next).compare("+") == 0)
     {
-        std::cout << "PLUS" << std::endl;
+        cout << "PLUS" << endl;
         Symbole* toReturn = new Symbole();
         toReturn->setType(PLUS);
         return toReturn;
     }
     else if (getSymbole(next).compare("-") == 0)
     {
-        std::cout << "MOINS" << std::endl;
+        cout << "MOINS" << endl;
         Symbole* toReturn = new Symbole();
         toReturn->setType(MOINS);
         return toReturn;
     }
     else if (getSymbole(next).compare("*") == 0)
     {
-        std::cout << "MULT" << std::endl;
+        cout << "MULT" << endl;
         Symbole* toReturn = new Symbole();
         toReturn->setType(MULT);
         return toReturn;
     }
     else if (getSymbole(next).compare("/") == 0)
     {
-        std::cout << "DIV" << std::endl;
+        cout << "DIV" << endl;
         Symbole* toReturn = new Symbole();
         toReturn->setType(DIV);
         return toReturn;
     }
     else if (testRegex(getSymbole(next), NB))
     {
-        std::cout << "NB" << std::endl;
-		Nombre* toReturn = new Nombre(std::stoi(getSymbole(next)));
+        cout << "NB" << endl;
+        Nombre* toReturn = new Nombre(stoi(getSymbole(next)));
         toReturn->setType(NB);
         return toReturn;
     }
     else if(testRegex(getSymbole(next), ID))
     {
-        std::cout << "ID" << std::endl;
+        cout << "ID" << endl;
         Variable* toReturn = new Variable();
-		toReturn->setID(getSymbole(next));
+        toReturn->setID(getSymbole(next));
         toReturn->setType(ID);
         return toReturn;
     }
@@ -294,15 +321,15 @@ Symbole* Lexer::getNext()
         {
             if((getSymbole(next-1).compare("=") == 0 || getSymbole(next-1).compare(":=") == 0) && testRegex(getSymbole(next).substr(1), ID))
             {
-                std::cout << "ID" << std::endl;
-				Variable* toReturn = new Variable();
-				toReturn->setID(getSymbole(next));
+                cout << "ID" << endl;
+                Variable* toReturn = new Variable();
+                toReturn->setID(getSymbole(next));
                 toReturn->setType(ID);
                 return toReturn;
             }
             else
             {
-                std::cout << "ERROR " << getSymbole(next) << std::endl;
+                cout << "ERROR " << getSymbole(next) << endl;
                 Symbole* toReturn = new Symbole();
                 toReturn->setType(ERR);
                 return toReturn;
@@ -310,19 +337,27 @@ Symbole* Lexer::getNext()
         }
         else
         {
-            std::cout << "ID" << std::endl;
-            Symbole* toReturn = new Symbole();
+            cout << "ID" << endl;
+            Variable* toReturn = new Variable();
+            toReturn->setID(getSymbole(next));
             toReturn->setType(ID);
             return toReturn;
         }
     }
+    else if (getSymbole(next).compare("$") == 0)
+    {
+        cout << "DOL" << endl;
+        Symbole* toReturn = new Symbole();
+        toReturn->setType(DOL);
+        return toReturn;
+    }
     else
     {
-        std::cout << "ERROR " << getSymbole(next) << std::endl;
+        cout << "ERROR " << getSymbole(next) << endl;
         Symbole* toReturn = new Symbole();
         toReturn->setType(ERR);
         return toReturn;
     }
-    next++;
+    //next++;
     return NULL;
 };

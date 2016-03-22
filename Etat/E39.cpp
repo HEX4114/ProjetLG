@@ -12,12 +12,7 @@ E39::~E39()
 	//dtor
 }
 
-bool E39::transition(Automate automate, Symbole symbole) {
-	switch (symbole.getId())
-	{
-		case(DOL) :
-			automate.reduction(R7, symbole);
-			break;
-	}
-	return false;
+bool E39::transition(Automate& automate, Symbole symbole) {
+	automate.reduction(R7);
+	return true;
 }

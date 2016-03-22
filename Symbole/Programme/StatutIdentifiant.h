@@ -25,6 +25,7 @@ public:
 	void setUtilise(bool u){ utilise = u; };
 
 	bool isValeurConnue(){ return valeurConnue; };
+	void setValeurConnue(bool v){ valeurConnue = v; };
 
 private:
 	std::string id;

@@ -1,6 +1,8 @@
 #include <iostream>
 
 #include "DeclarationVariable.h"
+#include "../../Programme/StatutIdentifiant.h"
+#include "../../../Automate.h"
 
 
 DeclarationVariable::DeclarationVariable() : Declaration()
@@ -18,4 +20,11 @@ void DeclarationVariable::afficher()
 
 void DeclarationVariable::executer()
 {
+    StatutIdentifiant * s = new StatutIdentifiant();
+
+    s->setId(variableADeclarer.getName());
+    s->setValeur(variableADeclarer.getValeur());
+    s->setModifiable(true);
+
+    automate->addStatutIdentifiant(*s);
 }

@@ -10,7 +10,7 @@ class E12 : public Etat
 public:
 	E12();
 	virtual ~E12();
-	virtual bool transition(Automate automate, Symbole symbole);
+	virtual bool transition(Automate& automate, Symbole symbole);
 protected:
 	std::string name;
 private:
