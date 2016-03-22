@@ -16,9 +16,10 @@ class Lexer
         virtual ~Lexer();
         string lecture(string& fileName);
         void parseToSymbols(string& examples);
-        Symbole* getNext();
+        void goNext();
+        Symbole* getSymbole();
         bool hasNext() {
-            if((int) symboles.size()>next+1) {
+            if((int) symboles.size()>next) {
                 return true;
             } else {
                 return false;
