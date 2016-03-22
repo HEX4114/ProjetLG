@@ -145,6 +145,9 @@ void Lexer::parseToSymbols(string& example)
             word += c;
         }
     }
+    word += '$';
+    std::cout << word << std::endl;
+    addSymbole(word);
 }
 
 bool testRegex(const std::string& input, const TypeSymbole& reg)
@@ -173,7 +176,11 @@ bool testRegex(const std::string& input, const TypeSymbole& reg)
         return false;
 }
 
-Symbole* Lexer::getNext()
+void Lexer::goNext() {
+    next++;
+}
+
+Symbole* Lexer::getSymbole()
 {
     if(getSymbole(next).compare("const")==0)
     {
@@ -311,10 +318,18 @@ Symbole* Lexer::getNext()
         else
         {
             std::cout << "ID" << std::endl;
-            Symbole* toReturn = new Symbole();
+            Variable* toReturn = new Variable();
+            toReturn->setID(getSymbole(next));
             toReturn->setType(ID);
             return toReturn;
         }
+    }
+    else if (getSymbole(next).compare("$") == 0)
+    {
+        std::cout << "DOL" << std::endl;
+        Symbole* toReturn = new Symbole();
+        toReturn->setType(DOL);
+        return toReturn;
     }
     else
     {
@@ -323,6 +338,6 @@ Symbole* Lexer::getNext()
         toReturn->setType(ERR);
         return toReturn;
     }
-    next++;
+    //next++;
     return NULL;
 };
