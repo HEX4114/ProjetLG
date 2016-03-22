@@ -4,6 +4,8 @@
 
 #include "../Symbole.h"
 
+class Automate;
+
 class Phrase :
 	public Symbole
 {
@@ -14,6 +16,12 @@ public:
 	virtual void executer() = 0;
 
 	virtual ~Phrase();
+
+	void setAutomate(Automate* automate){ this->automate = automate; };
+
+protected:
+	Automate* automate;
+
 };
 
 #endif // PHRASE_H
