@@ -5,9 +5,9 @@
 #include "Symbole/Symbole.h"
 using std::string;
 
-#include "Symbole\Phrase\Declaration\DeclarationConstante.h"
-#include "Symbole\Phrase\Declaration\DeclarationVariable.h"
-#include "Symbole\Phrase\Instruction\Affectation.h"
+#include "Symbole/Phrase/Declaration/DeclarationConstante.h"
+#include "Symbole/Phrase/Declaration/DeclarationVariable.h"
+#include "Symbole/Phrase/Instruction/Affectation.h"
 
 class Lexer
 {

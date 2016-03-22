@@ -6,7 +6,7 @@
 #include <regex>
 #include <ctype.h>
 #include "Lexer.h"
-#include "Symbole\Expression\Nombre.h"
+#include "Symbole/Expression/Nombre.h"
 #include "Symbole/Symbole.h"
 
 using std::cout;

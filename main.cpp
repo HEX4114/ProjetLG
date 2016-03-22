@@ -16,14 +16,14 @@ using std::getline;
 using namespace std;
 
 #include "Lexer.h"
-#include "Symbole\Expression\ExpressionBinaire\ExpressionAdditionner.h"
-#include "Symbole\Expression\ExpressionBinaire\ExpressionSoustraire.h"
-#include "Symbole\Expression\ExpressionBinaire\ExpressionDiviser.h"
-#include "Symbole\Expression\ExpressionBinaire\ExpressionMultiplier.h"
-#include "Symbole\Symbole.h"
-#include "Symbole\Expression\Nombre.h"
-#include "Symbole\Phrase\Instruction\Ecrire.h"
-#include "Symbole\Phrase\Instruction\Lire.h"
+#include "Symbole/Expression/ExpressionBinaire/ExpressionAdditionner.h"
+#include "Symbole/Expression/ExpressionBinaire/ExpressionSoustraire.h"
+#include "Symbole/Expression/ExpressionBinaire/ExpressionDiviser.h"
+#include "Symbole/Expression/ExpressionBinaire/ExpressionMultiplier.h"
+#include "Symbole/Symbole.h"
+#include "Symbole/Expression/Nombre.h"
+#include "Symbole/Phrase/Instruction/Ecrire.h"
+#include "Symbole/Phrase/Instruction/Lire.h"
 #include "Automate.h"
 
 int main(int argc, char* argv[])
