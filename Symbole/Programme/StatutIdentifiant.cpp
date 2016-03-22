@@ -4,6 +4,9 @@
 
 StatutIdentifiant::StatutIdentifiant()
 {
+    valeur = 0;
+    utilise = false;
+    valeurConnue = false;
 }
 
 StatutIdentifiant::StatutIdentifiant(std::string ID, bool Modifiable, bool Utilise)

@@ -25,6 +25,8 @@ using namespace std;
 #include "Symbole\Phrase\Instruction\Ecrire.h"
 #include "Symbole\Phrase\Instruction\Lire.h"
 #include "Automate.h"
+#include "Symbole/Phrase/Declaration/DeclarationConstante.h"
+#include "Symbole/Phrase/Declaration/DeclarationVariable.h"
 
 int main(int argc, char* argv[])
 {
@@ -125,7 +127,7 @@ int main(int argc, char* argv[])
     /**-------------------**/
 
 	/**Test du tableau statique**/
-	StatutIdentifiant v1("v1", true, false);
+	/*StatutIdentifiant v1("v1", true, false);
 	StatutIdentifiant v2("v2", true, false);
 	StatutIdentifiant v3("v3", true, false);
 	StatutIdentifiant c1("c1", false, false);
@@ -145,9 +147,24 @@ int main(int argc, char* argv[])
 	automate.addStatutIdentifiant(c3);
 	automate.afficherTableauStatut();
 	automate.majStatutIdentifiant(c1);
-	automate.afficherTableauStatut();
+	automate.afficherTableauStatut();*/
     /**-------------------**/
 
+    /**Test de executer() de Declaration**/
+    /*Automate * aut = new Automate();
+    Constante * c = new Constante(10,"c");
+    Variable * v = new Variable();
+    v->setID("v");
+    DeclarationConstante * d1 = new DeclarationConstante();
+    d1->setConstanteADeclarer(*c);
+    d1->setAutomate(aut);
+    DeclarationVariable * d2 = new DeclarationVariable();
+    d2->setVariableADeclarer(*v);
+    d2->setAutomate(aut);
+    d1->executer();
+    d2->executer();
+    aut->afficherTableauStatut();*/
+    /**-------------------**/
 
     system("pause");
 
