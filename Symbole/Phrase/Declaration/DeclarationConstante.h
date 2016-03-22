@@ -2,7 +2,7 @@
 #define DECLARATION_CONSTANTE_H
 
 #include "Declaration.h"
-#include "../../Expression/Constante.h"
+#include "../../Expression/Variable.h"
 
 class DeclarationConstante :
 	public Declaration
@@ -11,13 +11,13 @@ public:
 	DeclarationConstante();
 	virtual ~DeclarationConstante();
 
-	void setConstanteADeclarer(Constante constante) { constanteADeclarer = constante; };
+	void setConstanteADeclarer(Variable constante) { constanteADeclarer = constante; };
 
 	void afficher();
 	void executer();
 
 private:
-	Constante constanteADeclarer;
+	Variable constanteADeclarer;
 };
 
 #endif // DECLARATION_CONSTANTE_H
