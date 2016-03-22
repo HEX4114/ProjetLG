@@ -12,12 +12,8 @@ E38::~E38()
 	//dtor
 }
 
-bool E38::transition(Automate automate, Symbole symbole) {
-	switch (symbole.getId())
-	{
-		case(DOL) :
-			automate.reduction(R4, symbole);
-			break;
-	}
-	return false;
+bool E38::transition(Automate& automate, Symbole symbole) {
+
+	automate.reduction(R4);
+	return true;
 }

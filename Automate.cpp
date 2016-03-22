@@ -1,5 +1,20 @@
 #include "Automate.h"
+#include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
+#include <fstream>
+#include "Lexer.h"
+#include "Etat/E0.h"
+#include "Symbole\Symbole.h"
+using std::cout;
+using std::cin;
+using std::endl;
 
+using std::string;
+using std::getline;
+
+
+using namespace std;
 
 Automate::Automate()
 {
@@ -23,6 +38,28 @@ Automate::Automate()
 	reglesReduction.push_back(3);
 	reglesReduction.push_back(1);
 	reglesReduction.push_back(1);
+
+	partieGaucheRegle.push_back(Symbole(D));
+	partieGaucheRegle.push_back(Symbole(V));
+	partieGaucheRegle.push_back(Symbole(V));
+	partieGaucheRegle.push_back(Symbole(C));
+	partieGaucheRegle.push_back(Symbole(C));
+	partieGaucheRegle.push_back(Symbole(D));
+	partieGaucheRegle.push_back(Symbole(D));
+	partieGaucheRegle.push_back(Symbole(D));
+	partieGaucheRegle.push_back(Symbole(I));
+	partieGaucheRegle.push_back(Symbole(I));
+	partieGaucheRegle.push_back(Symbole(I));
+	partieGaucheRegle.push_back(Symbole(I));
+	partieGaucheRegle.push_back(Symbole(E));
+	partieGaucheRegle.push_back(Symbole(E));
+	partieGaucheRegle.push_back(Symbole(T));
+	partieGaucheRegle.push_back(Symbole(T));
+	partieGaucheRegle.push_back(Symbole(F));
+	partieGaucheRegle.push_back(Symbole(F));
+	partieGaucheRegle.push_back(Symbole(F));
+
+	lex = new Lexer();
 }
 
 Automate::~Automate()
@@ -36,9 +73,25 @@ Automate::~Automate()
 	*/
 }
 
-void Automate::lecture()
+void Automate::lecture(std::string fileName)
 {
+	//1. Initialiser Lexer
+	string names = lex->lecture(fileName);
+	lex->parseToSymbols(names);
 
+	//2.Empiler E0
+	pileEtats.push(new E0);
+	
+	//3. boucle transitions
+	lectureFinie = false;
+	Symbole *symbole = lex->getSymbole(); //premier symbole
+	while(!lectureFinie) {
+		pileEtats.top()->transition(*this, *symbole);
+		cout << typeid(*pileEtats.top()).name() << endl;
+		symbole = lex->getSymbole();
+	}
+
+	//4. appeler les options
 }
 
 void Automate::empilerEtat(Etat* etat)
@@ -51,19 +104,35 @@ void Automate::empilerSymbole(Symbole symbole)
 	pileSymboles.push(symbole);
 }
 
-void Automate::reduction(Regle regle, Symbole symbole)
+void Automate::reduction(Regle regle)
 {
 	int nbPop = reglesReduction.at(regle);
 
 	for (int i=0; i<nbPop; i++) pileEtats.pop();
 	
-	pileEtats.top()->transition(*this, symbole);
+	Symbole partG = partieGaucheRegle[regle];
+	cout << "reduction de " << regle << endl;
+	pileEtats.top()->transition(*this, partG);
 }
 
-void Automate::decalage(Symbole symbole, Etat* etat)
+void Automate::decalageTerminal(Symbole symbole, Etat* etat)
 {
+	//Empiler symbole seulement si c'est un symbole terminal
 	empilerSymbole(symbole);
+	lex->goNext();
+	cout << "decalage de " << symbole.getType() << endl;
 	empilerEtat(etat);
+}
+
+void Automate::decalageNonTerminal(Symbole symbole, Etat* etat)
+{
+	empilerEtat(etat);
+}
+
+void Automate::accepter()
+{
+	lectureFinie = true;
+	cout << "c'est fini !!" << endl;
 }
 
 void Automate::afficherTableauStatut()

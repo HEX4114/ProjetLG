@@ -18,26 +18,32 @@ E21::~E21()
 	//dtor
 }
 
-bool E21::transition(Automate automate, Symbole symbole) {
-	switch (symbole.getId())
+bool E21::transition(Automate& automate, Symbole symbole) {
+	switch (symbole.getType())
 	{
 		case(ID) :
-			automate.decalage(symbole, new E19);
+			automate.decalageTerminal(symbole, new E19);
+			return true;
 			break;
 		case(NB) :
-			automate.decalage(symbole, new E20);
+			automate.decalageTerminal(symbole, new E20);
+			return true;
 			break;
 		case(PARG) :
-			automate.decalage(symbole, new E21);
+			automate.decalageTerminal(symbole, new E21);
+			return true;
 			break;
 		case(E) :
-			automate.decalage(symbole, new E23);
+			automate.decalageNonTerminal(symbole, new E23);
+			return true;
 			break;
 		case(T) :
-			automate.decalage(symbole, new E22);
+			automate.decalageNonTerminal(symbole, new E22);
+			return true;
 			break;
 		case(F) :
-			automate.decalage(symbole, new E18);
+			automate.decalageNonTerminal(symbole, new E18);
+			return true;
 			break;
 		
 	}

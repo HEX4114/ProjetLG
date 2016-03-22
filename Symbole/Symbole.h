@@ -9,6 +9,7 @@ class Symbole
 {
     public:
 		Symbole() {}
+		Symbole(enum TypeSymbole t) { type = t; }
         virtual ~Symbole();
 		int getId() { return Id; }
 

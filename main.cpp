@@ -29,8 +29,17 @@ using namespace std;
 #include "Symbole/Phrase/Declaration/DeclarationVariable.h"
 
 int main(int argc, char* argv[])
+
 {
-	if (argc < 2)
+	/*Test Automate*/
+	//1.Recup fichier a l'aide de l'outil en ligne de commande
+	string fileName = "src/test.txt";
+	//2. lancement de l'automate
+	Automate* automate = new Automate();
+	automate->lecture(fileName);
+	
+	
+	/*if (argc < 2)
 	{
 		cerr << "Usage: ProjetGL sourceFile [options]" << endl;
 		system("pause");
@@ -56,12 +65,14 @@ int main(int argc, char* argv[])
 	cout << "Options : ";
 	for (auto it = options.begin(); it != options.end(); ++it)
 		cout << " " << *it;
-	cout << endl;
+	cout << endl;*/
 
     /*cout << "Hello world!" << endl;
 
+
 	char* sourceFile = argv[1];
 	string fileName = string(sourceFile);
+
 
 
     Lexer* lex = new Lexer();
@@ -83,6 +94,7 @@ int main(int argc, char* argv[])
     cout<< Exp1->evaluer()<<endl<< Exp2->evaluer() <<endl<< Exp3->evaluer() <<endl<< Exp4->evaluer() <<endl;*/
     /**-------------------**/
 
+	
     /**Tests d'Ecrire afficher() et executer()**/
     /*Ecrire * ExpAAff1 = new Ecrire();
     Ecrire * ExpAAff2 = new Ecrire();
@@ -128,6 +140,10 @@ int main(int argc, char* argv[])
 
 	/**Test du tableau statique**/
 	/*StatutIdentifiant v1("v1", true, false);
+<<<<<<< HEAD
+=======
+
+>>>>>>> feature/automate
 	StatutIdentifiant v2("v2", true, false);
 	StatutIdentifiant v3("v3", true, false);
 	StatutIdentifiant c1("c1", false, false);
@@ -165,6 +181,7 @@ int main(int argc, char* argv[])
     d2->executer();
     aut->afficherTableauStatut();*/
     /**-------------------**/
+
 
     system("pause");
 

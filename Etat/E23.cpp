@@ -15,14 +15,20 @@ E23::~E23()
 	//dtor
 }
 
-bool E23::transition(Automate automate, Symbole symbole) {
-	switch (symbole.getId())
+bool E23::transition(Automate& automate, Symbole symbole) {
+	switch (symbole.getType())
 	{
-		case(OPA) :
-			automate.decalage(symbole, new E14);
+		case(PLUS) :
+			automate.decalageTerminal(symbole, new E14);
+			return true;
+			break;
+		case(MOINS) :
+			automate.decalageTerminal(symbole, new E14);
+			return true;
 			break;
 		case(PARD) :
-			automate.decalage(symbole, new E24);
+			automate.decalageTerminal(symbole, new E24);
+			return true;
 			break;
 		
 	}
