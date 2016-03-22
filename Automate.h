@@ -26,6 +26,8 @@ class Automate
 		void reduction(Regle regle);
 		void decalageTerminal(Symbole symbole, Etat* etat);
 		void decalageNonTerminal(Symbole symbole, Etat* etat);
+		void decalageAnticipe(Symbole symbole, Etat* etat);
+		
 		void accepter();
 
 

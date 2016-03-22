@@ -13,7 +13,6 @@ E38::~E38()
 }
 
 bool E38::transition(Automate& automate, Symbole symbole) {
-
 	automate.reduction(R4);
 	return true;
 }

@@ -14,21 +14,19 @@ E33::~E33()
 	//dtor
 }
 
-bool E33::transition(Automate& automate, Symbole symbole) {
+bool E33::transition(Automate& automate, Symbole symbole) throw(std::pair<int, string>) {
 	switch (symbole.getType())
 	{
 		case(VG) :
 			automate.reduction(R5);
 			return true;
-			break;
 		case(PVG) :
 			automate.reduction(R5);
 			return true;
-			break;
 		case(C) :
 			automate.decalageNonTerminal(symbole, new E34);
 			return true;
-			break;		
 	}
+	automate.reduction(R5);
 	return false;
 }

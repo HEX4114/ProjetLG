@@ -13,8 +13,6 @@ E17::~E17()
 }
 
 bool E17::transition(Automate& automate, Symbole symbole) {
-
 	automate.reduction(R15);
 	return true;
-
 }

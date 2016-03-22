@@ -15,7 +15,7 @@ E23::~E23()
 	//dtor
 }
 
-bool E23::transition(Automate& automate, Symbole symbole) {
+bool E23::transition(Automate& automate, Symbole symbole) throw(std::pair<int, string>) {
 	switch (symbole.getType())
 	{
 		case(PLUS) :
@@ -30,7 +30,9 @@ bool E23::transition(Automate& automate, Symbole symbole) {
 			automate.decalageTerminal(symbole, new E24);
 			return true;
 			break;
-		
 	}
+
+	std::pair<int, string> p = std::make_pair(1, "Erreur de synthaxe (attendu : \"+\", \"-\" ou \")\").");
+	throw(p);
 	return false;
 }

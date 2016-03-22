@@ -16,38 +16,32 @@ E1::~E1()
 	//dtor
 }
 
-bool E1::transition(Automate& automate, Symbole symbole) {
+bool E1::transition(Automate& automate, Symbole symbole) throw(std::pair<int, string>) {
 	switch (symbole.getType())
 	{
 		case(VAR) :
 			automate.decalageTerminal(symbole, new E2);
 			return true;
-			break;
 		case(I) :
 			automate.decalageNonTerminal(symbole, new E8);
 			return true;
-			break;
 		case(CONST) :
 			automate.decalageTerminal(symbole, new E30);
 			return true;
-			break;
 		case(ECRIRE) :
 			automate.reduction(R12);
 			return true;
-			break;
 		case(LIRE) : 
 			automate.reduction(R12);
 			return true;
-			break;
 		case(DOL) :
 			automate.reduction(R12);
 			return true;
-			break;
 		case(ID) :
 			automate.reduction(R12);
 			return true;
-			break;
 	}
-
+	std::pair<int, string> p = std::make_pair(1, "Erreur de synthaxe (attendu : \"var\", \"const\", \"ecrire\", \"lire\", ou id).");
+	throw(p);
 	return false;
 }

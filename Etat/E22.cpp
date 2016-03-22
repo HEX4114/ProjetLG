@@ -14,33 +14,29 @@ E22::~E22()
 	//dtor
 }
 
-bool E22::transition(Automate& automate, Symbole symbole) {
+bool E22::transition(Automate& automate, Symbole symbole) throw(std::pair<int, string>) {
 	switch (symbole.getType())
 	{
 		case(MULT) :
 			automate.decalageTerminal(symbole, new E16);
 			return true;
-			break;
 		case(DIV) :
 			automate.decalageTerminal(symbole, new E16);
 			return true;
-			break;
 		case(PVG) :
 			automate.reduction(R14);
 			return true;
-			break;
 		case(PLUS) :
 			automate.reduction(R14);
 			return true;
-			break;
 		case(MOINS) :
 			automate.reduction(R14);
 			return true;
-			break;
 		case(PARD) :
 			automate.reduction(R14);
 			return true;
-			break;
 	}
+	std::pair<int, string> p = std::make_pair(1, "Erreur de synthaxe (attendu : un opérateur, \")\", ou \";\").");
+	throw(p);
 	return false;
 }
