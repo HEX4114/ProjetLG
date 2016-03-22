@@ -29,7 +29,7 @@ class Automate
 		//le contraire sinon
 		bool addStatutIdentifiant(StatutIdentifiant s);
 
-		//Mise à jour du tableau des statuts des variables. Renvoie false si le Id statut identifiant en paramètre n'est pas présent dans la table.
+		//Mise à jour du tableau des statuts des variables. Renvoie false si l'Id du statut identifiant en paramètre n'est pas présent dans la table.
 		//Vrai sinon
 		bool majStatutIdentifiant(StatutIdentifiant s);
 
