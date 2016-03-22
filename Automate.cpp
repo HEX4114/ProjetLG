@@ -99,6 +99,7 @@ void Automate::lecture(std::string fileName)
 		cout << typeid(*pileEtats.top()).name() << endl;
 		symbole = lex->getSymbole();
 	}
+	concatenerSymboles();
 
 	//4. appeler les options
 }
@@ -191,44 +192,39 @@ StatutIdentifiant* Automate::getStatutIdParIdentifiant(std::string identifiant)
 	return NULL;
 }
 
-void Automate::analyseStatique()
+void Automate::concatenerSymboles()
 {
 	std::list<Symbole> listeSymboles = viderPileSymbole();
-	std::list<Symbole> toReturn;
-	std::vector<Symbole> vectorTemp;
-	for (std::list<Symbole>::iterator it = listeSymboles.begin(); it != listeSymboles.end(); ++it)
+	std::list<std::list<Symbole>> listePhrase;
+	std::list<Symbole> listeTemp;
+	for (std::list<Symbole>::iterator it = listeSymboles.begin(); it != listeSymboles.end(); it++)
 	{
-		vectorTemp.push_back(*it);
+		listeTemp.push_back(*it);
 		if (it->getType() == PVG)
 		{
-			for (std::vector<Symbole>::iterator it2 = vectorTemp.begin(); it2 != vectorTemp.end(); ++it2)
-			{
-				if (it2->getType() == CONST)
-				{
-					DeclarationConstante declaration;
-					Variable var;
-					var.setID(getIDValue(*(it2 + 1)));
-					var.setValeur(getNumberValue(*(it2 + 3)));
-					declaration.setAutomate(this);
-					declaration.setConstanteADeclarer(var);
-					toReturn.push_back(declaration);
-				}
-				else if (it2->getType() == VAR)
-				{
-					DeclarationVariable declaration;
-					Variable var;
-					var.setID(getIDValue(*(it2 + 1)));
-					declaration.setAutomate(this);
-					declaration.setVariableADeclarer(var);
-					toReturn.push_back(declaration);
-				}
-			}
+			listePhrase.push_back(listeTemp);
+			listeTemp.clear();
 		}
 		else if (it->getType() == VG)
 		{
+			listeTemp.pop_back();
+			listeTemp.push_back(Symbole(PVG));
 
+			++it;
+			if (listeTemp.begin()->getType() == CONST)
+			{
+				listeSymboles.insert(it, Symbole(CONST));
+			}
+			else if (listeTemp.begin()->getType() == VAR)
+			{
+				listeSymboles.insert(it, Symbole(VAR));
+			}
+			--it;
+			--it;
+
+			listePhrase.push_back(listeTemp);
+			listeTemp.clear();
 		}
-
 	}
 
 }

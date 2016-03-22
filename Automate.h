@@ -42,7 +42,7 @@ class Automate
 		//Recupération d'un pointeur sur Statut identifiant. Renvoie le pointeur si l'identifiant est présent dans le tableau, NULL sinon
 		StatutIdentifiant* getStatutIdParIdentifiant(std::string identifiant);
 
-		void analyseStatique();
+		void concatenerSymboles();
 
 
     protected:
@@ -64,6 +64,7 @@ class Automate
 
 		std::string getIDValue(Symbole symbole);
 		double getNumberValue(Symbole symbole);
+		Expression* parseExpression();
 };
 
 #endif // AUTOMATE_H
