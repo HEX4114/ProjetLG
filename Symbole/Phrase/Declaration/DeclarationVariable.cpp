@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include "DeclarationVariable.h"
+#include "StatutIdentifiant.h"
 
 
 DeclarationVariable::DeclarationVariable() : Declaration()
@@ -18,4 +19,10 @@ void DeclarationVariable::afficher()
 
 void DeclarationVariable::executer()
 {
+    StatutIdentifiant * s = new StatutIdentifiant();
+
+    s->setId() = variableADeclarer.identifiant;
+    s->setValeur() = variableADeclarer.valeur;
+
+    //tableauStatut.addStatutIdentifiant(StatutIdentifiant s);
 }
