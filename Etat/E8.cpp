@@ -20,15 +20,15 @@ bool E8::transition(Automate& automate, Symbole symbole) {
 	switch (symbole.getType())
 	{
 		case(LIRE) :
-			automate.decalage(symbole, new E9);
+			automate.decalageTerminal(symbole, new E9);
 			return true;
 			break;
 		case(ECRIRE) :
-			automate.decalage(symbole, new E12);
+			automate.decalageTerminal(symbole, new E12);
 			return true;
 			break;
 		case(ID) :
-			automate.decalage(symbole, new E26);
+			automate.decalageTerminal(symbole, new E26);
 			return true;
 			break;
 		case(DOL) :

@@ -20,15 +20,15 @@ bool E1::transition(Automate& automate, Symbole symbole) {
 	switch (symbole.getType())
 	{
 		case(VAR) :
-			automate.decalage(symbole, new E2);
+			automate.decalageTerminal(symbole, new E2);
 			return true;
 			break;
 		case(I) :
-			automate.decalage(symbole, new E8);
+			automate.decalageNonTerminal(symbole, new E8);
 			return true;
 			break;
 		case(CONST) :
-			automate.decalage(symbole, new E30);
+			automate.decalageTerminal(symbole, new E30);
 			return true;
 			break;
 		case(ECRIRE) :

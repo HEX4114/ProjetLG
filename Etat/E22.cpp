@@ -18,11 +18,11 @@ bool E22::transition(Automate& automate, Symbole symbole) {
 	switch (symbole.getType())
 	{
 		case(MULT) :
-			automate.decalage(symbole, new E16);
+			automate.decalageTerminal(symbole, new E16);
 			return true;
 			break;
 		case(DIV) :
-			automate.decalage(symbole, new E16);
+			automate.decalageTerminal(symbole, new E16);
 			return true;
 			break;
 		case(PVG) :

@@ -20,7 +20,8 @@ class Automate
 		void empilerSymbole(Symbole symbole);
 		void empilerEtat(Etat* etat);
 		void reduction(Regle regle);
-		void decalage(Symbole symbole, Etat* etat);
+		void decalageTerminal(Symbole symbole, Etat* etat);
+		void decalageNonTerminal(Symbole symbole, Etat* etat);
 		void accepter();
 		bool estUnTerminal(Symbole symbole);
     protected:

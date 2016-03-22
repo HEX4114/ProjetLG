@@ -20,11 +20,11 @@ bool E4::transition(Automate& automate, Symbole symbole) {
 	switch (symbole.getType())
 	{
 		case(VG) :
-			automate.decalage(symbole, new E6);
+			automate.decalageTerminal(symbole, new E6);
 			return true;
 			break;
 		case(PVG) :
-			automate.decalage(symbole, new E5);
+			automate.decalageTerminal(symbole, new E5);
 			return true;
 			break;
 	}

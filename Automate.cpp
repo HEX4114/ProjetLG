@@ -123,14 +123,16 @@ void Automate::reduction(Regle regle)
 	pileEtats.top()->transition(*this, partG);
 }
 
-void Automate::decalage(Symbole symbole, Etat* etat)
+void Automate::decalageTerminal(Symbole symbole, Etat* etat)
 {
 	//Empiler symbole seulement si c'est un symbole terminal
-	if (estUnTerminal(symbole))
-	{
-		empilerSymbole(symbole);
-		cout << "decalage de " << symbole.getType() << endl;
-	}
+	empilerSymbole(symbole);
+	cout << "decalage de " << symbole.getType() << endl;
+	empilerEtat(etat);
+}
+
+void Automate::decalageNonTerminal(Symbole symbole, Etat* etat)
+{
 	empilerEtat(etat);
 }
 

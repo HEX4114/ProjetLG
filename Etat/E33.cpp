@@ -26,7 +26,7 @@ bool E33::transition(Automate& automate, Symbole symbole) {
 			return true;
 			break;
 		case(C) :
-			automate.decalage(symbole, new E34);
+			automate.decalageNonTerminal(symbole, new E34);
 			return true;
 			break;		
 	}
