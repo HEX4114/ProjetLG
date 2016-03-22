@@ -4,6 +4,7 @@
 #include <stack>
 #include <vector>
 #include <string>
+#include <list>
 #include "Etat/Etat.h"
 #include "Lexer.h"
 #include "Symbole\Programme\StatutIdentifiant.h"
@@ -41,6 +42,8 @@ class Automate
 		//Recupération d'un pointeur sur Statut identifiant. Renvoie le pointeur si l'identifiant est présent dans le tableau, NULL sinon
 		StatutIdentifiant* getStatutIdParIdentifiant(std::string identifiant);
 
+		void analyseStatique();
+
 
     protected:
     private:
@@ -55,6 +58,12 @@ class Automate
 		Lexer* lex;
 		//int reglesReduction[19] = { 2, 3, 0, 5, 0, 5, 7, 0, 4, 4, 5, 0, 3, 1, 3, 1, 3, 1, 1 }; // contient le nombre d'états à dépiler pour chaque règle appliquée en réduction.
 		std::vector<StatutIdentifiant> tableauStatut;
+
+		std::list<Symbole> viderPileSymbole();
+		void remplirPileSymbole(std::list<Symbole> liste);
+
+		std::string getIDValue(Symbole symbole);
+		double getNumberValue(Symbole symbole);
 };
 
 #endif // AUTOMATE_H

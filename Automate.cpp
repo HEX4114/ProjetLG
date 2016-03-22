@@ -5,7 +5,13 @@
 #include <fstream>
 #include "Lexer.h"
 #include "Etat/E0.h"
-#include "Symbole\Symbole.h"
+#include "Symbole/Symbole.h"
+#include "Symbole/Phrase/Declaration/DeclarationConstante.h"
+#include "Symbole/Phrase/Declaration/DeclarationVariable.h"
+#include "Symbole/Phrase/Instruction/Affectation.h"
+#include "Symbole/Phrase/Instruction/Lire.h"
+#include "Symbole/Phrase/Instruction/Ecrire.h"
+#include "Symbole/Expression/Nombre.h"
 using std::cout;
 using std::cin;
 using std::endl;
@@ -180,4 +186,76 @@ StatutIdentifiant* Automate::getStatutIdParIdentifiant(std::string identifiant)
 	}
 
 	return NULL;
+}
+
+void Automate::analyseStatique()
+{
+	std::list<Symbole> listeSymboles = viderPileSymbole();
+	std::list<Symbole> toReturn;
+	std::vector<Symbole> vectorTemp;
+	for (std::list<Symbole>::iterator it = listeSymboles.begin(); it != listeSymboles.end(); ++it)
+	{
+		vectorTemp.push_back(*it);
+		if (it->getType() == PVG)
+		{
+			for (std::vector<Symbole>::iterator it2 = vectorTemp.begin(); it2 != vectorTemp.end(); ++it2)
+			{
+				if (it2->getType() == CONST)
+				{
+					DeclarationConstante declaration;
+					Variable var;
+					var.setID(getIDValue(*(it2 + 1)));
+					var.setValeur(getNumberValue(*(it2 + 3)));
+					declaration.setAutomate(this);
+					declaration.setConstanteADeclarer(var);
+					toReturn.push_back(declaration);
+				}
+				else if (it2->getType() == VAR)
+				{
+					DeclarationVariable declaration;
+					Variable var;
+					var.setID(getIDValue(*(it2 + 1)));
+					declaration.setAutomate(this);
+					declaration.setVariableADeclarer(var);
+					toReturn.push_back(declaration);
+				}
+			}
+		}
+		else if (it->getType() == VG)
+		{
+
+		}
+
+	}
+
+}
+
+std::list<Symbole> Automate::viderPileSymbole()
+{
+	std::list<Symbole> listeSymbole;
+	while (!pileSymboles.empty())
+	{
+		listeSymbole.push_front(pileSymboles.top());
+		pileSymboles.pop();
+	}
+}
+
+void Automate::remplirPileSymbole(std::list<Symbole> liste)
+{
+	for (std::list<Symbole>::iterator it = liste.begin(); it != liste.end(); ++it)
+	{
+		pileSymboles.push(*it);
+	}
+}
+
+std::string getIDValue(Symbole symbole)
+{
+	Variable* var = dynamic_cast<Variable*>( &symbole);
+	return var->getName();
+}
+
+double getNumberValue(Symbole symbole)
+{
+	Nombre* nb = dynamic_cast<Nombre*>(&symbole);
+	return nb->getValeur();
 }

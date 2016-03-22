@@ -33,7 +33,7 @@ int main(int argc, char* argv[])
 {
 	/*Test Automate*/
 	//1.Recup fichier a l'aide de l'outil en ligne de commande
-	string fileName = "src/test.txt";
+	string fileName = "../sources/test.txt";
 	//2. lancement de l'automate
 	Automate* automate = new Automate();
 	automate->lecture(fileName);
