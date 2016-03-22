@@ -1,5 +1,7 @@
 #include<iostream>
 #include "Lire.h"
+#include "../../Programme/StatutIdentifiant.h"
+#include "../../../Automate.h"
 
 
 Lire::Lire() : Instruction()
@@ -22,7 +24,11 @@ void Lire::afficher()
 
 void Lire::executer()
 {
-    double n;
-    std::cout<<":";std::cin >>n;
-    variableAChanger->setValeur(n);
+	double n;
+	std::cout << ":"; std::cin >> n;
+	variableAChanger->setValeur(n);
+	StatutIdentifiant statut;
+	statut = (*automate->getStatutIdParIdentifiant(variableAChanger->getName()));
+	statut.setValeur(n);
+	automate->majStatutIdentifiant(statut);
 }
