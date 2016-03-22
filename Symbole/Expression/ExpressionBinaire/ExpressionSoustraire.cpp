@@ -14,3 +14,9 @@ double ExpressionSoustraire::evaluer()
 {
 	return e1->evaluer() - e2->evaluer();;
 }
+
+std::string ExpressionSoustraire::getName()
+{
+    std::string valeurAAfficher = e1->getName() + "-" + e2->getName();
+    return valeurAAfficher;
+}

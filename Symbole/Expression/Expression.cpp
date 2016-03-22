@@ -9,8 +9,3 @@ Expression::~Expression()
 {
     //dtor
 }
-
-double Expression::evaluer()
-{
-    return 0;
-}

@@ -1,6 +1,7 @@
 #ifndef EXPRESSIONDIVISER_H
 #define EXPRESSIONDIVISER_H
 
+#include <string>
 #include "ExpressionBinaire.h"
 
 class ExpressionDiviser : public ExpressionBinaire
@@ -10,6 +11,7 @@ class ExpressionDiviser : public ExpressionBinaire
         virtual ~ExpressionDiviser();
 
 		double evaluer();
+		std::string getName();
     protected:
     private:
 };

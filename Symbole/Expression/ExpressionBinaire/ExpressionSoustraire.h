@@ -1,6 +1,7 @@
 #ifndef EXPRESSIONSOUSTRAIRE_H
 #define EXPRESSIONSOUSTRAIRE_H
 
+#include <string>
 #include "ExpressionBinaire.h"
 
 class ExpressionSoustraire : public ExpressionBinaire
@@ -10,6 +11,7 @@ class ExpressionSoustraire : public ExpressionBinaire
         virtual ~ExpressionSoustraire();
 
 		double evaluer();
+		std::string getName();
     protected:
     private:
 };

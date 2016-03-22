@@ -5,9 +5,7 @@
 
 DeclarationConstante::DeclarationConstante() : Declaration()
 {
-
 }
-
 
 DeclarationConstante::~DeclarationConstante()
 {
@@ -15,10 +13,9 @@ DeclarationConstante::~DeclarationConstante()
 
 void DeclarationConstante::afficher()
 {
-	std::cout << "CONST " << this->constanteADeclarer.getIdentifiant() << " = " << this->constanteADeclarer.getValeur() << ";" << std::endl;
+	std::cout << "CONST " << this->constanteADeclarer.getName() << " = " << this->constanteADeclarer.getValeur() << ";" << std::endl;
 }
 
 void DeclarationConstante::executer()
 {
-
 }

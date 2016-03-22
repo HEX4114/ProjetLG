@@ -11,16 +11,17 @@ class Affectation :
 {
 public:
 	Affectation();
+	Affectation(Variable* v, Expression* e);
 	~Affectation();
 
-	void setPartieGauche(Variable partieG) { partieGauche = partieG; };
+	void setPartieGauche(Variable* partieG) { partieGauche = partieG; };
 	void setPartieDroite(Expression* partieD) { partieDroite = partieD; };
 
 	void afficher();
 	void executer();
 
 private:
-	Variable partieGauche;
+	Variable* partieGauche;
 	Expression* partieDroite;
 
 };

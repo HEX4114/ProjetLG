@@ -87,7 +87,7 @@ void Automate::lecture(std::string fileName)
 	lectureFinie = false;
 	int taillePileSymbP = pileSymboles.size();
 	int taillePileSymbC = pileSymboles.size();
-	Symbole symbole = lex->getNext(); //premier symbole
+	Symbole *symbole = lex->getNext(); //premier symbole
 	while(!lectureFinie) {
 		taillePileSymbC = pileSymboles.size();
 		if ((taillePileSymbC > taillePileSymbP) && lex->hasNext())
@@ -95,7 +95,7 @@ void Automate::lecture(std::string fileName)
 			symbole = lex->getNext();
 		}
 		taillePileSymbP = pileSymboles.size();
-		pileEtats.top()->transition(*this, symbole);
+		pileEtats.top()->transition(*this, *symbole);
 		cout << typeid(*pileEtats.top()).name() << endl;
 	}
 
@@ -142,14 +142,49 @@ void Automate::accepter()
 	cout << "c'est fini !!" << endl;
 }
 
-bool Automate::estUnTerminal(Symbole symbole)
+void Automate::afficherTableauStatut()
 {
-	for (int i = 0; i < partieGaucheRegle.size(); i++) 
+	for (std::vector<StatutIdentifiant>::iterator it = tableauStatut.begin(); it != tableauStatut.end(); ++it)
 	{
-		if (partieGaucheRegle[i].getType() == symbole.getType()) 
+		it->afficher();
+	}
+}
+
+bool Automate::addStatutIdentifiant(StatutIdentifiant s)
+{
+	for (std::vector<StatutIdentifiant>::iterator it = tableauStatut.begin(); it != tableauStatut.end(); ++it)
+	{
+		if (it->getId().compare(s.getId()) == 0)
 		{
 			return false;
 		}
 	}
+	tableauStatut.push_back(s);
 	return true;
+}
+
+bool Automate::majStatutIdentifiant(StatutIdentifiant s)
+{
+	for (std::vector<StatutIdentifiant>::iterator it = tableauStatut.begin(); it != tableauStatut.end(); ++it)
+	{
+		if (it->getId().compare(s.getId()) == 0)
+		{
+			(*it) = s;
+			return true;
+		}
+	}
+	return false;
+}
+
+StatutIdentifiant* Automate::getStatutIdParIdentifiant(std::string identifiant)
+{
+	for (std::vector<StatutIdentifiant>::iterator it = tableauStatut.begin(); it != tableauStatut.end(); ++it)
+	{
+		if (it->getId().compare(identifiant) == 0)
+		{
+			return &(*it);
+		}
+	}
+
+	return NULL;
 }

@@ -1,6 +1,7 @@
 #ifndef EXPRESSION_H
 #define EXPRESSION_H
 
+#include <string>
 #include "../Symbole.h"
 
 class Expression : public Symbole
@@ -8,7 +9,8 @@ class Expression : public Symbole
     public:
         Expression();
         virtual ~Expression();
-        double virtual evaluer()=0;
+        virtual double evaluer()=0;
+        virtual std::string getName()=0;
     protected:
     private:
 };

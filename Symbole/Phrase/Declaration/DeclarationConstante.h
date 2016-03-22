@@ -18,7 +18,6 @@ public:
 
 private:
 	Constante constanteADeclarer;
-
 };
 
 #endif // DECLARATION_CONSTANTE_H

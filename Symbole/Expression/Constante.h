@@ -1,7 +1,6 @@
 #ifndef CONSTANTE_H
 #define CONSTANTE_H
 
-
 #include <string>
 #include "Expression.h"
 class Constante :
@@ -14,8 +13,8 @@ public:
 
 
 	double virtual evaluer();
+	std::string virtual getName(){ return identifiant; };
 	double getValeur(){ return valeur; };
-	std::string getIdentifiant() { return identifiant; };
 private:
 	std::string identifiant;
 	double valeur;

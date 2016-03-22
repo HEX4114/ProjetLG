@@ -12,9 +12,10 @@ class Variable : public Expression
 		Variable(double v, std::string id);
         virtual ~Variable();
         double virtual evaluer();
-
+        std::string virtual getName(){ return identifiant; };
+		void setID(std::string id){ identifiant = id; };
 		double getValeur(){ return valeur; };
-		std::string getIdentifiant() { return identifiant; };
+		void setValeur(double v){ valeur = v; };
 
     protected:
     private:

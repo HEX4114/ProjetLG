@@ -1,5 +1,5 @@
+#include <sstream>
 #include "Constante.h"
-
 
 Constante::Constante() : Expression()
 {
@@ -11,12 +11,12 @@ Constante::Constante(double v, std::string id) : Expression()
 	identifiant = id;
 }
 
-double Constante::evaluer()
+Constante::~Constante()
 {
-	return this->valeur;
 }
 
 
-Constante::~Constante()
+double Constante::evaluer()
 {
+	return this->valeur;
 }

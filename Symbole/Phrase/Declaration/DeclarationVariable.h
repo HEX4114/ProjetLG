@@ -16,7 +16,6 @@ public:
 
 private:
 	Variable variableADeclarer;
-
 };
 
 #endif // DECLARATION_VARIABLE_H

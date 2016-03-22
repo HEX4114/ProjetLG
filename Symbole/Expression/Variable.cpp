@@ -1,3 +1,4 @@
+#include <sstream>
 #include "Variable.h"
 
 Variable::Variable() : Expression()
