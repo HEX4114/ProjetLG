@@ -359,6 +359,11 @@ Expression* Automate::parseExpression(std::list<Symbole*>::iterator it)
 		TypeSymbole type = (*it)->getType();
 		if (type == ID || type == NB)
 		{
+			if (type == ID)
+			{
+				Variable* var = dynamic_cast<Variable*>(*it);
+				var->setAutomate(this);
+			}
 			sortie.push(*it);
 		}
 		else if (type == PARG)
@@ -454,20 +459,6 @@ bool Automate::estPrioritaire(TypeSymbole t1, TypeSymbole t2)
 ExpressionBinaire* Automate::creerExpressionBinaire(TypeSymbole t1, Expression* e1, Expression* e2)
 {
 	ExpressionBinaire* expression;
-	Expression* pG = e1;
-	Expression* pD = e2;
-	if (e1->getType() == ID)
-	{
-		Variable* v1 = dynamic_cast<Variable*>(e1);
-		v1->setAutomate(this);
-		pG = v1;
-	}
-	if (e2->getType() == ID)
-	{
-		Variable* v2 = dynamic_cast<Variable*>(e1);
-		v2->setAutomate(this);
-		pD = v2;
-	}
 
 	if (t1 == PLUS)
 	{
