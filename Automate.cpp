@@ -114,7 +114,7 @@ void Automate::lecture(std::string fileName)
 	}
 	Programme prog = concatenerSymboles();
 	prog.afficherProgramme();
-	prog.analyseStatique();
+	//prog.analyseStatique();
 	prog.executerProgramme();
 	//system("pause");
 	//4. appeler les options
@@ -324,7 +324,7 @@ Programme Automate::creerObjetsPhrase(std::list<std::list<Symbole*>> listeSymbol
 		}
 		else if ((*itSymbole)->getType() == LIRE)
 		{
-			Lire* instruction;
+			Lire* instruction = new Lire;
 			Variable *var = new Variable; ++itSymbole;
 			var->setAutomate(this);
 			var->setID(getIDValue(*itSymbole));
