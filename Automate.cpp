@@ -315,7 +315,8 @@ Programme Automate::creerObjetsPhrase(std::list<std::list<Symbole*>> listeSymbol
 		{
 			Ecrire* ecrire = new Ecrire; ++itSymbole;
 			Expression* expression = parseExpression(itSymbole);
-
+			ecrire->setVariableAAfficher(expression);
+			listePhrase.push_back(ecrire);
 		}
 		else if ((*itSymbole)->getType() == LIRE)
 		{
@@ -327,9 +328,14 @@ Programme Automate::creerObjetsPhrase(std::list<std::list<Symbole*>> listeSymbol
 			listePhrase.push_back(instruction);
 
 		}
-		else if ((*itSymbole)->getType() == AF)
+		else if ((*itSymbole)->getType() == ID)
 		{
-
+			Affectation* affecter = new Affectation;
+			Variable * variable = new Variable; variable->setID(getIDValue(*itSymbole));
+			affecter->setPartieGauche(variable); ++itSymbole; ++itSymbole;
+			Expression* expression = parseExpression(itSymbole);
+			affecter->setPartieDroite(expression);
+			listePhrase.push_back(affecter);
 		}
 	}
 	aRetourner.setListePhrase(listePhrase);
@@ -372,9 +378,17 @@ Expression* Automate::parseExpression(std::list<Symbole*>::iterator it)
 				Symbole * symbolePrioritaire = operateurs.top();
 				operateurs.pop();
 				Expression *partieDroite = dynamic_cast<Expression*>(sortie.top()); sortie.pop();
-				Expression *partieGauche = dynamic_cast<Expression*>(sortie.top()); sortie.pop();
+				Expression *partieGauche;
+				if (!sortie.empty())
+				{
+					partieGauche = dynamic_cast<Expression*>(sortie.top()); sortie.pop();
+				}
+				else
+				{
+					partieGauche = new Nombre(0);
+				}
 				operateurs.push(*it);
-				sortie.push(symbolePrioritaire);
+				sortie.push(creerExpressionBinaire(symbolePrioritaire->getType(),partieGauche, partieDroite));
 
 			}
 		}
@@ -393,14 +407,22 @@ Expression* Automate::parseExpression(std::list<Symbole*>::iterator it)
 
 	while (!operateurs.empty())
 	{
-		if (operateurs.top()->getType() != PARG || operateurs.top()->getType() != PARG)
+		
+		Symbole * operateur = operateurs.top();
+		Expression *partieDroite = dynamic_cast<Expression*>(sortie.top()); sortie.pop();
+		Expression *partieGauche;
+		if (!sortie.empty())
 		{
-			Symbole * operateur = operateurs.top();
-			sortie.push(operateur);
+			partieGauche = dynamic_cast<Expression*>(sortie.top()); sortie.pop();
 		}
+		else
+		{
+			partieGauche = new Nombre(0);
+		}
+		sortie.push(creerExpressionBinaire(operateur->getType(), partieGauche, partieDroite));
 		operateurs.pop();
 	}
-
+	return dynamic_cast<Expression*>(sortie.top());
 
 }
 
@@ -423,7 +445,24 @@ bool Automate::estPrioritaire(TypeSymbole t1, TypeSymbole t2)
 	}
 }
 
-Expression* Automate::creerExpressionBinaire(TypeSymbole t1, Expression* e1, Expression* e2)
+ExpressionBinaire* Automate::creerExpressionBinaire(TypeSymbole t1, Expression* e1, Expression* e2)
 {
-
+	ExpressionBinaire* expression;
+	if (t1 == PLUS)
+	{
+		expression = new ExpressionAdditionner(e1, e2);
+	}
+	else if(t1 == MOINS)
+	{
+		expression = new ExpressionSoustraire(e1, e2);
+	}
+	else if (t1 == MULT)
+	{
+		expression = new ExpressionMultiplier(e1, e2);
+	}
+	else if (t1 == DIV)
+	{
+		expression = new ExpressionDiviser(e1, e2);
+	}
+	return expression;
 }
