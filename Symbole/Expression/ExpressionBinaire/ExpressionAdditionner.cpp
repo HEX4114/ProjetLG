@@ -20,3 +20,13 @@ std::string ExpressionAdditionner::getName()
     std::string valeurAAfficher = e1->getName() + "+" + e2->getName();
     return valeurAAfficher;
 }
+
+bool ExpressionAdditionner::expressionDeclare()
+{
+	return ExpressionBinaire::expressionDeclare();
+}
+
+bool ExpressionAdditionner::expressionConnue()
+{
+	return ExpressionBinaire::expressionConnue();
+}

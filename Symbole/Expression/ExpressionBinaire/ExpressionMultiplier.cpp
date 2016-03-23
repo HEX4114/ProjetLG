@@ -20,3 +20,13 @@ std::string ExpressionMultiplier::getName()
     std::string valeurAAfficher = e1->getName() + "*" + e2->getName();
     return valeurAAfficher;
 }
+
+bool ExpressionMultiplier::expressionDeclare()
+{
+	return ExpressionBinaire::expressionDeclare();
+}
+
+bool ExpressionMultiplier::expressionConnue()
+{
+	return ExpressionBinaire::expressionConnue();
+}

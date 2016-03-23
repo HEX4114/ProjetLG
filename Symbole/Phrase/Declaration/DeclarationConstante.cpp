@@ -19,11 +19,15 @@ void DeclarationConstante::afficher()
 
 void DeclarationConstante::executer()
 {
-    StatutIdentifiant * s = new StatutIdentifiant();
-    s->setId(constanteADeclarer.getName());
-    s->setValeur(constanteADeclarer.getValeur());
-    s->setModifiable(false);
-    s->setValeurConnue(true);
+   
+}
 
-    automate->addStatutIdentifiant(*s);
+void DeclarationConstante::analyseStatique()
+{
+	StatutIdentifiant * s = new StatutIdentifiant();
+	s->setId(constanteADeclarer.getName());
+	s->setValeur(constanteADeclarer.getValeur());
+	s->setModifiable(false);
+	s->setValeurConnue(true);
+	automate->addStatutIdentifiant(s);
 }

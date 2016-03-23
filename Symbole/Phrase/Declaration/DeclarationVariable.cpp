@@ -20,11 +20,16 @@ void DeclarationVariable::afficher()
 
 void DeclarationVariable::executer()
 {
-    StatutIdentifiant * s = new StatutIdentifiant();
+   
+}
 
-    s->setId(variableADeclarer.getName());
-    s->setValeurConnue(false);
-    s->setModifiable(true);
+void DeclarationVariable::analyseStatique()
+{
+	StatutIdentifiant * s = new StatutIdentifiant();
 
-    automate->addStatutIdentifiant(*s);
+	s->setId(variableADeclarer.getName());
+	s->setValeurConnue(false);
+	s->setModifiable(true);
+
+	automate->addStatutIdentifiant(s);
 }

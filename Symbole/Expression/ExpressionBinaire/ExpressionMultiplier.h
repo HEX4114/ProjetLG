@@ -11,6 +11,8 @@ class ExpressionMultiplier : public ExpressionBinaire
         virtual ~ExpressionMultiplier();
 
 		double evaluer();
+		bool expressionDeclare();
+		bool expressionConnue();
 		std::string getName();
     protected:
     private:

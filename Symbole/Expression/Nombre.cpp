@@ -29,3 +29,13 @@ std::string Nombre::getName()
     std::string valeurAAfficher = t.str();
 	return valeurAAfficher;
 }
+
+bool Nombre::expressionDeclare()
+{
+	return true;
+}
+
+bool Nombre::expressionConnue()
+{
+	return true;
+}

@@ -11,6 +11,8 @@ class ExpressionSoustraire : public ExpressionBinaire
         virtual ~ExpressionSoustraire();
 
 		double evaluer();
+		bool expressionDeclare();
+		bool expressionConnue();
 		std::string getName();
     protected:
     private:

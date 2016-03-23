@@ -13,6 +13,7 @@ public:
 
 	void afficher();
 	void executer();
+	void analyseStatique();
 
     void setVariableADeclarer(Variable variable) { variableADeclarer = variable; };
 

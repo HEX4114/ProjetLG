@@ -27,14 +27,25 @@ void Affectation::afficher()
 
 void Affectation::executer()
 {
-    double valeurAAffectee = partieDroite->evaluer();
-    partieGauche->setValeur(valeurAAffectee);
+    
+}
 
-	//MAJ statut identifiant
-	StatutIdentifiant statut;
-	statut = (*automate->getStatutIdParIdentifiant(partieGauche->getName()));
-	statut.setValeur(partieGauche->getValeur());
-	statut.setUtilise(true);
-	statut.setModifiable(true);
+void Affectation::analyseStatique()
+{
+	StatutIdentifiant* statut;
+	if (automate->getStatutIdParIdentifiant(partieGauche->getName()) == NULL)
+	{
+		std::cerr << "Erreur, variable : " << partieGauche->getName() << " n'est pas declare";
+		return;
+	}
+	else if (!automate->getStatutIdParIdentifiant(partieGauche->getName())->isModifiable())
+	{
+		std::cerr << "Petit malin, tu as essaye de mondifier une constante : " << partieGauche->getName();
+		return;
+	}
+	statut = automate->getStatutIdParIdentifiant(partieGauche->getName());
+	statut->setValeur(partieGauche->getValeur());
+	statut->setUtilise(true);
+	statut->setModifiable(true);
 	automate->majStatutIdentifiant(statut);
 }

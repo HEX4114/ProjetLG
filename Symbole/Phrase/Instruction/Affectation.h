@@ -19,6 +19,7 @@ public:
 
 	void afficher();
 	void executer();
+	void analyseStatique();
 
 private:
 	Variable* partieGauche;

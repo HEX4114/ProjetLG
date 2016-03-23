@@ -16,6 +16,7 @@ public:
 
 	void afficher();
 	void executer();
+	void analyseStatique();
 
 private:
 	Expression* expressionAAfficher;

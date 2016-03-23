@@ -11,6 +11,7 @@ public:
 
 	virtual void afficher() = 0;
 	virtual void executer() = 0;
+	virtual void analyseStatique() = 0;
 	virtual ~Instruction();
 };
 

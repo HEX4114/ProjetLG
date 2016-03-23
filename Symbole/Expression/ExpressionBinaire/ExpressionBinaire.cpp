@@ -10,3 +10,13 @@ ExpressionBinaire::~ExpressionBinaire()
 {
     //dtor
 }
+
+bool ExpressionBinaire::expressionDeclare()
+{
+	return e1->expressionDeclare() && e2->expressionDeclare();
+}
+
+bool ExpressionBinaire::expressionConnue()
+{
+	return e1->expressionConnue() && e2->expressionConnue();
+}

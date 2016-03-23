@@ -20,3 +20,8 @@ void Ecrire::executer()
 {
     std::cout << this->expressionAAfficher->evaluer() << std::endl;
 }
+
+void Ecrire::analyseStatique()
+{
+
+}

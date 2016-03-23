@@ -20,3 +20,14 @@ std::string ExpressionSoustraire::getName()
     std::string valeurAAfficher = e1->getName() + "-" + e2->getName();
     return valeurAAfficher;
 }
+
+bool ExpressionSoustraire::expressionDeclare()
+{
+	return ExpressionBinaire::expressionDeclare();
+}
+
+bool ExpressionSoustraire::expressionConnue()
+{
+	return ExpressionBinaire::expressionConnue();
+}
+

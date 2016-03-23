@@ -9,6 +9,8 @@ class ExpressionBinaire : public Expression
         ExpressionBinaire(Expression * exp1, Expression * exp2);
         virtual ~ExpressionBinaire();
         virtual double evaluer()=0;
+		virtual bool expressionDeclare();
+		virtual bool expressionConnue();
         virtual std::string getName()=0;
     protected:
 		Expression* e1;

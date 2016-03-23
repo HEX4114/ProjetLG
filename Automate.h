@@ -38,11 +38,11 @@ class Automate
 
 		//Ajout d'un Statut Identifiant dans le tableau. Renvoie true et ajout l'élément au tableau si son ID n'est pas déjà présente. Fait
 		//le contraire sinon
-		bool addStatutIdentifiant(StatutIdentifiant s);
+		bool addStatutIdentifiant(StatutIdentifiant* s);
 
 		//Mise à jour du tableau des statuts des variables. Renvoie false si l'Id du statut identifiant en paramètre n'est pas présent dans la table.
 		//Vrai sinon
-		bool majStatutIdentifiant(StatutIdentifiant s);
+		bool majStatutIdentifiant(StatutIdentifiant* s);
 
 		//Recupération d'un pointeur sur Statut identifiant. Renvoie le pointeur si l'identifiant est présent dans le tableau, NULL sinon
 		StatutIdentifiant* getStatutIdParIdentifiant(std::string identifiant);
@@ -62,7 +62,7 @@ class Automate
 		bool lectureFinie;
 		Lexer* lex;
 		//int reglesReduction[19] = { 2, 3, 0, 5, 0, 5, 7, 0, 4, 4, 5, 0, 3, 1, 3, 1, 3, 1, 1 }; // contient le nombre d'états à dépiler pour chaque règle appliquée en réduction.
-		std::vector<StatutIdentifiant> tableauStatut;
+		std::vector<StatutIdentifiant*> tableauStatut;
 
 		std::list<Symbole*> viderPileSymbole();
 		void remplirPileSymbole(std::list<Symbole*> liste);

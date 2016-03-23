@@ -13,6 +13,8 @@ class Nombre : public Expression
         virtual ~Nombre();
 
         double virtual evaluer();
+		bool expressionDeclare();
+		bool expressionConnue();
         std::string virtual getName();
 
 		double getValeur() { return valeur; };

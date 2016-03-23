@@ -20,3 +20,13 @@ std::string ExpressionDiviser::getName()
     std::string valeurAAfficher = e1->getName() + "/" + e2->getName();
     return valeurAAfficher;
 }
+
+bool ExpressionDiviser::expressionDeclare()
+{
+	return ExpressionBinaire::expressionDeclare();
+}
+
+bool ExpressionDiviser::expressionConnue()
+{
+	return ExpressionBinaire::expressionConnue();
+}

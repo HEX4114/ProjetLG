@@ -169,17 +169,17 @@ void Automate::accepter()
 
 void Automate::afficherTableauStatut()
 {
-	for (std::vector<StatutIdentifiant>::iterator it = tableauStatut.begin(); it != tableauStatut.end(); ++it)
+	for (std::vector<StatutIdentifiant*>::iterator it = tableauStatut.begin(); it != tableauStatut.end(); ++it)
 	{
-		it->afficher();
+		(*it)->afficher();
 	}
 }
 
-bool Automate::addStatutIdentifiant(StatutIdentifiant s)
+bool Automate::addStatutIdentifiant(StatutIdentifiant* s)
 {
-	for (std::vector<StatutIdentifiant>::iterator it = tableauStatut.begin(); it != tableauStatut.end(); ++it)
+	for (std::vector<StatutIdentifiant*>::iterator it = tableauStatut.begin(); it != tableauStatut.end(); ++it)
 	{
-		if (it->getId().compare(s.getId()) == 0)
+		if ((*it)->getId().compare(s->getId()) == 0)
 		{
 			return false;
 		}
@@ -188,11 +188,11 @@ bool Automate::addStatutIdentifiant(StatutIdentifiant s)
 	return true;
 }
 
-bool Automate::majStatutIdentifiant(StatutIdentifiant s)
+bool Automate::majStatutIdentifiant(StatutIdentifiant* s)
 {
-	for (std::vector<StatutIdentifiant>::iterator it = tableauStatut.begin(); it != tableauStatut.end(); ++it)
+	for (std::vector<StatutIdentifiant*>::iterator it = tableauStatut.begin(); it != tableauStatut.end(); ++it)
 	{
-		if (it->getId().compare(s.getId()) == 0)
+		if ((*it)->getId().compare(s->getId()) == 0)
 		{
 			(*it) = s;
 			return true;
@@ -203,11 +203,11 @@ bool Automate::majStatutIdentifiant(StatutIdentifiant s)
 
 StatutIdentifiant* Automate::getStatutIdParIdentifiant(std::string identifiant)
 {
-	for (std::vector<StatutIdentifiant>::iterator it = tableauStatut.begin(); it != tableauStatut.end(); ++it)
+	for (std::vector<StatutIdentifiant*>::iterator it = tableauStatut.begin(); it != tableauStatut.end(); ++it)
 	{
-		if (it->getId().compare(identifiant) == 0)
+		if ((*it)->getId().compare(identifiant) == 0)
 		{
-			return &(*it);
+			return *it;
 		}
 	}
 
@@ -242,8 +242,7 @@ Programme Automate::concatenerSymboles()
 			{
 				listeSymboles.insert(it,new Symbole(VAR));
 			}
-			--it;
-			--it;
+			--it; --it;
 
 			listePhrase.push_back(listeTemp);
 			listeTemp.clear();
@@ -297,6 +296,7 @@ Programme Automate::creerObjetsPhrase(std::list<std::list<Symbole*>> listeSymbol
 			DeclarationVariable* declaration = new DeclarationVariable;
 			Variable var; ++itSymbole;
 			var.setID(getIDValue(*itSymbole));
+			var.setAutomate(this);
 			declaration->setAutomate(this);
 			declaration->setVariableADeclarer(var);
 			listePhrase.push_back(declaration);
@@ -306,6 +306,7 @@ Programme Automate::creerObjetsPhrase(std::list<std::list<Symbole*>> listeSymbol
 			DeclarationConstante* declaration = new DeclarationConstante;
 			Variable var; ++itSymbole;
 			var.setID(getIDValue(*itSymbole)); ++itSymbole; ++itSymbole;
+			var.setAutomate(this);
 			var.setValeur(getNumberValue(*itSymbole));
 			declaration->setAutomate(this);
 			declaration->setConstanteADeclarer(var);
@@ -323,6 +324,7 @@ Programme Automate::creerObjetsPhrase(std::list<std::list<Symbole*>> listeSymbol
 		{
 			Lire* instruction;
 			Variable *var = new Variable; ++itSymbole;
+			var->setAutomate(this);
 			var->setID(getIDValue(*itSymbole));
 			instruction->setAutomate(this);
 			instruction->setVariableAChanger(var);
@@ -333,6 +335,7 @@ Programme Automate::creerObjetsPhrase(std::list<std::list<Symbole*>> listeSymbol
 		{
 			Affectation* affecter = new Affectation;
 			Variable * variable = new Variable; variable->setID(getIDValue(*itSymbole));
+			variable->setAutomate(this);
 			affecter->setPartieGauche(variable); ++itSymbole; ++itSymbole;
 			affecter->setAutomate(this);
 			Expression* expression = parseExpression(itSymbole);

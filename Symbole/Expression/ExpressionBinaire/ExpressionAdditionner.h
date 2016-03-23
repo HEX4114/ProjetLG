@@ -11,6 +11,8 @@ class ExpressionAdditionner : public ExpressionBinaire
         virtual ~ExpressionAdditionner();
 
 		double evaluer();
+		bool expressionDeclare();
+		bool expressionConnue();
 		std::string getName();
     protected:
     private:

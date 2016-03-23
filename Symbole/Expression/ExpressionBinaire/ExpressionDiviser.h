@@ -11,6 +11,8 @@ class ExpressionDiviser : public ExpressionBinaire
         virtual ~ExpressionDiviser();
 
 		double evaluer();
+		bool expressionDeclare();
+		bool expressionConnue();
 		std::string getName();
     protected:
     private:
