@@ -10,6 +10,8 @@
 #include "Symbole/Programme/StatutIdentifiant.h"
 #include "Symbole/Programme/Programme.h"
 
+class ExpressionBinaire;
+
 enum Regle {R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R15, R16, R17, R18, R19};
 
 class Automate
@@ -68,7 +70,9 @@ class Automate
 		std::string getIDValue(Symbole* symbole);
 		double getNumberValue(Symbole* symbole);
 		Programme creerObjetsPhrase(std::list<std::list<Symbole*>> listeSymbole);
-		Expression* parseExpression();
+		Expression* parseExpression(std::list<Symbole*>::iterator it);
+		bool estPrioritaire(TypeSymbole t1, TypeSymbole t2);
+		ExpressionBinaire* creerExpressionBinaire(TypeSymbole t1, Expression* e1, Expression* e2);
 };
 
 #endif // AUTOMATE_H

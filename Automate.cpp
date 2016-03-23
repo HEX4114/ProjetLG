@@ -14,6 +14,10 @@
 #include "Symbole/Phrase/Instruction/Lire.h"
 #include "Symbole/Phrase/Instruction/Ecrire.h"
 #include "Symbole/Expression/Nombre.h"
+#include "Symbole/Expression/ExpressionBinaire/ExpressionAdditionner.h"
+#include "Symbole/Expression/ExpressionBinaire/ExpressionDiviser.h"
+#include "Symbole/Expression/ExpressionBinaire/ExpressionMultiplier.h"
+#include "Symbole/Expression/ExpressionBinaire/ExpressionSoustraire.h"
 
 using std::cout;
 using std::cin;
@@ -309,6 +313,8 @@ Programme Automate::creerObjetsPhrase(std::list<std::list<Symbole*>> listeSymbol
 		}
 		else if ((*itSymbole)->getType() == ECRIRE)
 		{
+			Ecrire* ecrire = new Ecrire; ++itSymbole;
+			Expression* expression = parseExpression(itSymbole);
 
 		}
 		else if ((*itSymbole)->getType() == LIRE)
@@ -328,4 +334,96 @@ Programme Automate::creerObjetsPhrase(std::list<std::list<Symbole*>> listeSymbol
 	}
 	aRetourner.setListePhrase(listePhrase);
 	return aRetourner;
+}
+
+//Implémentation de la notation polonaise inversée
+
+Expression* Automate::parseExpression(std::list<Symbole*>::iterator it)
+{
+	std::stack<Symbole*> operateurs;
+	std::stack<Symbole*> sortie;
+	while ((*it)->getType() != PVG)
+	{
+		TypeSymbole type = (*it)->getType();
+		if (type == ID || type == NB)
+		{
+			sortie.push(*it);
+		}
+		else if (type == PARG)
+		{
+			operateurs.push(*it);
+		}
+		else if (type == PLUS || type == MOINS || type == MULT || type == DIV)
+		{
+			if (operateurs.empty())
+			{
+				operateurs.push(*it);
+			}
+			else if(operateurs.top()->getType() == PARG)
+			{
+				operateurs.push(*it);
+			}
+			else if (estPrioritaire(type, operateurs.top()->getType()))
+			{
+				operateurs.push(*it);
+			}
+			else
+			{
+				Symbole * symbolePrioritaire = operateurs.top();
+				operateurs.pop();
+				Expression *partieDroite = dynamic_cast<Expression*>(sortie.top()); sortie.pop();
+				Expression *partieGauche = dynamic_cast<Expression*>(sortie.top()); sortie.pop();
+				operateurs.push(*it);
+				sortie.push(symbolePrioritaire);
+
+			}
+		}
+		else if (type == PARD)
+		{
+			while (operateurs.top()->getType() != PARG)
+			{
+				Symbole * operateur = operateurs.top();
+				operateurs.pop();
+				sortie.push(operateur);
+			}
+			operateurs.pop();
+		}
+		it++;
+	}
+
+	while (!operateurs.empty())
+	{
+		if (operateurs.top()->getType() != PARG || operateurs.top()->getType() != PARG)
+		{
+			Symbole * operateur = operateurs.top();
+			sortie.push(operateur);
+		}
+		operateurs.pop();
+	}
+
+
+}
+
+bool Automate::estPrioritaire(TypeSymbole t1, TypeSymbole t2)
+{
+	if (t1 == MULT || t1 == DIV)
+	{
+		if (t2 == PLUS || t2 == MOINS)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	else
+	{
+		return false;
+	}
+}
+
+Expression* Automate::creerExpressionBinaire(TypeSymbole t1, Expression* e1, Expression* e2)
+{
+
 }
