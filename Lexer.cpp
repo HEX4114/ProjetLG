@@ -6,13 +6,6 @@
 #include "Symbole/Symbole.h"
 #include "Symbole/Expression/Variable.h"
 
-using std::cout;
-using std::cin;
-using std::endl;
-
-using std::string;
-using std::getline;
-
 using namespace std;
 
 int Lexer::next = 0;
@@ -85,19 +78,22 @@ void Lexer::parseToSymbols(string& example)
             word.clear();
             break;
         case '-':
-            if(!word.empty())
+            if(word.empty() && getSymbole(symboles.size()-1).compare("=")==0)
             {
-                cout << word << endl;
-                addSymbole(word);
-                word.clear();
                 word += c;
-                cout << word << endl;
-                addSymbole(word);
-                word.clear();
             }
             else
             {
+                if(word.empty()) {
+                    word += '0';
+                }
+                cout << word << endl;
+                addSymbole(word);
+                word.clear();
                 word += c;
+                cout << word << endl;
+                addSymbole(word);
+                word.clear();
             }
             break;
         case ':':
@@ -314,35 +310,6 @@ Symbole* Lexer::getSymbole()
         toReturn->setID(getSymbole(next));
         toReturn->setType(ID);
         return toReturn;
-    }
-    else if(getSymbole(next).at(0) == '-')
-    {
-        if(next-1>0)
-        {
-            if((getSymbole(next-1).compare("=") == 0 || getSymbole(next-1).compare(":=") == 0) && testRegex(getSymbole(next).substr(1), ID))
-            {
-                cout << "ID" << endl;
-                Variable* toReturn = new Variable();
-                toReturn->setID(getSymbole(next));
-                toReturn->setType(ID);
-                return toReturn;
-            }
-            else
-            {
-                cout << "ERROR " << getSymbole(next) << endl;
-                Symbole* toReturn = new Symbole();
-                toReturn->setType(ERR);
-                return toReturn;
-            }
-        }
-        else
-        {
-            cout << "ID" << endl;
-            Variable* toReturn = new Variable();
-            toReturn->setID(getSymbole(next));
-            toReturn->setType(ID);
-            return toReturn;
-        }
     }
     else if (getSymbole(next).compare("$") == 0)
     {
