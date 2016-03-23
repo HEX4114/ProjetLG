@@ -65,8 +65,8 @@ class Automate
 		std::list<Symbole*> viderPileSymbole();
 		void remplirPileSymbole(std::list<Symbole*> liste);
 
-		std::string getIDValue(Symbole symbole);
-		double getNumberValue(Symbole symbole);
+		std::string getIDValue(Symbole* symbole);
+		double getNumberValue(Symbole* symbole);
 		Programme creerObjetsPhrase(std::list<std::list<Symbole*>> listeSymbole);
 		Expression* parseExpression();
 };

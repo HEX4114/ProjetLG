@@ -108,7 +108,7 @@ void Automate::lecture(std::string fileName)
 		cout << typeid(*pileEtats.top()).name() << endl;
 		symbole = lex->getSymbole();
 	}
-	//concatenerSymboles();
+	concatenerSymboles();
 
 	//4. appeler les options
 }
@@ -268,15 +268,15 @@ void Automate::remplirPileSymbole(std::list<Symbole*> liste)
 	}
 }
 
-std::string Automate::getIDValue(Symbole symbole)
+std::string Automate::getIDValue(Symbole* symbole)
 {
-	Variable* var = static_cast<Variable*>( &symbole);
+	Variable* var = dynamic_cast<Variable*>( symbole);
 	return var->getName();
 }
 
-double Automate::getNumberValue(Symbole symbole)
+double Automate::getNumberValue(Symbole* symbole)
 {
-	Nombre* nb = dynamic_cast<Nombre*>(&symbole);
+	Nombre* nb = dynamic_cast<Nombre*>(symbole);
 	return 1;
 }
 
@@ -292,7 +292,7 @@ Programme Automate::creerObjetsPhrase(std::list<std::list<Symbole*>> listeSymbol
 		{
 			DeclarationVariable* declaration = new DeclarationVariable;
 			Variable var; ++itSymbole;
-			var.setID(getIDValue(**itSymbole));
+			var.setID(getIDValue(*itSymbole));
 			declaration->setAutomate(this);
 			declaration->setVariableADeclarer(var);
 			listePhrase.push_back(declaration);
@@ -301,8 +301,8 @@ Programme Automate::creerObjetsPhrase(std::list<std::list<Symbole*>> listeSymbol
 		{
 			DeclarationConstante* declaration = new DeclarationConstante;
 			Variable var; ++itSymbole;
-			var.setID(getIDValue(**itSymbole)); ++itSymbole; ++itSymbole;
-			var.setValeur(getNumberValue(**itSymbole));
+			var.setID(getIDValue(*itSymbole)); ++itSymbole; ++itSymbole;
+			var.setValeur(getNumberValue(*itSymbole));
 			declaration->setAutomate(this);
 			declaration->setConstanteADeclarer(var);
 			listePhrase.push_back(declaration);
@@ -314,8 +314,8 @@ Programme Automate::creerObjetsPhrase(std::list<std::list<Symbole*>> listeSymbol
 		else if ((*itSymbole)->getType() == LIRE)
 		{
 			Lire* instruction;
-			Variable *var = new Variable;
-			var->setID(getIDValue(**++itSymbole));
+			Variable *var = new Variable; ++itSymbole;
+			var->setID(getIDValue(*itSymbole));
 			instruction->setAutomate(this);
 			instruction->setVariableAChanger(var);
 			listePhrase.push_back(instruction);
