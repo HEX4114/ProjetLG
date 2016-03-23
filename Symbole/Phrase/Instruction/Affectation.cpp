@@ -32,19 +32,29 @@ void Affectation::executer()
 
 void Affectation::analyseStatique()
 {
-	StatutIdentifiant* statut;
-	if (automate->getStatutIdParIdentifiant(partieGauche->getName()) == NULL)
+	StatutIdentifiant* statut = automate->getStatutIdParIdentifiant(partieGauche->getName());
+	if (statut == NULL)
 	{
-		std::cerr << "Erreur, variable : " << partieGauche->getName() << " n'est pas declare";
+		std::cerr << "Erreur, variable partie gauche : " << partieGauche->getName() << " n'est pas declare" << std::endl;
 		return;
 	}
-	else if (!automate->getStatutIdParIdentifiant(partieGauche->getName())->isModifiable())
+	else if (!statut->isModifiable())
 	{
-		std::cerr << "Petit malin, tu as essaye de mondifier une constante : " << partieGauche->getName();
+		std::cerr << "Petit malin, tu as essaye de mondifier une constante : " << partieGauche->getName() << std::endl;
 		return;
 	}
-	statut = automate->getStatutIdParIdentifiant(partieGauche->getName());
-	statut->setValeur(partieGauche->getValeur());
+	else if (!partieDroite->expressionConnue())
+	{
+		std::cerr << "Expression non connue : " << partieGauche->getName() << std::endl;
+		return;
+	}
+	else if (!partieDroite->expressionDeclare())
+	{
+		std::cerr << "Expression non declare : " << partieGauche->getName() << std::endl;
+		return;
+	}
+
+	statut->setValeur(partieDroite->evaluer());
 	statut->setUtilise(true);
 	statut->setModifiable(true);
 	automate->majStatutIdentifiant(statut);

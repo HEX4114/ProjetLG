@@ -19,6 +19,7 @@ public:
 
 	void afficherProgramme();
 	void executerProgramme();
+	void analyseStatique();
 	
 	void setListePhrase(std::list<Phrase*> listePhrase){ this->listePhrase = listePhrase; }
 

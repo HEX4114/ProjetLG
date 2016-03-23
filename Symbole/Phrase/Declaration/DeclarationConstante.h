@@ -11,14 +11,14 @@ public:
 	DeclarationConstante();
 	virtual ~DeclarationConstante();
 
-	void setConstanteADeclarer(Variable constante) { constanteADeclarer = constante; };
+	void setConstanteADeclarer(Variable* constante) { constanteADeclarer = constante; };
 
 	void afficher();
 	void executer();
 	void analyseStatique();
 
 private:
-	Variable constanteADeclarer;
+	Variable* constanteADeclarer;
 };
 
 #endif // DECLARATION_CONSTANTE_H

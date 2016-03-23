@@ -23,5 +23,14 @@ void Ecrire::executer()
 
 void Ecrire::analyseStatique()
 {
-
+	if (!expressionAAfficher->expressionConnue())
+	{
+		std::cerr << "Expression non connue : " << expressionAAfficher->getName() << std::endl;
+		return;
+	}
+	else if (!expressionAAfficher->expressionDeclare())
+	{
+		std::cerr << "Expression non declare : " << expressionAAfficher->getName() << std::endl;;
+		return;
+	}
 }

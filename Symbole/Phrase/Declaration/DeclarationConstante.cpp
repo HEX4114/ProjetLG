@@ -14,7 +14,7 @@ DeclarationConstante::~DeclarationConstante()
 
 void DeclarationConstante::afficher()
 {
-	std::cout << "CONST " << this->constanteADeclarer.getName() << " = " << this->constanteADeclarer.getValeur() << ";" << std::endl;
+	std::cout << "CONST " << this->constanteADeclarer->getName() << " = " << this->constanteADeclarer->getValeur() << ";" << std::endl;
 }
 
 void DeclarationConstante::executer()
@@ -25,8 +25,8 @@ void DeclarationConstante::executer()
 void DeclarationConstante::analyseStatique()
 {
 	StatutIdentifiant * s = new StatutIdentifiant();
-	s->setId(constanteADeclarer.getName());
-	s->setValeur(constanteADeclarer.getValeur());
+	s->setId(constanteADeclarer->getName());
+	s->setValeur(constanteADeclarer->getValeur());
 	s->setModifiable(false);
 	s->setValeurConnue(true);
 	automate->addStatutIdentifiant(s);

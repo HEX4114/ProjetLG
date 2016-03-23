@@ -21,7 +21,8 @@ Variable::~Variable()
 
 double Variable::evaluer()
 {
-    return this->valeur;
+	StatutIdentifiant* statut = automate->getStatutIdParIdentifiant(identifiant);
+    return statut->getValeur();
 }
 
 bool Variable::expressionDeclare()

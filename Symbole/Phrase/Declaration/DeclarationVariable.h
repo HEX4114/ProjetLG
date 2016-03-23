@@ -15,10 +15,10 @@ public:
 	void executer();
 	void analyseStatique();
 
-    void setVariableADeclarer(Variable variable) { variableADeclarer = variable; };
+    void setVariableADeclarer(Variable* variable) { variableADeclarer = variable; };
 
 private:
-	Variable variableADeclarer;
+	Variable* variableADeclarer;
 };
 
 #endif // DECLARATION_VARIABLE_H

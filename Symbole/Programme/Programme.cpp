@@ -25,3 +25,11 @@ void Programme::executerProgramme()
 		(*it)->executer();
 	}
 }
+
+void Programme::analyseStatique()
+{
+	for (std::list<Phrase*>::iterator it = listePhrase.begin(); it != listePhrase.end(); ++it)
+	{
+		(*it)->analyseStatique();
+	}
+}

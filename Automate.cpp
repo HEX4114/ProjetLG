@@ -114,6 +114,7 @@ void Automate::lecture(std::string fileName)
 	}
 	Programme prog = concatenerSymboles();
 	prog.afficherProgramme();
+	prog.analyseStatique();
 	//system("pause");
 	//4. appeler les options
 }
@@ -280,7 +281,7 @@ std::string Automate::getIDValue(Symbole* symbole)
 double Automate::getNumberValue(Symbole* symbole)
 {
 	Nombre* nb = dynamic_cast<Nombre*>(symbole);
-	return 1;
+	return nb->getValeur();
 }
 
 Programme Automate::creerObjetsPhrase(std::list<std::list<Symbole*>> listeSymbole)
@@ -294,9 +295,9 @@ Programme Automate::creerObjetsPhrase(std::list<std::list<Symbole*>> listeSymbol
 		if ((*itSymbole)->getType() == VAR)
 		{
 			DeclarationVariable* declaration = new DeclarationVariable;
-			Variable var; ++itSymbole;
-			var.setID(getIDValue(*itSymbole));
-			var.setAutomate(this);
+			Variable* var = new Variable; ++itSymbole;
+			var->setID(getIDValue(*itSymbole));
+			var->setAutomate(this);
 			declaration->setAutomate(this);
 			declaration->setVariableADeclarer(var);
 			listePhrase.push_back(declaration);
@@ -304,10 +305,10 @@ Programme Automate::creerObjetsPhrase(std::list<std::list<Symbole*>> listeSymbol
 		else if ((*itSymbole)->getType() == CONST)
 		{
 			DeclarationConstante* declaration = new DeclarationConstante;
-			Variable var; ++itSymbole;
-			var.setID(getIDValue(*itSymbole)); ++itSymbole; ++itSymbole;
-			var.setAutomate(this);
-			var.setValeur(getNumberValue(*itSymbole));
+			Variable* var = new Variable; ++itSymbole;
+			var->setID(getIDValue(*itSymbole)); ++itSymbole; ++itSymbole;
+			var->setAutomate(this);
+			var->setValeur(getNumberValue(*itSymbole));
 			declaration->setAutomate(this);
 			declaration->setConstanteADeclarer(var);
 			listePhrase.push_back(declaration);
@@ -453,6 +454,21 @@ bool Automate::estPrioritaire(TypeSymbole t1, TypeSymbole t2)
 ExpressionBinaire* Automate::creerExpressionBinaire(TypeSymbole t1, Expression* e1, Expression* e2)
 {
 	ExpressionBinaire* expression;
+	Expression* pG = e1;
+	Expression* pD = e2;
+	if (e1->getType() == ID)
+	{
+		Variable* v1 = dynamic_cast<Variable*>(e1);
+		v1->setAutomate(this);
+		pG = v1;
+	}
+	if (e2->getType() == ID)
+	{
+		Variable* v2 = dynamic_cast<Variable*>(e1);
+		v2->setAutomate(this);
+		pD = v2;
+	}
+
 	if (t1 == PLUS)
 	{
 		expression = new ExpressionAdditionner(e1, e2);
