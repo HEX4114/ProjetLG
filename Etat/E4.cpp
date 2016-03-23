@@ -16,8 +16,8 @@ E4::~E4()
 	//dtor
 }
 
-bool E4::transition(Automate& automate, Symbole symbole) throw(std::pair<int, string>) {
-	switch (symbole.getType())
+bool E4::transition(Automate& automate, Symbole* symbole) throw(std::pair<int, string>) {
+	switch (symbole->getType())
 	{
 		case(VG) :
 			automate.decalageTerminal(symbole, new E6);
@@ -26,15 +26,15 @@ bool E4::transition(Automate& automate, Symbole symbole) throw(std::pair<int, st
 			automate.decalageTerminal(symbole, new E5);
 			return true;
 		case(ID) :
-			Symbole symboleAnticipe = Symbole();
-			symboleAnticipe.setType(VG);
+			Symbole *symboleAnticipe = new Symbole();
+			symboleAnticipe->setType(VG);
 			automate.decalageAnticipe(symboleAnticipe, new E6);
 			std::pair<int, string> p = std::make_pair(0, "Warning : \",\" manquante.");
 			throw(p);
 			return true;
 	}
-	Symbole symboleAnticipe = Symbole();
-	symboleAnticipe.setType(PVG);
+	Symbole* symboleAnticipe = new Symbole();
+	symboleAnticipe->setType(PVG);
 	automate.decalageAnticipe(symboleAnticipe, new E5);
 	std::pair<int, string> p = std::make_pair(0, "Warning : \";\" manquant.");
 	throw(p);

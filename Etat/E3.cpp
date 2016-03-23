@@ -14,8 +14,8 @@ E3::~E3()
 	//dtor
 }
 
-bool E3::transition(Automate& automate, Symbole symbole) {
-	switch (symbole.getType())
+bool E3::transition(Automate& automate, Symbole* symbole) {
+	switch (symbole->getType())
 	{
 		case(V) :
 			automate.decalageNonTerminal(symbole, new E4);

@@ -14,8 +14,8 @@ E26::~E26()
 	//dtor
 }
 
-bool E26::transition(Automate& automate, Symbole symbole) throw(std::pair<int, string>) {
-	switch (symbole.getType())
+bool E26::transition(Automate& automate, Symbole *symbole) throw(std::pair<int, string>) {
+	switch (symbole->getType())
 	{
 		case(AF) :
 			automate.decalageTerminal(symbole, new E27);
@@ -26,8 +26,8 @@ bool E26::transition(Automate& automate, Symbole symbole) throw(std::pair<int, s
 		case(E) :
 		case(F) :
 		case(T) :
-			Symbole symboleAnticipe = Symbole();
-			symboleAnticipe.setType(AF);
+			Symbole* symboleAnticipe = new Symbole();
+			symboleAnticipe->setType(AF);
 			automate.decalageAnticipe(symboleAnticipe, new E27);
 			std::pair<int, string> p = std::make_pair(0, "Warning : \":=\" manquant.");
 			throw(p);

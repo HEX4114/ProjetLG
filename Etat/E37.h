@@ -10,7 +10,7 @@ class E37 : public Etat
 public:
 	E37();
 	virtual ~E37();
-	virtual bool transition(Automate& automate, Symbole symbole);
+	virtual bool transition(Automate& automate, Symbole* symbole);
 protected:
 	std::string name;
 private:

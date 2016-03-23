@@ -23,7 +23,7 @@ void DeclarationVariable::executer()
     StatutIdentifiant * s = new StatutIdentifiant();
 
     s->setId(variableADeclarer.getName());
-    s->setValeur(variableADeclarer.getValeur());
+    s->setValeurConnue(false);
     s->setModifiable(true);
 
     automate->addStatutIdentifiant(*s);

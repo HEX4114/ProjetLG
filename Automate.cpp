@@ -48,25 +48,25 @@ Automate::Automate()
 	reglesReduction.push_back(1);
 	reglesReduction.push_back(1);
 
-	partieGaucheRegle.push_back(Symbole(D));
-	partieGaucheRegle.push_back(Symbole(V));
-	partieGaucheRegle.push_back(Symbole(V));
-	partieGaucheRegle.push_back(Symbole(C));
-	partieGaucheRegle.push_back(Symbole(C));
-	partieGaucheRegle.push_back(Symbole(D));
-	partieGaucheRegle.push_back(Symbole(D));
-	partieGaucheRegle.push_back(Symbole(D));
-	partieGaucheRegle.push_back(Symbole(I));
-	partieGaucheRegle.push_back(Symbole(I));
-	partieGaucheRegle.push_back(Symbole(I));
-	partieGaucheRegle.push_back(Symbole(I));
-	partieGaucheRegle.push_back(Symbole(E));
-	partieGaucheRegle.push_back(Symbole(E));
-	partieGaucheRegle.push_back(Symbole(T));
-	partieGaucheRegle.push_back(Symbole(T));
-	partieGaucheRegle.push_back(Symbole(F));
-	partieGaucheRegle.push_back(Symbole(F));
-	partieGaucheRegle.push_back(Symbole(F));
+	partieGaucheRegle.push_back(new Symbole(D));
+	partieGaucheRegle.push_back(new Symbole(V));
+	partieGaucheRegle.push_back(new Symbole(V));
+	partieGaucheRegle.push_back(new Symbole(C));
+	partieGaucheRegle.push_back(new Symbole(C));
+	partieGaucheRegle.push_back(new Symbole(D));
+	partieGaucheRegle.push_back(new Symbole(D));
+	partieGaucheRegle.push_back(new Symbole(D));
+	partieGaucheRegle.push_back(new Symbole(I));
+	partieGaucheRegle.push_back(new Symbole(I));
+	partieGaucheRegle.push_back(new Symbole(I));
+	partieGaucheRegle.push_back(new Symbole(I));
+	partieGaucheRegle.push_back(new Symbole(E));
+	partieGaucheRegle.push_back(new Symbole(E));
+	partieGaucheRegle.push_back(new Symbole(T));
+	partieGaucheRegle.push_back(new Symbole(T));
+	partieGaucheRegle.push_back(new Symbole(F));
+	partieGaucheRegle.push_back(new Symbole(F));
+	partieGaucheRegle.push_back(new Symbole(F));
 
 	lex = new Lexer();
 }
@@ -97,7 +97,7 @@ void Automate::lecture(std::string fileName)
 	while(!lectureFinie) {
 		try 
 		{
-			pileEtats.top()->transition(*this, *symbole);
+			pileEtats.top()->transition(*this, symbole);
 		}
 		catch (std::pair<int, string> p)
 		{
@@ -108,7 +108,7 @@ void Automate::lecture(std::string fileName)
 		cout << typeid(*pileEtats.top()).name() << endl;
 		symbole = lex->getSymbole();
 	}
-	concatenerSymboles();
+	//concatenerSymboles();
 
 	//4. appeler les options
 }
@@ -118,7 +118,7 @@ void Automate::empilerEtat(Etat* etat)
 	pileEtats.push(etat);
 }
 
-void Automate::empilerSymbole(Symbole symbole)
+void Automate::empilerSymbole(Symbole* symbole)
 {
 	pileSymboles.push(symbole);
 }
@@ -129,31 +129,30 @@ void Automate::reduction(Regle regle) throw(std::pair<int, string>)
 
 	for (int i=0; i<nbPop; i++) pileEtats.pop();
 	
-	Symbole partG = partieGaucheRegle[regle];
+	Symbole *partG = partieGaucheRegle[regle];
 	cout << "reduction de " << regle << endl;
-
 	pileEtats.top()->transition(*this, partG);
 }
 
-void Automate::decalageTerminal(Symbole symbole, Etat* etat)
+void Automate::decalageTerminal(Symbole* symbole, Etat* etat)
 {
 	//Empiler symbole seulement si c'est un symbole terminal
 	empilerSymbole(symbole);
 	lex->goNext();
-	cout << "decalage de " << symbole.getType() << endl;
+	cout << "decalage de " << symbole->getType() << endl;
 	empilerEtat(etat);
 }
 
-void Automate::decalageNonTerminal(Symbole symbole, Etat* etat)
+void Automate::decalageNonTerminal(Symbole* symbole, Etat* etat)
 {
 	empilerEtat(etat);
 }
 
-void Automate::decalageAnticipe(Symbole symbole, Etat* etat)
+void Automate::decalageAnticipe(Symbole* symbole, Etat* etat)
 {
-	//Empiler symbole dans le cas où le compilo anticipe une erreure.
+	//Empiler symbole dans le cas oï¿½ le compilo anticipe une erreure.
 	empilerSymbole(symbole);
-	cout << "decalage de " << symbole.getType() << endl;
+	cout << "decalage de " << symbole->getType() << endl;
 	empilerEtat(etat);
 }
 
@@ -212,30 +211,31 @@ StatutIdentifiant* Automate::getStatutIdParIdentifiant(std::string identifiant)
 
 void Automate::concatenerSymboles()
 {
-	std::list<Symbole> listeSymboles = viderPileSymbole();
-	std::list<std::list<Symbole>> listePhrase;
-	std::list<Symbole> listeTemp;
-	for (std::list<Symbole>::iterator it = listeSymboles.begin(); it != listeSymboles.end(); it++)
+	std::list<Symbole*> listeSymboles = viderPileSymbole();
+	std::list<std::list<Symbole*>> listePhrase;
+	Programme programme;
+	std::list<Symbole*> listeTemp;
+	for (std::list<Symbole*>::iterator it = listeSymboles.begin(); it != listeSymboles.end(); it++)
 	{
 		listeTemp.push_back(*it);
-		if (it->getType() == PVG)
+		if ((*it)->getType() == PVG)
 		{
 			listePhrase.push_back(listeTemp);
 			listeTemp.clear();
 		}
-		else if (it->getType() == VG)
+		else if ((*it)->getType() == VG)
 		{
 			listeTemp.pop_back();
-			listeTemp.push_back(Symbole(PVG));
+			listeTemp.push_back(new Symbole(PVG));
 
 			++it;
-			if (listeTemp.begin()->getType() == CONST)
+			if ((*listeTemp.begin())->getType() == CONST)
 			{
-				listeSymboles.insert(it, Symbole(CONST));
+				listeSymboles.insert(it, new Symbole(CONST));
 			}
-			else if (listeTemp.begin()->getType() == VAR)
+			else if ((*listeTemp.begin())->getType() == VAR)
 			{
-				listeSymboles.insert(it, Symbole(VAR));
+				listeSymboles.insert(it,new Symbole(VAR));
 			}
 			--it;
 			--it;
@@ -244,12 +244,14 @@ void Automate::concatenerSymboles()
 			listeTemp.clear();
 		}
 	}
+	programme = creerObjetsPhrase(listePhrase);
+	
 
 }
 
-std::list<Symbole> Automate::viderPileSymbole()
+std::list<Symbole*> Automate::viderPileSymbole()
 {
-	std::list<Symbole> listeSymbole;
+	std::list<Symbole*> listeSymbole;
 	while (!pileSymboles.empty())
 	{
 		listeSymbole.push_front(pileSymboles.top());
@@ -258,9 +260,9 @@ std::list<Symbole> Automate::viderPileSymbole()
 	return listeSymbole;
 }
 
-void Automate::remplirPileSymbole(std::list<Symbole> liste)
+void Automate::remplirPileSymbole(std::list<Symbole*> liste)
 {
-	for (std::list<Symbole>::iterator it = liste.begin(); it != liste.end(); ++it)
+	for (std::list<Symbole*>::iterator it = liste.begin(); it != liste.end(); ++it)
 	{
 		pileSymboles.push(*it);
 	}
@@ -268,12 +270,62 @@ void Automate::remplirPileSymbole(std::list<Symbole> liste)
 
 std::string Automate::getIDValue(Symbole symbole)
 {
-	Variable* var = dynamic_cast<Variable*>( &symbole);
-	return "";
+	Variable* var = static_cast<Variable*>( &symbole);
+	return var->getName();
 }
 
 double Automate::getNumberValue(Symbole symbole)
 {
 	Nombre* nb = dynamic_cast<Nombre*>(&symbole);
 	return 1;
+}
+
+Programme Automate::creerObjetsPhrase(std::list<std::list<Symbole*>> listeSymbole)
+{
+	Programme aRetourner;
+	std::list<Phrase*> listePhrase;
+
+	for (std::list<std::list<Symbole*>>::iterator it = listeSymbole.begin(); it != listeSymbole.end(); ++it)
+	{
+		std::list<Symbole*>::iterator itSymbole = it->begin();
+		if ((*itSymbole)->getType() == VAR)
+		{
+			DeclarationVariable* declaration = new DeclarationVariable;
+			Variable var; ++itSymbole;
+			var.setID(getIDValue(**itSymbole));
+			declaration->setAutomate(this);
+			declaration->setVariableADeclarer(var);
+			listePhrase.push_back(declaration);
+		}
+		else if ((*itSymbole)->getType() == CONST)
+		{
+			DeclarationConstante* declaration = new DeclarationConstante;
+			Variable var; ++itSymbole;
+			var.setID(getIDValue(**itSymbole)); ++itSymbole; ++itSymbole;
+			var.setValeur(getNumberValue(**itSymbole));
+			declaration->setAutomate(this);
+			declaration->setConstanteADeclarer(var);
+			listePhrase.push_back(declaration);
+		}
+		else if ((*itSymbole)->getType() == ECRIRE)
+		{
+
+		}
+		else if ((*itSymbole)->getType() == LIRE)
+		{
+			Lire* instruction;
+			Variable *var = new Variable;
+			var->setID(getIDValue(**++itSymbole));
+			instruction->setAutomate(this);
+			instruction->setVariableAChanger(var);
+			listePhrase.push_back(instruction);
+
+		}
+		else if ((*itSymbole)->getType() == AF)
+		{
+
+		}
+	}
+	aRetourner.setListePhrase(listePhrase);
+	return aRetourner;
 }

@@ -12,7 +12,7 @@ E38::~E38()
 	//dtor
 }
 
-bool E38::transition(Automate& automate, Symbole symbole) {
+bool E38::transition(Automate& automate, Symbole* symbole) {
 	automate.reduction(R4);
 	return true;
 }

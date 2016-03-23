@@ -1,7 +1,7 @@
 #ifndef PROGRAMME_H
 #define PROGRAMME_H
 
-#include <vector>
+#include <list>
 
 
 #include "../Symbole.h"
@@ -20,10 +20,11 @@ public:
 	void afficherProgramme();
 	void executerProgramme();
 	
+	void setListePhrase(std::list<Phrase*> listePhrase){ this->listePhrase = listePhrase; }
 
 
 private:
-	std::vector<Phrase*> listePhrase;
+	std::list<Phrase*> listePhrase;
 
 };
 

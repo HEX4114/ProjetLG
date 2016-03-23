@@ -10,7 +10,7 @@ class E25 : public Etat
 public:
 	E25();
 	virtual ~E25();
-	virtual bool transition(Automate& automate, Symbole symbole);
+	virtual bool transition(Automate& automate, Symbole* symbole);
 protected:
 	std::string name;
 private:

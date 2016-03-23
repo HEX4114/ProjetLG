@@ -14,8 +14,8 @@ E33::~E33()
 	//dtor
 }
 
-bool E33::transition(Automate& automate, Symbole symbole) throw(std::pair<int, string>) {
-	switch (symbole.getType())
+bool E33::transition(Automate& automate, Symbole* symbole) throw(std::pair<int, string>) {
+	switch (symbole->getType())
 	{
 		case(VG) :
 			automate.reduction(R5);

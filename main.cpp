@@ -32,15 +32,15 @@ int main(int argc, char* argv[])
 
 {
 	/*Test Automate*/
-	/*
+	
 	//1.Recup fichier a l'aide de l'outil en ligne de commande
-	string fileName = "../sources/test.txt";
+	string fileName = "../sources/test2.txt";
 	//2. lancement de l'automate
 	Automate* automate = new Automate();
 	automate->lecture(fileName);
-	*/
 	
-	if (argc < 2)
+	
+	/*if (argc < 2)
 	{
 		cerr << "Usage: ProjetGL sourceFile [options]" << endl;
 		system("pause");
@@ -66,7 +66,7 @@ int main(int argc, char* argv[])
 	cout << "Options : ";
 	for (auto it = options.begin(); it != options.end(); ++it)
 		cout << " " << *it;
-	cout << endl;
+	cout << endl;*/
 
     /*cout << "Hello world!" << endl;
 

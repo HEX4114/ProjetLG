@@ -14,8 +14,8 @@ E0::~E0()
 	//dtor
 }
 
-bool E0::transition(Automate& automate, Symbole symbole) throw(std::pair<int, string>) {
-	switch (symbole.getType())
+bool E0::transition(Automate& automate, Symbole* symbole) throw(std::pair<int, string>) {
+	switch (symbole->getType())
 	{
 		case(D) :
 			automate.decalageNonTerminal(symbole, new E1);

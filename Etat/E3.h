@@ -10,7 +10,7 @@ class E3 : public Etat
 public:
 	E3();
 	virtual ~E3();
-	virtual bool transition(Automate& automate, Symbole symbole);
+	virtual bool transition(Automate& automate, Symbole* symbole);
 protected:
 	std::string name;
 private:

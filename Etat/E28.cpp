@@ -15,8 +15,8 @@ E28::~E28()
 	//dtor
 }
 
-bool E28::transition(Automate& automate, Symbole symbole) throw(std::pair<int, string>) {
-	switch (symbole.getType())
+bool E28::transition(Automate& automate, Symbole* symbole) throw(std::pair<int, string>) {
+	switch (symbole->getType())
 	{
 		case(PLUS) :
 			automate.decalageTerminal(symbole, new E14);

@@ -12,7 +12,7 @@ E24::~E24()
 	//dtor
 }
 
-bool E24::transition(Automate& automate, Symbole symbole) {
+bool E24::transition(Automate& automate, Symbole *symbole) {
 	automate.reduction(R17);
 	return true;
 }

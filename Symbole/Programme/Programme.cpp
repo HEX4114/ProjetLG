@@ -12,7 +12,7 @@ Programme::~Programme()
 
 void Programme::afficherProgramme()
 {
-	for (std::vector<Phrase*>::iterator it = listePhrase.begin(); it != listePhrase.end(); ++it)
+	for (std::list<Phrase*>::iterator it = listePhrase.begin(); it != listePhrase.end(); ++it)
 	{
 		(*it)->afficher();
 	}
@@ -20,7 +20,7 @@ void Programme::afficherProgramme()
 
 void Programme::executerProgramme()
 {
-	for (std::vector<Phrase*>::iterator it = listePhrase.begin(); it != listePhrase.end(); ++it)
+	for (std::list<Phrase*>::iterator it = listePhrase.begin(); it != listePhrase.end(); ++it)
 	{
 		(*it)->executer();
 	}

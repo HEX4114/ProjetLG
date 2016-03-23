@@ -14,8 +14,8 @@ E37::~E37()
 	//dtor
 }
 
-bool E37::transition(Automate& automate, Symbole symbole) throw(std::pair<int, string>) {
-	switch (symbole.getType())
+bool E37::transition(Automate& automate, Symbole* symbole) throw(std::pair<int, string>) {
+	switch (symbole->getType())
 	{
 		case(NB) :
 			automate.decalageTerminal(symbole, new E38);
