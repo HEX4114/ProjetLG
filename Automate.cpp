@@ -115,6 +115,7 @@ void Automate::lecture(std::string fileName)
 	Programme prog = concatenerSymboles();
 	prog.afficherProgramme();
 	prog.analyseStatique();
+	prog.executerProgramme();
 	//system("pause");
 	//4. appeler les options
 }

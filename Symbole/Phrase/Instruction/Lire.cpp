@@ -24,9 +24,9 @@ void Lire::afficher()
 
 void Lire::executer()
 {
+	analyseStatique();
 	double n;
 	std::cout << ":"; std::cin >> n;
-	variableAChanger->setValeur(n);
 	StatutIdentifiant* statut;
 	statut = automate->getStatutIdParIdentifiant(variableAChanger->getName());
 	statut->setValeur(n);

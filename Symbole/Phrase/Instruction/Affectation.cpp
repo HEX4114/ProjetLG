@@ -27,7 +27,7 @@ void Affectation::afficher()
 
 void Affectation::executer()
 {
-    
+	analyseStatique();
 }
 
 void Affectation::analyseStatique()

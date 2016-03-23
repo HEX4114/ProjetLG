@@ -20,7 +20,7 @@ void DeclarationVariable::afficher()
 
 void DeclarationVariable::executer()
 {
-   
+	analyseStatique();
 }
 
 void DeclarationVariable::analyseStatique()

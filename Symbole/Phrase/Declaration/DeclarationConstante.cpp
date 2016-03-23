@@ -19,7 +19,7 @@ void DeclarationConstante::afficher()
 
 void DeclarationConstante::executer()
 {
-   
+	analyseStatique();
 }
 
 void DeclarationConstante::analyseStatique()

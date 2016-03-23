@@ -18,6 +18,7 @@ void Ecrire::afficher()
 
 void Ecrire::executer()
 {
+	analyseStatique();
     std::cout << this->expressionAAfficher->evaluer() << std::endl;
 }
 
