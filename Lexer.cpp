@@ -78,18 +78,37 @@ void Lexer::parseToSymbols(string& example)
             word.clear();
             break;
         case '-':
-            if(word.empty() && getSymbole(symboles.size()-1).compare("=")==0)
+            if(word.empty() && !symboles.size()-1<0)
+            {
+                if(getSymbole(symboles.size()-1).compare("=")==0)
+                {
+                    word += c;
+                }
+                else if(getSymbole(symboles.size()-1).compare(":=")==0)
+                {
+                    word += '0';
+                    cout << word << endl;
+                    addSymbole(word);
+                    word.clear();
+                    word += c;
+                    cout << word << endl;
+                    addSymbole(word);
+                    word.clear();
+                }
+            }
+            else if(word.empty())
             {
                 word += c;
-            }
-            else
-            {
-                if(word.empty()) {
-                    word += '0';
-                }
                 cout << word << endl;
                 addSymbole(word);
                 word.clear();
+            }
+            else
+            {
+                cout << word << endl;
+                addSymbole(word);
+                word.clear();
+
                 word += c;
                 cout << word << endl;
                 addSymbole(word);
