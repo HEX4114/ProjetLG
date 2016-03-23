@@ -112,8 +112,9 @@ void Automate::lecture(std::string fileName)
 		cout << typeid(*pileEtats.top()).name() << endl;
 		symbole = lex->getSymbole();
 	}
-	concatenerSymboles();
-
+	Programme prog = concatenerSymboles();
+	prog.afficherProgramme();
+	//system("pause");
 	//4. appeler les options
 }
 
@@ -213,7 +214,7 @@ StatutIdentifiant* Automate::getStatutIdParIdentifiant(std::string identifiant)
 	return NULL;
 }
 
-void Automate::concatenerSymboles()
+Programme Automate::concatenerSymboles()
 {
 	std::list<Symbole*> listeSymboles = viderPileSymbole();
 	std::list<std::list<Symbole*>> listePhrase;
@@ -248,9 +249,8 @@ void Automate::concatenerSymboles()
 			listeTemp.clear();
 		}
 	}
-	programme = creerObjetsPhrase(listePhrase);
+	return creerObjetsPhrase(listePhrase);
 	
-
 }
 
 std::list<Symbole*> Automate::viderPileSymbole()
@@ -315,6 +315,7 @@ Programme Automate::creerObjetsPhrase(std::list<std::list<Symbole*>> listeSymbol
 		{
 			Ecrire* ecrire = new Ecrire; ++itSymbole;
 			Expression* expression = parseExpression(itSymbole);
+			ecrire->setAutomate(this);
 			ecrire->setVariableAAfficher(expression);
 			listePhrase.push_back(ecrire);
 		}
@@ -333,6 +334,7 @@ Programme Automate::creerObjetsPhrase(std::list<std::list<Symbole*>> listeSymbol
 			Affectation* affecter = new Affectation;
 			Variable * variable = new Variable; variable->setID(getIDValue(*itSymbole));
 			affecter->setPartieGauche(variable); ++itSymbole; ++itSymbole;
+			affecter->setAutomate(this);
 			Expression* expression = parseExpression(itSymbole);
 			affecter->setPartieDroite(expression);
 			listePhrase.push_back(affecter);

@@ -5,6 +5,8 @@
 
 #include "Expression.h"
 
+class Automate;
+
 class Variable : public Expression
 {
     public:
@@ -16,10 +18,12 @@ class Variable : public Expression
 		void setID(std::string id){ identifiant = id; };
 		double getValeur(){ return valeur; };
 		void setValeur(double v){ valeur = v; };
+		void setAutomate(Automate* automate){ this->automate = automate; };
 
     protected:
     private:
         std::string identifiant;
+		Automate * automate;
         double valeur;
 };
 
