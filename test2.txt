@@ -1,11 +1,10 @@
-var x, y;
-const b=5;
-const a = -2;
-var c;
-c := a+16;
-ecrire c;
-lire x;
-ecrire x;
-y:=b;
-ecrire y;
+var a,b;
+const c = 4;
+const d = 6;
+var e;
+a := (c+d)*3-5;
+lire b;
+ecrire a*b;
+e := b+d;
+ecrire e;
 

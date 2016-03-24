@@ -343,7 +343,7 @@ Programme Automate::creerObjetsPhrase(std::list<std::list<Symbole*> > listeSymbo
 	return aRetourner;
 }
 
-//Implementation de la notation polonaise inversee
+//Impl\E9mentation de la notation polonaise invers\E9e
 
 Expression* Automate::parseExpression(std::list<Symbole*>::iterator it)
 {
