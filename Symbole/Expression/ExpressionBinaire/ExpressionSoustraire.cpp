@@ -17,8 +17,18 @@ double ExpressionSoustraire::evaluer()
 
 std::string ExpressionSoustraire::getName()
 {
-    std::string valeurAAfficher = e1->getName() + "-" + e2->getName();
-    return valeurAAfficher;
+	std::string valeurAAfficher;
+	if (parG)
+	{
+		valeurAAfficher = "(" + e1->getName() + "-" + e2->getName();
+	}
+	else
+	{
+		valeurAAfficher = e1->getName() + "-" + e2->getName();
+	}
+
+	if (parD) { valeurAAfficher += ")"; }
+	return valeurAAfficher;
 }
 
 bool ExpressionSoustraire::expressionDeclare()

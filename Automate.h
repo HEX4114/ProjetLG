@@ -72,7 +72,7 @@ class Automate
 		Programme creerObjetsPhrase(std::list<std::list<Symbole*> > listeSymbole);
 		Expression* parseExpression(std::list<Symbole*>::iterator it);
 		bool estPrioritaire(TypeSymbole t1, TypeSymbole t2);
-		ExpressionBinaire* creerExpressionBinaire(TypeSymbole t1, Expression* e1, Expression* e2);
+		ExpressionBinaire* creerExpressionBinaire(TypeSymbole t1, Expression* e1, Expression* e2, bool parG = false, bool parD = false);
 };
 
 #endif // AUTOMATE_H

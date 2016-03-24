@@ -17,7 +17,17 @@ double ExpressionDiviser::evaluer()
 
 std::string ExpressionDiviser::getName()
 {
-    std::string valeurAAfficher = e1->getName() + "/" + e2->getName();
+	std::string valeurAAfficher;
+	if (parG)
+	{
+		valeurAAfficher = "(" + e1->getName() + "/" + e2->getName();
+	}
+	else
+	{
+		valeurAAfficher = e1->getName() + "/" + e2->getName();
+	}
+
+	if (parD) { valeurAAfficher += ")"; }
     return valeurAAfficher;
 }
 

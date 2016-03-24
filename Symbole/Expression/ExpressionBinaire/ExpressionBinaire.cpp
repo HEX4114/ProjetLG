@@ -4,6 +4,8 @@ ExpressionBinaire::ExpressionBinaire(Expression * exp1, Expression * exp2) : Exp
 {
     e1 = exp1;
     e2 = exp2;
+	parG = false;
+	parD = false;
 }
 
 ExpressionBinaire::~ExpressionBinaire()

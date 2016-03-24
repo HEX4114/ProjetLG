@@ -12,9 +12,16 @@ class ExpressionBinaire : public Expression
 		virtual bool expressionDeclare();
 		virtual bool expressionConnue();
         virtual std::string getName()=0;
+
+		void setParentheses(bool parG, bool parD) { this->parG = parG; this->parD = parD; };
+
     protected:
 		Expression* e1;
 		Expression* e2;
+		
+		bool parG;
+		bool parD;
+
     private:
 };
 
