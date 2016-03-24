@@ -30,7 +30,7 @@ bool E16::transition(Automate& automate, Symbole* symbole) throw(std::pair<int, 
 			automate.decalageTerminal(symbole, new E21);
 			return true;
 		case(F) :
-			automate.decalageTerminal(symbole, new E17);
+			automate.decalageNonTerminal(symbole, new E17);
 			return true;
 	}
 	std::pair<int, string> p = std::make_pair(1, "Erreur de synthaxe (attendu : \"(\", nombre, id, ou expression).");

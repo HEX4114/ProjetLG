@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <fstream>
-#include <typeinfo> 
+#include <typeinfo>
 #include "Lexer.h"
 #include "Etat/E0.h"
 #include "Symbole/Symbole.h"
@@ -94,12 +94,12 @@ void Automate::lecture(std::string fileName)
 
 	//2.Empiler E0
 	pileEtats.push(new E0);
-	
+
 	//3. boucle transitions
 	lectureFinie = false;
 	Symbole *symbole = lex->getSymbole(); //premier symbole
 	while(!lectureFinie) {
-		try 
+		try
 		{
 			pileEtats.top()->transition(*this, symbole);
 		}
@@ -108,7 +108,7 @@ void Automate::lecture(std::string fileName)
 			cerr << p.second << endl;
 			if(p.first == 1) lectureFinie = true;
 		}
-		
+
 		//cout << typeid(*pileEtats.top()).name() << endl;
 		symbole = lex->getSymbole();
 	}
@@ -129,7 +129,7 @@ void Automate::reduction(Regle regle) throw(pair<int, string>)
 	int nbPop = reglesReduction.at(regle);
 
 	for (int i=0; i<nbPop; i++) pileEtats.pop();
-	
+
 	Symbole *partG = partieGaucheRegle[regle];
 	//cout << "reduction de " << regle << endl;
 	pileEtats.top()->transition(*this, partG);
@@ -213,7 +213,7 @@ StatutIdentifiant* Automate::getStatutIdParIdentifiant(std::string identifiant)
 Programme Automate::creerProgramme()
 {
 	std::list<Symbole*> listeSymboles = viderPileSymbole();
-	std::list<std::list<Symbole*>> listePhrase;
+	std::list<std::list<Symbole*> > listePhrase;
 	std::list<Symbole*> listeTemp;
 	for (std::list<Symbole*>::iterator it = listeSymboles.begin(); it != listeSymboles.end(); it++)
 	{
@@ -244,7 +244,7 @@ Programme Automate::creerProgramme()
 		}
 	}
 	return creerObjetsPhrase(listePhrase);
-	
+
 }
 
 std::list<Symbole*> Automate::viderPileSymbole()
@@ -278,12 +278,12 @@ double Automate::getNumberValue(Symbole* symbole)
 	return nb->getValeur();
 }
 
-Programme Automate::creerObjetsPhrase(std::list<std::list<Symbole*>> listeSymbole)
+Programme Automate::creerObjetsPhrase(std::list<std::list<Symbole*> > listeSymbole)
 {
 	Programme aRetourner;
 	std::list<Phrase*> listePhrase;
 
-	for (std::list<std::list<Symbole*>>::iterator it = listeSymbole.begin(); it != listeSymbole.end(); ++it)
+	for (std::list<std::list<Symbole*> >::iterator it = listeSymbole.begin(); it != listeSymbole.end(); ++it)
 	{
 		std::list<Symbole*>::iterator itSymbole = it->begin();
 		if ((*itSymbole)->getType() == VAR)
@@ -412,7 +412,7 @@ Expression* Automate::parseExpression(std::list<Symbole*>::iterator it)
 
 	while (!operateurs.empty())
 	{
-		
+
 		Symbole * operateur = operateurs.top();
 		Expression *partieDroite = dynamic_cast<Expression*>(sortie.top()); sortie.pop();
 		Expression *partieGauche;

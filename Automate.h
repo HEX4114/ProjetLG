@@ -29,7 +29,7 @@ class Automate
 		void decalageTerminal(Symbole* symbole, Etat* etat);
 		void decalageNonTerminal(Symbole* symbole, Etat* etat);
 		void decalageAnticipe(Symbole* symbole, Etat* etat);
-		
+
 		void accepter();
 
 
@@ -68,7 +68,7 @@ class Automate
 
 		std::string getIDValue(Symbole* symbole);
 		double getNumberValue(Symbole* symbole);
-		Programme creerObjetsPhrase(std::list<std::list<Symbole*>> listeSymbole);
+		Programme creerObjetsPhrase(std::list<std::list<Symbole*> > listeSymbole);
 		Expression* parseExpression(std::list<Symbole*>::iterator it);
 		bool estPrioritaire(TypeSymbole t1, TypeSymbole t2);
 		ExpressionBinaire* creerExpressionBinaire(TypeSymbole t1, Expression* e1, Expression* e2);

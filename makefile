@@ -36,4 +36,5 @@ $(BUILDDIR)%.o: $(SRCDIR)*%.cpp
 	$(ECHO)
 
 $(CLEAN):
-	$(RM) $(RMFLAGS) $(OBJECTS) core
+	$(RM) $(RMFLAGS) $(OBJECTS) $(EXE) core
+

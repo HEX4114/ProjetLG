@@ -30,8 +30,8 @@ int main(int argc, char* argv[])
 	/*Automate* automate = new Automate();
 	automate->lecture(fileName);*/
 	/**-------------------**/
-	
-	
+
+
 	if (argc < 2)
 	{
 		cerr << "Erreur, veuillez specifier des arguments" << endl;
@@ -61,10 +61,10 @@ int main(int argc, char* argv[])
 			return 0;
 		}
 	}
-	
+
 	char* sourceFile = argv[argc - 1];
 	string fileName = string(sourceFile);
-	
+
 	Automate * automate = new Automate();
 	automate->lecture(fileName);
 	Programme prog = automate->creerProgramme();
@@ -73,6 +73,18 @@ int main(int argc, char* argv[])
 	if (options.find("-p") != options.end())
 	{
 		prog.afficherProgramme();
+	}
+	if (options.find("-e") != options.end())
+	{
+        prog.executerProgramme();
+	}
+    else if (options.find("-a") != options.end())
+	{
+        prog.analyseStatique();
+	}
+	if (options.find("-o") != options.end())
+	{
+        cout<<"-o fonction pas encore implémentée"<<endl;
 	}
 	/*cout << "Options : ";
 	for (auto it = options.begin(); it != options.end(); ++it)
@@ -92,7 +104,7 @@ int main(int argc, char* argv[])
 	cout<< Exp1->evaluer()<<endl<< Exp2->evaluer() <<endl<< Exp3->evaluer() <<endl<< Exp4->evaluer() <<endl;*/
 	/**-------------------**/
 
-	
+
     /**Tests d'Ecrire afficher() et executer()**/
     /*Ecrire * ExpAAff1 = new Ecrire();
     Ecrire * ExpAAff2 = new Ecrire();
