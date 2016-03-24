@@ -40,7 +40,7 @@ void Affectation::analyseStatique()
 	}
 	else if (!statut->isModifiable())
 	{
-		std::cerr << "Petit malin, tu as essaye de mondifier une constante : " << partieGauche->getName() << std::endl;
+		std::cerr << "Impossible de modifier une constante " << partieGauche->getName() << std::endl;
 		return;
 	}
 	else if (!partieDroite->expressionConnue())
