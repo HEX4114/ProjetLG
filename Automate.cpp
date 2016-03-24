@@ -112,7 +112,7 @@ void Automate::lecture(std::string fileName)
 		cout << typeid(*pileEtats.top()).name() << endl;
 		symbole = lex->getSymbole();
 	}
-	Programme prog = concatenerSymboles();
+	Programme prog = creerProgramme();
 	prog.afficherProgramme();
 	//prog.analyseStatique();
 	prog.executerProgramme();
@@ -216,11 +216,10 @@ StatutIdentifiant* Automate::getStatutIdParIdentifiant(std::string identifiant)
 	return NULL;
 }
 
-Programme Automate::concatenerSymboles()
+Programme Automate::creerProgramme()
 {
 	std::list<Symbole*> listeSymboles = viderPileSymbole();
 	std::list<std::list<Symbole*>> listePhrase;
-	Programme programme;
 	std::list<Symbole*> listeTemp;
 	for (std::list<Symbole*>::iterator it = listeSymboles.begin(); it != listeSymboles.end(); it++)
 	{

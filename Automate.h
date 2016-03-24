@@ -47,7 +47,7 @@ class Automate
 		//Recupération d'un pointeur sur Statut identifiant. Renvoie le pointeur si l'identifiant est présent dans le tableau, NULL sinon
 		StatutIdentifiant* getStatutIdParIdentifiant(std::string identifiant);
 
-		Programme concatenerSymboles();
+		Programme creerProgramme();
 
 
     protected:
