@@ -10,7 +10,7 @@ class E20 : public Etat
 public:
 	E20();
 	virtual ~E20();
-	virtual bool transition(Automate& automate, Symbole* symbole) throw(std::pair<int, std::string>);
+	virtual bool transition(Automate& automate, Symbole* symbole);
 protected:
 	std::string name;
 private:
