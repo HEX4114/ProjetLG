@@ -41,7 +41,7 @@ bool E12::transition(Automate& automate, Symbole* symbole) throw(std::pair<int, 
 			automate.decalageNonTerminal(symbole, new E18);
 			return true;
 	}
-	std::pair<int, string> p = std::make_pair(1, "Erreur de synthaxe (attendu : \"(\", nombre, id, ou expression).");
+	std::pair<int, string> p = std::make_pair(1, "Erreur de syntaxe (attendu : \"(\", nombre, id, ou expression).");
 	throw(p);
 	return false;
 }

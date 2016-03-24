@@ -32,7 +32,7 @@ bool E8::transition(Automate& automate, Symbole* symbole) throw(std::pair<int, s
 			automate.accepter();
 			return true;
 	}
-	std::pair<int, string> p = std::make_pair(1, "Erreur de synthaxe (attendu : \"ecrire\", \"lire\", ou id).");
+	std::pair<int, string> p = std::make_pair(1, "Erreur de syntaxe (attendu : \"ecrire\", \"lire\", ou id).");
 	throw(p);
 	return false;
 }

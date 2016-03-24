@@ -21,7 +21,7 @@ bool E32::transition(Automate& automate, Symbole *symbole) throw(std::pair<int, 
 			automate.decalageTerminal(symbole, new E33);
 			return true;
 	}
-	std::pair<int, string> p = std::make_pair(1, "Erreur de synthaxe (attendu : nombre).");
+	std::pair<int, string> p = std::make_pair(1, "Erreur de syntaxe (attendu : nombre).");
 	throw(p);
 	return false;
 }

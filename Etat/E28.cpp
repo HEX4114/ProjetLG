@@ -28,7 +28,7 @@ bool E28::transition(Automate& automate, Symbole* symbole) throw(std::pair<int, 
 			automate.decalageTerminal(symbole, new E29);
 			return true;
 	}
-	std::pair<int, string> p = std::make_pair(1, "Erreur de synthaxe (attendu : \"+\", \"-\" ou \";\").");
+	std::pair<int, string> p = std::make_pair(1, "Erreur de syntaxe (attendu : \"+\", \"-\" ou \";\").");
 	throw(p);
 	return false;
 }

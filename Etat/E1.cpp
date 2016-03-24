@@ -31,7 +31,7 @@ bool E1::transition(Automate& automate, Symbole* symbole) throw(std::pair<int, s
 		case(ECRIRE) :
 			automate.reduction(R12);
 			return true;
-		case(LIRE) : 
+		case(LIRE) :
 			automate.reduction(R12);
 			return true;
 		case(DOL) :
@@ -41,7 +41,7 @@ bool E1::transition(Automate& automate, Symbole* symbole) throw(std::pair<int, s
 			automate.reduction(R12);
 			return true;
 	}
-	std::pair<int, string> p = std::make_pair(1, "Erreur de synthaxe (attendu : \"var\", \"const\", \"ecrire\", \"lire\", ou id).");
+	std::pair<int, string> p = std::make_pair(1, "Erreur de syntaxe (attendu : \"var\", \"const\", \"ecrire\", \"lire\", ou id).");
 	throw(p);
 	return false;
 }

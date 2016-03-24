@@ -28,14 +28,14 @@ bool E34::transition(Automate& automate, Symbole* symbole) throw(std::pair<int, 
 			Symbole* symboleAnticipe = new Symbole();
 			symboleAnticipe->setType(VG);
 			automate.decalageAnticipe(symboleAnticipe, new E35);
-			std::pair<int, string> p = std::make_pair(0, "Warning : \",\" manquante.");
+			std::pair<int, string> p = std::make_pair(0, "Erreur syntaxique symbole \",\" attendu");
 			throw(p);
 			return true;
 	}
 	Symbole* symboleAnticipe = new Symbole();
 	symboleAnticipe->setType(PVG);
 	automate.decalageAnticipe(symboleAnticipe, new E39);
-	std::pair<int, string> p = std::make_pair(0, "Warning : \";\" manquant.");
+	std::pair<int, string> p = std::make_pair(0, "Erreur syntaxique symbole \";\" attendu");
 	throw(p);
 
 	return false;

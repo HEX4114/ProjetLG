@@ -20,8 +20,10 @@ bool E9::transition(Automate& automate, Symbole *symbole) throw(std::pair<int, s
 		case(ID) :
 			automate.decalageTerminal(symbole, new E10);
 			return true;
+        case(ERR) :
+            return false;
 	}
-	std::pair<int, string> p = std::make_pair(1, "Erreur de synthaxe (id manquant).");
+	std::pair<int, string> p = std::make_pair(1, "Erreur de syntaxe (id manquant).");
 	throw(p);
 	return false;
 }

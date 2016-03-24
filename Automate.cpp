@@ -97,11 +97,13 @@ void Automate::lecture(std::string fileName)
 
 	//3. boucle transitions
 	lectureFinie = false;
-	Symbole *symbole = lex->getSymbole(); //premier symbole
-	while(!lectureFinie) {
+	lectureCorrecte = true;
+	Symbole *symbole;
+	do{
+        symbole = lex->getSymbole();
 		try
 		{
-			pileEtats.top()->transition(*this, symbole);
+			 lectureCorrecte = pileEtats.top()->transition(*this, symbole);
 		}
 		catch (std::pair<int, string> p)
 		{
@@ -109,9 +111,9 @@ void Automate::lecture(std::string fileName)
 			if(p.first == 1) lectureFinie = true;
 		}
 		//cout << typeid(*pileEtats.top()).name() << endl;
-		symbole = lex->getSymbole();
-	}
-	system("pause");
+
+	}while(!lectureFinie && lectureCorrecte);
+	//system("pause");
 }
 
 void Automate::empilerEtat(Etat* etat)
@@ -139,7 +141,7 @@ void Automate::decalageTerminal(Symbole* symbole, Etat* etat)
 {
 	//Empiler symbole seulement si c'est un symbole terminal
 	empilerSymbole(symbole);
-	cout << symbole->getType() << endl;
+	//cout << symbole->getType() << endl;
 	lex->goNext();
 	//cout << "decalage de " << symbole->getType() << endl;
 	empilerEtat(etat);

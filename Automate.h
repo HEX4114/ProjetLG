@@ -59,6 +59,7 @@ class Automate
 		std::vector<int> reglesReduction;
 		std::vector<Symbole*> partieGaucheRegle;
 		bool lectureFinie;
+		bool lectureCorrecte;
 		Lexer* lex;
 		//int reglesReduction[19] = { 2, 3, 0, 5, 0, 5, 7, 0, 4, 4, 5, 0, 3, 1, 3, 1, 3, 1, 1 }; // contient le nombre d'états à dépiler pour chaque règle appliquée en réduction.
 		std::vector<StatutIdentifiant*> tableauStatut;

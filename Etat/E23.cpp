@@ -32,7 +32,7 @@ bool E23::transition(Automate& automate, Symbole* symbole) throw(std::pair<int, 
 			break;
 	}
 
-	std::pair<int, string> p = std::make_pair(1, "Erreur de synthaxe (attendu : \"+\", \"-\" ou \")\").");
+	std::pair<int, string> p = std::make_pair(1, "Erreur de syntaxe (attendu : \"+\", \"-\" ou \")\").");
 	throw(p);
 	return false;
 }

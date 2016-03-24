@@ -24,11 +24,11 @@ bool E36::transition(Automate& automate, Symbole* symbole) throw(std::pair<int, 
 			Symbole* symboleAnticipe = new Symbole();
 			symboleAnticipe->setType(EG);
 			automate.decalageAnticipe(symboleAnticipe, new E37);
-			std::pair<int, string> p = std::make_pair(0, "Warning : \"=\" manquant.");
+			std::pair<int, string> p = std::make_pair(0, "Erreur syntaxique symbole \"=\" attendu");
 			throw(p);
 			return true;
 	}
-	std::pair<int, string> p = std::make_pair(1, "Erreur de synthaxe (attendu : \"=\").");
+	std::pair<int, string> p = std::make_pair(0, "Erreur syntaxique symbole \"=\" attendu");
 	throw(p);
 	return false;
 }

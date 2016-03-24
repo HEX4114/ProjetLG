@@ -21,7 +21,7 @@ bool E35::transition(Automate& automate, Symbole* symbole) throw(std::pair<int, 
 			automate.decalageTerminal(symbole, new E36);
 			return true;
 	}
-	std::pair<int, string> p = std::make_pair(1, "Erreur de synthaxe (attendu : identifiant).");
+	std::pair<int, string> p = std::make_pair(1, "Erreur de syntaxe (attendu : identifiant).");
 	throw(p);
 	return false;
 }

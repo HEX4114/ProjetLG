@@ -36,7 +36,7 @@ bool E22::transition(Automate& automate, Symbole* symbole) throw(std::pair<int, 
 			automate.reduction(R14);
 			return true;
 	}
-	std::pair<int, string> p = std::make_pair(1, "Erreur de synthaxe (attendu : un opérateur, \")\", ou \";\").");
+	std::pair<int, string> p = std::make_pair(1, "Erreur de syntaxe (attendu : un opérateur, \")\", ou \";\").");
 	throw(p);
 	return false;
 }
