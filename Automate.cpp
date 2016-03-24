@@ -109,9 +109,10 @@ void Automate::lecture(std::string fileName)
 			if(p.first == 1) lectureFinie = true;
 		}
 		
-		//cout << typeid(*pileEtats.top()).name() << endl;
+		cout << typeid(*pileEtats.top()).name() << endl;
 		symbole = lex->getSymbole();
 	}
+	system("pause");
 }
 
 void Automate::empilerEtat(Etat* etat)
@@ -139,6 +140,7 @@ void Automate::decalageTerminal(Symbole* symbole, Etat* etat)
 {
 	//Empiler symbole seulement si c'est un symbole terminal
 	empilerSymbole(symbole);
+	cout << symbole->getType() << endl;
 	lex->goNext();
 	//cout << "decalage de " << symbole->getType() << endl;
 	empilerEtat(etat);
@@ -403,7 +405,17 @@ Expression* Automate::parseExpression(std::list<Symbole*>::iterator it)
 			{
 				Symbole * operateur = operateurs.top();
 				operateurs.pop();
-				sortie.push(operateur);
+				Expression *partieDroite = dynamic_cast<Expression*>(sortie.top()); sortie.pop();
+				Expression *partieGauche;
+				if (!sortie.empty())
+				{
+					partieGauche = dynamic_cast<Expression*>(sortie.top()); sortie.pop();
+				}
+				else
+				{
+					partieGauche = new Nombre(0);
+				}
+				sortie.push(creerExpressionBinaire(operateur->getType(), partieGauche, partieDroite));
 			}
 			operateurs.pop();
 		}
