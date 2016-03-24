@@ -1,6 +1,6 @@
 #include <iostream>
 #include <fstream>
-#include <regex>
+#include <boost/regex.hpp>
 #include "Lexer.h"
 #include "Symbole/Expression/Nombre.h"
 #include "Symbole/Symbole.h"
@@ -164,7 +164,7 @@ void Lexer::parseToSymbols(string& example)
 
 bool testRegex(const string& input, const TypeSymbole& reg)
 {
-    regex rgx;
+    boost::regex rgx;
     if(reg == NB)
     {
         rgx = "[-]*[0-9]+";
@@ -178,7 +178,7 @@ bool testRegex(const string& input, const TypeSymbole& reg)
         rgx = "";
     }
 
-    smatch match;
+    boost::smatch match;
 
     if (regex_match(input.begin(), input.end(), match, rgx))
     {

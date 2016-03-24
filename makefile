@@ -1,20 +1,39 @@
-CC=g++
-CFLAGS=-c -Wall -std=c++11
-LDFLAGS=
-SRCS=$(wildcard *.cpp) $(wildcard */*.cpp) $(wildcard */*/*.cpp) $(wildcard */*/*/*.cpp)
-OBJS=$(SRCS:%.cpp=%.o)
-EXEC=lutin
 
-all: $(SRCS) $(EXEC)
-    
-$(EXEC): $(OBJS) 
-	$(CC) $(LDFLAGS) -o $(EXEC) $(OBJS) $(LDFLAGS)
+COMP= g++
+CFLAGS= -W -Wall -ansi -pedantic -lboost_regex -lboost_unit_test_framework -std=c++11
+LINK= g++
+LDFLAGS= -lboost_regex -lboost_unit_test_framework
+INCLUDES= -I /usr/include/boost
+LIBS= -L /usr/lib
 
-%.o : %.cpp
-	$(CC) $(CFLAGS) -c $< -o $@
+SRCDIR= ./
+BUILDDIR= ./
+BINDIR = ./
+EXE= lut
 
-clean:
-	rm -rf *.o
+SOURCES= $(shell find $(SRCDIR) -type f -name "*.cpp")
+OBJECTS= $(patsubst $(SRCDIR)%,$(BUILDDIR)%, $(SOURCES:.cpp=.o))
+TARGET = $(addprefix $(BINDIR), $(EXE))
 
-mrproper: clean
-	rm -rf hello
+CLEAN= clean
+ECHO= @echo
+RM= @rm
+RMFLAGS= -rf
+
+.PHONY: $(CLEAN)
+
+$(TARGET): $(OBJECTS)
+	$(ECHO) "Edition des liens de <$(EXE)>"
+	@mkdir -p $(BINDIR)
+	$(LINK) $(INCLUDES) $(LIBS) -o $(TARGET) $(OBJECTS) $(LDFLAGS)
+	$(ECHO)
+
+$(BUILDDIR)%.o: $(SRCDIR)*%.cpp
+	$(ECHO) "Compilation de <$<>"
+	@mkdir -p $(BUILDDIR)
+	@mkdir -p $(dir $@)
+	$(COMP) $(INCLUDES) -o $@ -c $< $(CFLAGS)
+	$(ECHO)
+
+$(CLEAN):
+	$(RM) $(RMFLAGS) $(OBJECTS) core

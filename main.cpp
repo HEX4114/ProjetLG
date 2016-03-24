@@ -31,20 +31,27 @@ using namespace std;
 int main(int argc, char* argv[])
 
 {
-	/*Test Automate*/
-	
+	/**Test Automate**/
 	//1.Recup fichier a l'aide de l'outil en ligne de commande
-	string fileName = "../sources/test2.txt";
+	/*string fileName = "src/test2.txt";*/
 	//2. lancement de l'automate
-	Automate* automate = new Automate();
-	automate->lecture(fileName);
+	/*Automate* automate = new Automate();
+	automate->lecture(fileName);*/
+	/**-------------------**/
 	
 	
-	/*if (argc < 2)
+	if (argc < 2)
 	{
-		cerr << "Usage: ProjetGL sourceFile [options]" << endl;
-		system("pause");
-		return 0;
+        cerr << "Erreur";
+		cerr << "Erreur, veuillez specifier des arguments" << endl;
+        cerr << "wUtilisation :" << endl;
+		cerr << "    ../lut [-p] [-a] [-e] [-o] source.lt" << endl;
+		cerr << "      [-p] affiche le code source reconnu" << endl;
+		cerr << "      [-a] analyse le programme de maniere statique" << endl;
+		cerr << "      [-e] execute interactivement le programme" << endl;
+		cerr << "      [-o] optimise les expressions et instructions" << endl;
+		//system("pause");
+		return 1;
 	}
 
 	unordered_set<string> options;
@@ -59,41 +66,37 @@ int main(int argc, char* argv[])
 		}
 		else {
 			cerr << "Valid options are : -a, -e, -o and -p" << endl;
-			system("pause");
+			//system("pause");
 			return 0;
 		}
 	}
-	cout << "Options : ";
+	/*cout << "Options : ";
 	for (auto it = options.begin(); it != options.end(); ++it)
 		cout << " " << *it;
 	cout << endl;*/
 
-    /*cout << "Hello world!" << endl;
-
-
 	char* sourceFile = argv[1];
 	string fileName = string(sourceFile);
 
+	Lexer* lex = new Lexer();
+	string names = lex->lecture(fileName);
+	lex->parseToSymbols(names);
+	Symbole* sym;
+	while(lex->hasNext()) {
+		sym = lex->getSymbole();
+		lex->goNext();
+	}
 
 
-    Lexer* lex = new Lexer();
-    string names = lex->lecture(fileName);
-    lex->parseToSymbols(names);
-
-    while(lex->hasNext()) {
-        Symbole sym = lex->getNext();
-    }*/
-
-
-    /**Tests des Expressions**/
-    /*Nombre * n1 = new Nombre(1);
-    Nombre * n2 = new Nombre(5);
-    ExpressionAdditionner * Exp1 = new ExpressionAdditionner(n1, n2);
-    ExpressionSoustraire * Exp2 = new ExpressionSoustraire(n1, n2);
-    ExpressionDiviser * Exp3 = new ExpressionDiviser(n1, n2);
-    ExpressionMultiplier * Exp4 = new ExpressionMultiplier(n1, n2);
-    cout<< Exp1->evaluer()<<endl<< Exp2->evaluer() <<endl<< Exp3->evaluer() <<endl<< Exp4->evaluer() <<endl;*/
-    /**-------------------**/
+	/**Tests des Expressions**/
+	/*Nombre * n1 = new Nombre(1);
+	Nombre * n2 = new Nombre(5);
+	ExpressionAdditionner * Exp1 = new ExpressionAdditionner(n1, n2);
+	ExpressionSoustraire * Exp2 = new ExpressionSoustraire(n1, n2);
+	ExpressionDiviser * Exp3 = new ExpressionDiviser(n1, n2);
+	ExpressionMultiplier * Exp4 = new ExpressionMultiplier(n1, n2);
+	cout<< Exp1->evaluer()<<endl<< Exp2->evaluer() <<endl<< Exp3->evaluer() <<endl<< Exp4->evaluer() <<endl;*/
+	/**-------------------**/
 
 	
     /**Tests d'Ecrire afficher() et executer()**/
@@ -141,10 +144,6 @@ int main(int argc, char* argv[])
 
 	/**Test du tableau statique**/
 	/*StatutIdentifiant v1("v1", true, false);
-<<<<<<< HEAD
-=======
-
->>>>>>> feature/automate
 	StatutIdentifiant v2("v2", true, false);
 	StatutIdentifiant v3("v3", true, false);
 	StatutIdentifiant c1("c1", false, false);

@@ -130,7 +130,7 @@ void Automate::empilerSymbole(Symbole* symbole)
 	pileSymboles.push(symbole);
 }
 
-void Automate::reduction(Regle regle) throw(std::pair<int, string>)
+void Automate::reduction(Regle regle) throw(pair<int, string>)
 {
 	int nbPop = reglesReduction.at(regle);
 
