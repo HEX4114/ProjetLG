@@ -35,7 +35,7 @@ void Affectation::analyseStatique()
 	StatutIdentifiant* statut = automate->getStatutIdParIdentifiant(partieGauche->getName());
 	if (statut == NULL)
 	{
-		std::cerr << "Erreur, variable partie gauche : " << partieGauche->getName() << " n'est pas declare" << std::endl;
+		std::cerr << "la variable " << partieGauche->getName() << " n'a pas ete declaree" << std::endl;
 		return;
 	}
 	else if (!statut->isModifiable())
