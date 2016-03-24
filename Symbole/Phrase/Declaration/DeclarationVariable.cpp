@@ -15,7 +15,7 @@ DeclarationVariable::~DeclarationVariable()
 
 void DeclarationVariable::afficher()
 {
-	std::cout << "VAR " << this->variableADeclarer->getName() << ";" << std::endl;
+	std::cout << "var " << this->variableADeclarer->getName() << ";" << std::endl;
 }
 
 void DeclarationVariable::executer()

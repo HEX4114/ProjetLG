@@ -34,8 +34,8 @@ string Lexer::lecture(string& fileName)
         t.read(&lines[0], size);
         return lines;
     }
-    else cout << "Unable to open file";
-    exit(-1);
+    else cerr << "Erreur a l'ouverture du fichier " << fileName<<endl;
+    exit(1);
     return NULL;
 }
 
@@ -54,7 +54,7 @@ void Lexer::parseToSymbols(string& example)
         case '\n':
             if(!word.empty())
             {
-                cout << word << endl;
+                //cout << word << endl;
                 addSymbole(word);
                 word.clear();
             }
@@ -68,12 +68,12 @@ void Lexer::parseToSymbols(string& example)
         case ')':
             if(!word.empty())
             {
-                cout << word << endl;
+                //cout << word << endl;
                 addSymbole(word);
                 word.clear();
             }
             word += c;
-            cout << word << endl;
+            //cout << word << endl;
             addSymbole(word);
             word.clear();
             break;
@@ -99,18 +99,18 @@ void Lexer::parseToSymbols(string& example)
             else if(word.empty())
             {
                 word += c;
-                cout << word << endl;
+                //cout << word << endl;
                 addSymbole(word);
                 word.clear();
             }
             else
             {
-                cout << word << endl;
+                //cout << word << endl;
                 addSymbole(word);
                 word.clear();
 
                 word += c;
-                cout << word << endl;
+                //cout << word << endl;
                 addSymbole(word);
                 word.clear();
             }
@@ -118,7 +118,7 @@ void Lexer::parseToSymbols(string& example)
         case ':':
             if(!word.empty())
             {
-                cout << word << endl;
+                //cout << word << endl;
                 addSymbole(word);
                 word.clear();
             }
@@ -130,13 +130,13 @@ void Lexer::parseToSymbols(string& example)
                 if(word.compare(":")==0)
                 {
                     word += c;
-                    cout << word << endl;
+                    //cout << word << endl;
                     addSymbole(word);
                     word.clear();
                 }
                 else
                 {
-                    cout << word << endl;
+                    //cout << word << endl;
                     addSymbole(word);
                     word.clear();
                     word += c;
@@ -148,7 +148,7 @@ void Lexer::parseToSymbols(string& example)
             else
             {
                 word += c;
-                cout << word << endl;
+                //cout << word << endl;
                 addSymbole(word);
                 word.clear();
             }
@@ -158,7 +158,7 @@ void Lexer::parseToSymbols(string& example)
         }
     }
     word += '$';
-    cout << word << endl;
+    //cout << word << endl;
     addSymbole(word);
 }
 
@@ -219,112 +219,112 @@ Symbole* Lexer::getSymbole()
 {
     if(getSymbole(next).compare("const")==0)
     {
-        cout << "CONST" << endl;
+        //cout << "CONST" << endl;
         Symbole* toReturn = new Symbole();
         toReturn->setType(CONST);
         return toReturn;
     }
     else if(getSymbole(next).compare("var")==0)
     {
-        cout << "VAR" << endl;
+        //cout << "VAR" << endl;
         Symbole* toReturn = new Symbole();
         toReturn->setType(VAR);
         return toReturn;
     }
     else if(getSymbole(next).compare("ecrire") == 0)
     {
-        cout << "ECRIRE" << endl;
+        //cout << "ECRIRE" << endl;
         Symbole* toReturn = new Symbole();
         toReturn->setType(ECRIRE);
         return toReturn;
     }
     else if (getSymbole(next).compare("lire") == 0)
     {
-        cout << "LIRE" << endl;
+        //cout << "LIRE" << endl;
         Symbole* toReturn = new Symbole();
         toReturn->setType(LIRE);
         return toReturn;
     }
     else if (getSymbole(next).compare(";") == 0)
     {
-        cout << "PVG" << endl;
+        //cout << "PVG" << endl;
         Symbole* toReturn = new Symbole();
         toReturn->setType(PVG);
         return toReturn;
     }
     else if (getSymbole(next).compare(",") == 0)
     {
-        cout << "VG" << endl;
+        //cout << "VG" << endl;
         Symbole* toReturn = new Symbole();
         toReturn->setType(VG);
         return toReturn;
     }
     else if (getSymbole(next).compare("=") == 0)
     {
-        cout << "EG" << endl;
+        //cout << "EG" << endl;
         Symbole* toReturn = new Symbole();
         toReturn->setType(EG);
         return toReturn;
     }
     else if (getSymbole(next).compare("(") == 0)
     {
-        cout << "PARG" << endl;
+        //cout << "PARG" << endl;
         Symbole* toReturn = new Symbole();
         toReturn->setType(PARG);
         return toReturn;
     }
     else if (getSymbole(next).compare(")") == 0)
     {
-        cout << "PARD" << endl;
+        //cout << "PARD" << endl;
         Symbole* toReturn = new Symbole();
         toReturn->setType(PARD);
         return toReturn;
     }
     else if (getSymbole(next).compare(":=") == 0)
     {
-        cout << "AF" << endl;
+        //cout << "AF" << endl;
         Symbole* toReturn = new Symbole();
         toReturn->setType(AF);
         return toReturn;
     }
     else if (getSymbole(next).compare("+") == 0)
     {
-        cout << "PLUS" << endl;
+        //cout << "PLUS" << endl;
         Symbole* toReturn = new Symbole();
         toReturn->setType(PLUS);
         return toReturn;
     }
     else if (getSymbole(next).compare("-") == 0)
     {
-        cout << "MOINS" << endl;
+        //cout << "MOINS" << endl;
         Symbole* toReturn = new Symbole();
         toReturn->setType(MOINS);
         return toReturn;
     }
     else if (getSymbole(next).compare("*") == 0)
     {
-        cout << "MULT" << endl;
+        //cout << "MULT" << endl;
         Symbole* toReturn = new Symbole();
         toReturn->setType(MULT);
         return toReturn;
     }
     else if (getSymbole(next).compare("/") == 0)
     {
-        cout << "DIV" << endl;
+        //cout << "DIV" << endl;
         Symbole* toReturn = new Symbole();
         toReturn->setType(DIV);
         return toReturn;
     }
     else if (testRegex(getSymbole(next), NB))
     {
-        cout << "NB" << endl;
+        //cout << "NB" << endl;
         Nombre* toReturn = new Nombre(stoi(getSymbole(next)));
         toReturn->setType(NB);
         return toReturn;
     }
     else if(testRegex(getSymbole(next), ID))
     {
-        cout << "ID" << endl;
+        //cout << "ID" << endl;
         Variable* toReturn = new Variable();
         toReturn->setID(getSymbole(next));
         toReturn->setType(ID);
@@ -332,18 +332,18 @@ Symbole* Lexer::getSymbole()
     }
     else if (getSymbole(next).compare("$") == 0)
     {
-        cout << "DOL" << endl;
+        //cout << "DOL" << endl;
         Symbole* toReturn = new Symbole();
         toReturn->setType(DOL);
         return toReturn;
     }
     else
     {
-        cout << "ERROR " << getSymbole(next) << endl;
+        //cout << "ERROR " << getSymbole(next) << endl;
         Symbole* toReturn = new Symbole();
         toReturn->setType(ERR);
         return toReturn;
     }
     //next++;
     return NULL;
-};
+}

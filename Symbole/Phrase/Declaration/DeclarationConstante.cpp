@@ -14,7 +14,7 @@ DeclarationConstante::~DeclarationConstante()
 
 void DeclarationConstante::afficher()
 {
-	std::cout << "CONST " << this->constanteADeclarer->getName() << " = " << this->constanteADeclarer->getValeur() << ";" << std::endl;
+	std::cout << "const " << this->constanteADeclarer->getName() << " = " << this->constanteADeclarer->getValeur() << ";" << std::endl;
 }
 
 void DeclarationConstante::executer()

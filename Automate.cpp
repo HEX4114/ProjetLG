@@ -105,18 +105,13 @@ void Automate::lecture(std::string fileName)
 		}
 		catch (std::pair<int, string> p)
 		{
-			cout << p.second << endl;
+			cerr << p.second << endl;
 			if(p.first == 1) lectureFinie = true;
 		}
 		
-		cout << typeid(*pileEtats.top()).name() << endl;
+		//cout << typeid(*pileEtats.top()).name() << endl;
 		symbole = lex->getSymbole();
 	}
-	Programme prog = creerProgramme();
-	prog.afficherProgramme();
-	//prog.analyseStatique();
-	prog.executerProgramme();
-	//4. appeler les options
 }
 
 void Automate::empilerEtat(Etat* etat)
@@ -136,7 +131,7 @@ void Automate::reduction(Regle regle) throw(pair<int, string>)
 	for (int i=0; i<nbPop; i++) pileEtats.pop();
 	
 	Symbole *partG = partieGaucheRegle[regle];
-	cout << "reduction de " << regle << endl;
+	//cout << "reduction de " << regle << endl;
 	pileEtats.top()->transition(*this, partG);
 }
 
@@ -145,7 +140,7 @@ void Automate::decalageTerminal(Symbole* symbole, Etat* etat)
 	//Empiler symbole seulement si c'est un symbole terminal
 	empilerSymbole(symbole);
 	lex->goNext();
-	cout << "decalage de " << symbole->getType() << endl;
+	//cout << "decalage de " << symbole->getType() << endl;
 	empilerEtat(etat);
 }
 
@@ -158,14 +153,14 @@ void Automate::decalageAnticipe(Symbole* symbole, Etat* etat)
 {
 	//Empiler symbole dans le cas o� le compilo anticipe une erreure.
 	empilerSymbole(symbole);
-	cout << "decalage de " << symbole->getType() << endl;
+	//cout << "decalage de " << symbole->getType() << endl;
 	empilerEtat(etat);
 }
 
 void Automate::accepter()
 {
 	lectureFinie = true;
-	cout << "c'est fini !!" << endl;
+	//cout << "c'est fini !!" << endl;
 }
 
 void Automate::afficherTableauStatut()

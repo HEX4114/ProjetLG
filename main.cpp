@@ -15,18 +15,10 @@ using std::getline;
 
 using namespace std;
 
-#include "Lexer.h"
-#include "Symbole/Expression/ExpressionBinaire/ExpressionAdditionner.h"
-#include "Symbole/Expression/ExpressionBinaire/ExpressionSoustraire.h"
-#include "Symbole/Expression/ExpressionBinaire/ExpressionDiviser.h"
-#include "Symbole/Expression/ExpressionBinaire/ExpressionMultiplier.h"
-#include "Symbole/Symbole.h"
-#include "Symbole/Expression/Nombre.h"
-#include "Symbole/Phrase/Instruction/Ecrire.h"
-#include "Symbole/Phrase/Instruction/Lire.h"
+
+
 #include "Automate.h"
-#include "Symbole/Phrase/Declaration/DeclarationConstante.h"
-#include "Symbole/Phrase/Declaration/DeclarationVariable.h"
+#include "Symbole/Programme/Programme.h"
 
 int main(int argc, char* argv[])
 
@@ -42,9 +34,8 @@ int main(int argc, char* argv[])
 	
 	if (argc < 2)
 	{
-        cerr << "Erreur";
 		cerr << "Erreur, veuillez specifier des arguments" << endl;
-        cerr << "wUtilisation :" << endl;
+        cerr << "Utilisation :" << endl;
 		cerr << "    ../lut [-p] [-a] [-e] [-o] source.lt" << endl;
 		cerr << "      [-p] affiche le code source reconnu" << endl;
 		cerr << "      [-a] analyse le programme de maniere statique" << endl;
@@ -57,7 +48,7 @@ int main(int argc, char* argv[])
 	unordered_set<string> options;
 	string opt[] = { "-a","-e","-o","-p" };
 	unordered_set<string> authorisedOptions (opt, opt + 4);
-	for (int i = 2; i < argc; i++)
+	for (int i = 1; i < argc - 1; i++)
 	{
 		string s(argv[i], 2);
 		if (authorisedOptions.find(s) != authorisedOptions.end())
@@ -70,22 +61,25 @@ int main(int argc, char* argv[])
 			return 0;
 		}
 	}
+	
+	char* sourceFile = argv[argc - 1];
+	string fileName = string(sourceFile);
+	
+	Automate * automate = new Automate();
+	automate->lecture(fileName);
+	Programme prog = automate->creerProgramme();
+
+
+	if (options.find("-p") != options.end())
+	{
+		prog.afficherProgramme();
+	}
 	/*cout << "Options : ";
 	for (auto it = options.begin(); it != options.end(); ++it)
 		cout << " " << *it;
 	cout << endl;*/
 
-	char* sourceFile = argv[1];
-	string fileName = string(sourceFile);
 
-	Lexer* lex = new Lexer();
-	string names = lex->lecture(fileName);
-	lex->parseToSymbols(names);
-	Symbole* sym;
-	while(lex->hasNext()) {
-		sym = lex->getSymbole();
-		lex->goNext();
-	}
 
 
 	/**Tests des Expressions**/
