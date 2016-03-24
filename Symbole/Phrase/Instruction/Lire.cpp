@@ -40,7 +40,7 @@ void Lire::analyseStatique()
 
 	if (statut == NULL)
 	{
-		std::cerr << "la variable " << variableAChanger->getName() << " n'a pas ete declaree" << std::endl;
+		std::cerr << "la variable " << variableAChanger->getName() << " n'a pas ete declaree." << std::endl;
 		return;
 	}
 	else if (!statut->isModifiable())
