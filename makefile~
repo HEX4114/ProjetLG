@@ -38,3 +38,4 @@ $(BUILDDIR)%.o: $(SRCDIR)*%.cpp
 $(CLEAN):
 	$(RM) $(RMFLAGS) $(OBJECTS) $(EXE) core
 
+Debug: all
