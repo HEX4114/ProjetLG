@@ -116,7 +116,6 @@ void Automate::lecture(std::string fileName)
 	prog.afficherProgramme();
 	//prog.analyseStatique();
 	prog.executerProgramme();
-	//system("pause");
 	//4. appeler les options
 }
 

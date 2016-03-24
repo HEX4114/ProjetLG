@@ -10,7 +10,7 @@ class E29 : public Etat
 public:
 	E29();
 	virtual ~E29();
-	virtual bool transition(Automate& automate, Symbole* symbole);
+	virtual bool transition(Automate& automate, Symbole* symbole) throw(std::pair<int, std::string>);
 protected:
 	std::string name;
 private:
