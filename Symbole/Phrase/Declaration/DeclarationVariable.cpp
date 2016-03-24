@@ -31,5 +31,8 @@ void DeclarationVariable::analyseStatique()
 	s->setValeurConnue(false);
 	s->setModifiable(true);
 
-	automate->addStatutIdentifiant(s);
+	if (!automate->addStatutIdentifiant(s))
+	{
+		std::cerr << "la variable " << variableADeclarer->getName() << " est deja declaree" << std::endl;
+	}
 }
