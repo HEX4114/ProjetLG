@@ -45,12 +45,12 @@ void Affectation::analyseStatique()
 	}
 	else if (!partieDroite->expressionConnue())
 	{
-		std::cerr << "Expression non connue : " << partieGauche->getName() << std::endl;
+		std::cerr << "une valeur dans l'expression " << partieDroite->getName() << " n'est pas connue." << std::endl;
 		return;
 	}
 	else if (!partieDroite->expressionDeclare())
 	{
-		std::cerr << "Expression non declare : " << partieGauche->getName() << std::endl;
+		std::cerr << "une valeur dans l'expression " << partieDroite->getName() << " n'est pas declaree." << std::endl;
 		return;
 	}
 

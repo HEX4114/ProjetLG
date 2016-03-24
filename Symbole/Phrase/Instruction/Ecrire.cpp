@@ -26,7 +26,7 @@ void Ecrire::analyseStatique()
 {
 	if (!expressionAAfficher->expressionConnue())
 	{
-		std::cerr << "une valeur dans l'expression " << expressionAAfficher->getName() << " n'est pas connue" << std::endl;
+		std::cerr << "une valeur dans l'expression " << expressionAAfficher->getName() << " n'est pas connue." << std::endl;
 		return;
 	}
 	else if (!expressionAAfficher->expressionDeclare())
