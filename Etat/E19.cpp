@@ -12,7 +12,7 @@ E19::~E19()
 	//dtor
 }
 
-bool E19::transition(Automate& automate, Symbole* symbole) {
+bool E19::transition(Automate& automate, Symbole* symbole) throw(std::pair<int, std::string>) {
 	automate.reduction(R18);
 	return true;
 }

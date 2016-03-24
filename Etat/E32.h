@@ -10,7 +10,7 @@ class E32 : public Etat
 public:
 	E32();
 	virtual ~E32();
-	virtual bool transition(Automate& automate, Symbole* symbole);
+	virtual bool transition(Automate& automate, Symbole* symbole) throw(std::pair<int, std::string>);
 protected:
 	std::string name;
 private:

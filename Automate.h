@@ -25,7 +25,6 @@ class Automate
 		void lecture(std::string filename);
 		void empilerSymbole(Symbole* symbole);
 		void empilerEtat(Etat* etat);
-
 		void reduction(Regle regle) throw(std::pair<int,std::string>);
 		void decalageTerminal(Symbole* symbole, Etat* etat);
 		void decalageNonTerminal(Symbole* symbole, Etat* etat);
