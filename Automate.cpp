@@ -400,10 +400,13 @@ Expression* Automate::parseExpression(std::list<Symbole*>::iterator it)
 		}
 		else if (type == PARD)
 		{
+			bool parD = true;
+			bool parG = false;
 			while (operateurs.top()->getType() != PARG)
 			{
 				Symbole * operateur = operateurs.top();
 				operateurs.pop();
+				if (operateurs.top()->getType() == PARG){ parG = true; }
 				Expression *partieDroite = dynamic_cast<Expression*>(sortie.top()); sortie.pop();
 				Expression *partieGauche;
 				if (!sortie.empty())
@@ -414,7 +417,8 @@ Expression* Automate::parseExpression(std::list<Symbole*>::iterator it)
 				{
 					partieGauche = new Nombre(0);
 				}
-				sortie.push(creerExpressionBinaire(operateur->getType(), partieGauche, partieDroite));
+				sortie.push(creerExpressionBinaire(operateur->getType(), partieGauche, partieDroite, parG, parD));
+				parD = false;
 			}
 			operateurs.pop();
 		}
@@ -461,10 +465,9 @@ bool Automate::estPrioritaire(TypeSymbole t1, TypeSymbole t2)
 	}
 }
 
-ExpressionBinaire* Automate::creerExpressionBinaire(TypeSymbole t1, Expression* e1, Expression* e2)
+ExpressionBinaire* Automate::creerExpressionBinaire(TypeSymbole t1, Expression* e1, Expression* e2, bool parG, bool parD)
 {
 	ExpressionBinaire* expression;
-
 	if (t1 == PLUS)
 	{
 		expression = new ExpressionAdditionner(e1, e2);
@@ -481,5 +484,6 @@ ExpressionBinaire* Automate::creerExpressionBinaire(TypeSymbole t1, Expression* 
 	{
 		expression = new ExpressionDiviser(e1, e2);
 	}
+	expression->setParentheses(parG, parD);
 	return expression;
 }
