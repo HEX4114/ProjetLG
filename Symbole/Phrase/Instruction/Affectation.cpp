@@ -35,22 +35,22 @@ void Affectation::analyseStatique()
 	StatutIdentifiant* statut = automate->getStatutIdParIdentifiant(partieGauche->getName());
 	if (statut == NULL)
 	{
-		std::cerr << "Erreur, variable partie gauche : " << partieGauche->getName() << " n'est pas declare" << std::endl;
+		std::cerr << "la variable " << partieGauche->getName() << " n'a pas ete declaree" << std::endl;
 		return;
 	}
 	else if (!statut->isModifiable())
 	{
-		std::cerr << "Petit malin, tu as essaye de mondifier une constante : " << partieGauche->getName() << std::endl;
+		std::cerr << "Impossible de modifier une constante " << partieGauche->getName() << std::endl;
 		return;
 	}
 	else if (!partieDroite->expressionConnue())
 	{
-		std::cerr << "Expression non connue : " << partieGauche->getName() << std::endl;
+		std::cerr << "une valeur dans l'expression " << partieDroite->getName() << " n'est pas connue." << std::endl;
 		return;
 	}
 	else if (!partieDroite->expressionDeclare())
 	{
-		std::cerr << "Expression non declare : " << partieGauche->getName() << std::endl;
+		std::cerr << "une valeur dans l'expression " << partieDroite->getName() << " n'est pas declaree." << std::endl;
 		return;
 	}
 

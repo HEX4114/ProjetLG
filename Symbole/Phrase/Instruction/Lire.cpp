@@ -35,5 +35,19 @@ void Lire::executer()
 
 void Lire::analyseStatique()
 {
+	StatutIdentifiant* statut;
+	statut = automate->getStatutIdParIdentifiant(variableAChanger->getName());
+
+	if (statut == NULL)
+	{
+		std::cerr << "la variable " << variableAChanger->getName() << " n'a pas ete declaree." << std::endl;
+		return;
+	}
+	else if (!statut->isModifiable())
+	{
+		std::cerr << "Erreur : impossible de modifier la constante " << variableAChanger->getName() << std::endl;
+		return;
+	}
+	statut->setValeurConnue(true);
 
 }
