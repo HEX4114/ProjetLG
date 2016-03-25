@@ -24,6 +24,7 @@ void Ecrire::executer()
 
 void Ecrire::analyseStatique()
 {
+	expressionAAfficher->setUtilise();
 	if (!expressionAAfficher->expressionConnue())
 	{
 		std::cerr << "une valeur dans l'expression " << expressionAAfficher->getName() << " n'est pas connue." << std::endl;
@@ -34,5 +35,4 @@ void Ecrire::analyseStatique()
 		std::cerr << "une valeur dans l'expression " << expressionAAfficher->getName() << " n'est pas declaree"<< std::endl;
 		return;
 	}
-	expressionAAfficher->setUtilise();
 }

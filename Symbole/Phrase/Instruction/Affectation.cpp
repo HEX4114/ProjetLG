@@ -33,6 +33,7 @@ void Affectation::executer()
 void Affectation::analyseStatique()
 {
 	StatutIdentifiant* statut = automate->getStatutIdParIdentifiant(partieGauche->getName());
+	partieDroite->setUtilise();
 	if (statut == NULL)
 	{
 		std::cerr << "la variable " << partieGauche->getName() << " n'a pas ete declaree" << std::endl;
@@ -56,7 +57,6 @@ void Affectation::analyseStatique()
 
 	statut->setValeur(partieDroite->evaluer());
 	statut->setValeurConnue(true);
-	partieDroite->setUtilise();
 	statut->setModifiable(true);
 	automate->majStatutIdentifiant(statut);
 }

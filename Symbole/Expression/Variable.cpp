@@ -51,5 +51,9 @@ bool Variable::expressionConnue()
 
 void Variable::setUtilise()
 {
-	automate->getStatutIdParIdentifiant(identifiant)->setUtilise(true);
+	StatutIdentifiant* statut = automate->getStatutIdParIdentifiant(identifiant);
+	if (statut != NULL)
+	{
+		automate->getStatutIdParIdentifiant(identifiant)->setUtilise(true);
+	}
 }
