@@ -27,6 +27,7 @@ void DeclarationConstante::analyseStatique()
 	StatutIdentifiant * s = new StatutIdentifiant();
 	s->setId(constanteADeclarer->getName());
 	s->setValeur(constanteADeclarer->getValeur());
+	s->setUtilise(false);
 	s->setModifiable(false);
 	s->setValeurConnue(true);
 	automate->addStatutIdentifiant(s);

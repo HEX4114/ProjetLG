@@ -49,6 +49,5 @@ void Lire::analyseStatique()
 		return;
 	}
 	statut->setValeurConnue(true);
-	statut->setUtilise(true);
 
 }

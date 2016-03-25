@@ -31,6 +31,7 @@ void DeclarationVariable::analyseStatique()
 	s->setId(variableADeclarer->getName());
 	s->setValeurConnue(false);
 	s->setModifiable(true);
+	s->setUtilise(false);
 
 	if (!automate->addStatutIdentifiant(s))
 	{

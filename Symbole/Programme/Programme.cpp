@@ -33,4 +33,6 @@ void Programme::analyseStatique()
 	{
 		(*it)->analyseStatique();
 	}
+
+	automate->afficherVariablesNonUtilisees();
 }
