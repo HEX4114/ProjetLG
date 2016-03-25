@@ -500,7 +500,7 @@ void Automate::afficherVariablesNonUtilisees()
 		}
 		if (!(*it)->isUtilise())
 		{
-			std::cerr << "variable non utilise : " << (*it)->getId() << std::endl;
+			std::cerr << "variable non utilisee : " << (*it)->getId() << std::endl;
 		}
 	}
 }
