@@ -29,11 +29,11 @@ bool E26::transition(Automate& automate, Symbole *symbole) throw(std::pair<int, 
 			Symbole* symboleAnticipe = new Symbole();
 			symboleAnticipe->setType(AF);
 			automate.decalageAnticipe(symboleAnticipe, new E27);
-			std::pair<int, string> p = std::make_pair(0, "Erreur syntaxique symbole \":=\" attendu");
+			std::pair<int, string> p = std::make_pair(0, "Erreur syntaxique operateur \":=\" attendu");
 			throw(p);
 			return true;
 	}
-	std::pair<int, string> p = std::make_pair(0, "Erreur syntaxique symbole \":=\" attendu");
+	std::pair<int, string> p = std::make_pair(0, "Erreur syntaxique operateur \":=\" attendu");
 	throw(p);
-	return false;
+	return true;
 }

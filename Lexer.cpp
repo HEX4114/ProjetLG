@@ -339,7 +339,7 @@ Symbole* Lexer::getSymbole()
     }
     else
     {
-        //cout << "ERROR " << getSymbole(next) << endl;
+        cerr << "Erreur lexicale caractere "<< getSymbole(next) << endl;
         Symbole* toReturn = new Symbole();
         toReturn->setType(ERR);
         return toReturn;

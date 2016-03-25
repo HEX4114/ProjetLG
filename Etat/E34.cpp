@@ -38,5 +38,5 @@ bool E34::transition(Automate& automate, Symbole* symbole) throw(std::pair<int, 
 	std::pair<int, string> p = std::make_pair(0, "Erreur syntaxique symbole \";\" attendu");
 	throw(p);
 
-	return false;
+	return true;
 }
