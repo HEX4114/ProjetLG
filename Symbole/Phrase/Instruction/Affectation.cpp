@@ -55,6 +55,7 @@ void Affectation::analyseStatique()
 	}
 
 	statut->setValeur(partieDroite->evaluer());
+	partieDroite->setUtilise();
 	statut->setUtilise(true);
 	statut->setModifiable(true);
 	automate->majStatutIdentifiant(statut);

@@ -22,3 +22,9 @@ bool ExpressionBinaire::expressionConnue()
 {
 	return e1->expressionConnue() && e2->expressionConnue();
 }
+
+void ExpressionBinaire::setUtilise()
+{
+	e1->setUtilise();
+	e2->setUtilise();
+}

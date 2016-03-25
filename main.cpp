@@ -68,6 +68,7 @@ int main(int argc, char* argv[])
 	Automate * automate = new Automate();
 	automate->lecture(fileName);
 	Programme prog = automate->creerProgramme();
+	prog.setAutomate(automate);
 
 
 	if (options.find("-p") != options.end())

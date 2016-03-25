@@ -1,4 +1,5 @@
 #include "Programme.h"
+#include "../../Automate.h"
 #include <stdlib.h>
 
 Programme::Programme()

@@ -16,6 +16,7 @@ public:
 	virtual void analyseStatique() = 0;
 	virtual void executer() = 0;
 
+
 	virtual ~Phrase();
 
 	void setAutomate(Automate* automate){ this->automate = automate; };

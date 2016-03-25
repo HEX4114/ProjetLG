@@ -15,6 +15,7 @@ class Nombre : public Expression
         double virtual evaluer();
 		bool expressionDeclare();
 		bool expressionConnue();
+		void setUtilise(){};
         std::string virtual getName();
 
 		double getValeur() { return valeur; };

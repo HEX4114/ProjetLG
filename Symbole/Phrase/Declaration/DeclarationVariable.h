@@ -16,6 +16,7 @@ public:
 	void analyseStatique();
 
     void setVariableADeclarer(Variable* variable) { variableADeclarer = variable; };
+	Variable* getVariableADeclarer(){ return variableADeclarer; };
 
 private:
 	Variable* variableADeclarer;

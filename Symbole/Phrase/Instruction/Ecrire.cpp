@@ -34,4 +34,5 @@ void Ecrire::analyseStatique()
 		std::cerr << "une valeur dans l'expression " << expressionAAfficher->getName() << " n'est pas declaree"<< std::endl;
 		return;
 	}
+	expressionAAfficher->setUtilise();
 }

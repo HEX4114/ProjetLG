@@ -13,6 +13,7 @@ class ExpressionDiviser : public ExpressionBinaire
 		double evaluer();
 		bool expressionDeclare();
 		bool expressionConnue();
+		void setUtilise();
 		std::string getName();
     protected:
     private:

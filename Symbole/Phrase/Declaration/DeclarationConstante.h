@@ -11,6 +11,7 @@ public:
 	DeclarationConstante();
 	virtual ~DeclarationConstante();
 
+	Variable* getConstanteADeclarer(){ return constanteADeclarer; };
 	void setConstanteADeclarer(Variable* constante) { constanteADeclarer = constante; };
 
 	void afficher();

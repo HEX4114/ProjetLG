@@ -40,3 +40,8 @@ bool ExpressionMultiplier::expressionConnue()
 {
 	return ExpressionBinaire::expressionConnue();
 }
+
+void ExpressionMultiplier::setUtilise()
+{
+	ExpressionBinaire::setUtilise();
+}

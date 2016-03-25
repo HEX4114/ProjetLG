@@ -48,3 +48,8 @@ bool Variable::expressionConnue()
 		return false;
 	}
 }
+
+void Variable::setUtilise()
+{
+	automate->getStatutIdParIdentifiant(identifiant)->setUtilise(true);
+}

@@ -15,9 +15,10 @@ class Variable : public Expression
         virtual ~Variable();
 
 
-        double virtual evaluer();
-		bool virtual expressionDeclare();
-		bool virtual expressionConnue();
+        double evaluer();
+		bool expressionDeclare();
+		bool expressionConnue();
+		void setUtilise();
 
 
         std::string virtual getName(){ return identifiant; };

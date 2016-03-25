@@ -41,3 +41,8 @@ bool ExpressionSoustraire::expressionConnue()
 	return ExpressionBinaire::expressionConnue();
 }
 
+void ExpressionSoustraire::setUtilise()
+{
+	ExpressionBinaire::setUtilise();
+}
+

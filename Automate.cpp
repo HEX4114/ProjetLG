@@ -489,3 +489,18 @@ ExpressionBinaire* Automate::creerExpressionBinaire(TypeSymbole t1, Expression* 
 	expression->setParentheses(parG, parD);
 	return expression;
 }
+
+void Automate::afficherVariablesNonUtilisees()
+{
+	for (std::vector<StatutIdentifiant*>::iterator it = tableauStatut.begin(); it != tableauStatut.end(); ++it)
+	{
+		if (!(*it)->isValeurConnue())
+		{
+			std::cerr << "variable non affectee : " << (*it)->getId() << std::endl;
+		}
+		if (!(*it)->isUtilise())
+		{
+			std::cerr << "variable non utilise : " << (*it)->getId() << std::endl;
+		}
+	}
+}
