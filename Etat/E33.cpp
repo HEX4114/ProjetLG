@@ -28,5 +28,5 @@ bool E33::transition(Automate& automate, Symbole* symbole) throw(std::pair<int, 
 			return true;
 	}
 	automate.reduction(R5);
-	return false;
+	return true;
 }

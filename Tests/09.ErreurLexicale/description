@@ -1,1 +1,2 @@
 Un caractère dans le flux n'est pas correct - élimination automatique du caractère et récupération.
+(Sans récupération du numéro de ligne et de position du caractère)
